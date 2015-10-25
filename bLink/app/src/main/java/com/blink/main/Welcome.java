@@ -1,4 +1,4 @@
-package main.blink.com.blink;
+package com.blink.main;
 
 import android.app.Activity;
 import android.os.Bundle;
