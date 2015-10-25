@@ -3,4 +3,8 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
+    <drawable name="title_bar">#3F51B5</drawable>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
 </resources>
