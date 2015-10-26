@@ -8,4 +8,7 @@
     <string name="tab_exercise">活动</string>
     <string name="tab_topic">话题</string>
     <string name="tab_change">交换</string>
+    <string name="login">登录</string>
+    <string name="registe">注册</string>
+    <string name="user_service">点击注册即同意《<font color = "#ff0000">用户服务协议</font>》</string>
 </resources>

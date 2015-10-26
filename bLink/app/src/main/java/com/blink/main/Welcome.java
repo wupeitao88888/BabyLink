@@ -28,7 +28,7 @@ public class Welcome extends ActivitySupport implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.login:
-                mIntent(Welcome.this,MainTab.class);
+                mIntent(Welcome.this,LoginActivity.class);
                 break;
 
         }

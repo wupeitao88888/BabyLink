@@ -118,8 +118,7 @@ public class TitleBar extends FrameLayout {
     }
 
 
-    /**
-     * 设置左边的图片
+    /**     * 设置左边的图片
      */
     public void setLeftImage(int draw) {
         lc_left_back.setBackgroundResource(draw);
