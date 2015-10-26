@@ -18,7 +18,7 @@ import com.blink.main.R;
 import com.blink.view.PullScrollView;
 
 public class FragmentHome extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
-    private View rootView;//缓存Fragment view
+    private View rootView;
     private Activity mActivity = null;
     private PullScrollView meCommunity_PullScrollView;
     private FragmentTabHost mTabHost = null;
@@ -40,7 +40,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
             rootView = inflater.inflate(R.layout.fragment_home, null);
             initView(rootView);
         }
-        //缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
+
         ViewGroup parent = (ViewGroup) rootView.getParent();
         if (parent != null) {
             parent.removeView(rootView);
@@ -131,26 +131,26 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
 
         @Override
         public Object instantiateItem(ViewGroup container, int position) {
-            //得到缓存的fragment
+
             Fragment fragment = (Fragment) super.instantiateItem(container,
                     position);
-            //得到tag，这点很重要
+
             String fragmentTag = fragment.getTag();
 
             if (fragmentsUpdateFlag[position % fragmentsUpdateFlag.length]) {
-                //如果这个fragment需要更新
+
 
                 FragmentTransaction ft = fm.beginTransaction();
-                //移除旧的fragment
+
                 ft.remove(fragment);
-                //换成新的fragment
+
                 fragment = fragments[position % fragments.length];
-                //添加新fragment时必须用前面获得的tag，这点很重要
+
                 ft.add(container.getId(), fragment, fragmentTag);
                 ft.attach(fragment);
                 ft.commit();
 
-                //复位更新标志
+
                 fragmentsUpdateFlag[position % fragmentsUpdateFlag.length] = false;
             }
 
