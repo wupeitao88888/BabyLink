@@ -115,8 +115,8 @@ public class ActivitySupport extends FragmentActivity implements
 				null);
 		linearLayout.addView(customtitle, lp1);
 		LinearLayout.LayoutParams lpcontent = new LinearLayout.LayoutParams(
-				ViewGroup.LayoutParams.WRAP_CONTENT,
-				ViewGroup.LayoutParams.WRAP_CONTENT);
+				ViewGroup.LayoutParams.MATCH_PARENT,
+				ViewGroup.LayoutParams.MATCH_PARENT);
 		linearLayout.addView(customContentView, lpcontent);
 		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
 			titleBar.setNotifyIsVisibit(true);
