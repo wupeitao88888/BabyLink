@@ -5,4 +5,7 @@
     <string name="tab_dshow">逗秀</string>
     <string name="tab_find">发现</string>
     <string name="tab_me">我</string>
+    <string name="tab_exercise">活动</string>
+    <string name="tab_topic">话题</string>
+    <string name="tab_change">交换</string>
 </resources>

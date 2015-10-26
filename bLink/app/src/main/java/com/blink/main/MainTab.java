@@ -13,7 +13,7 @@ import com.blink.view.TabFragmentHost;
 
 
 public class MainTab extends ActivitySupport {
-	private String TAG = MainTab.class.getName();
+
 
 	public TabFragmentHost mTabHost;
 	// 标签
