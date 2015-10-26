@@ -1,14 +1,13 @@
 package com.blink.main;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
-import android.view.Window;
 import android.widget.LinearLayout;
 
 import com.blink.base.ActivitySupport;
+import com.blink.fragment.FragmentFind;
 import com.blink.fragment.FragmentHome;
-import com.blink.fragment.FragmentMessage;
+import com.blink.fragment.FragmentBeanShow;
 import com.blink.fragment.FragmentMy;
 import com.blink.view.TabFragmentHost;
 
@@ -18,14 +17,14 @@ public class MainTab extends ActivitySupport {
 
 	public TabFragmentHost mTabHost;
 	// 标签
-	private String[] TabTag = { "tab1", "tab2", "tab3" };
+	private String[] TabTag = { "tab1", "tab2", "tab3","tab4" };
 	// 自定义tab布局显示文本和顶部的图片
 	private Integer[] ImgTab = { R.layout.tab_main_home,
-			R.layout.tab_main_message, R.layout.tab_main_my };
+			R.layout.tab_main_beanshow,R.layout.tab_main_find, R.layout.tab_main_my };
 
 	// tab 选中的activity
-	private Class[] ClassTab = { FragmentHome.class, FragmentMessage.class,
-			FragmentMy.class };
+	private Class[] ClassTab = { FragmentHome.class, FragmentBeanShow.class,
+			FragmentFind.class,FragmentMy.class };
 
 	// tab选中背景 drawable 样式图片 背景都是同一个,背景颜色都是 白色。。。
 	private Integer[] StyleTab = { R.color.white, R.color.white, R.color.white,
