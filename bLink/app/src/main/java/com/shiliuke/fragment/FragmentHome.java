@@ -2,6 +2,8 @@ package com.shiliuke.fragment;
 
 
 import android.app.Activity;
+import android.content.Context;
+import android.os.Handler;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -10,19 +12,30 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.app.FragmentTabHost;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
+import android.widget.ScrollView;
 
 import com.shiliuke.BabyLink.R;
+import com.shiliuke.utils.L;
+import com.shiliuke.utils.ToastUtil;
+import com.shiliuke.utils.ViewUtil;
+import com.shiliuke.view.IndexViewPager;
 import com.shiliuke.view.PullScrollView;
+
+
+import de.greenrobot.event.EventBus;
+import github.chenupt.dragtoplayout.DragTopLayout;
+
 
 public class FragmentHome extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
     private View rootView;
     private Activity mActivity = null;
-    private PullScrollView meCommunity_PullScrollView;
+    private RelativeLayout meCommunity_PullScrollView;
     private FragmentTabHost mTabHost = null;
-    private ViewPager id_viewpager;
+    private IndexViewPager id_viewpager;
     private FragmentExercise fe = new FragmentExercise();
     private FragmentTopic ft = new FragmentTopic();
     private FragmentChange fc = new FragmentChange();
@@ -32,6 +45,8 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
     private RelativeLayout tab_exrcise;
     private RelativeLayout tab_topic;
     private RelativeLayout tab_change;
+    private DragTopLayout dragLayout;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -40,7 +55,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
             rootView = inflater.inflate(R.layout.fragment_home, null);
             initView(rootView);
         }
-
         ViewGroup parent = (ViewGroup) rootView.getParent();
         if (parent != null) {
             parent.removeView(rootView);
@@ -48,18 +62,35 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         return rootView;
     }
 
+    // fragmentExercise回调
+    public void onEvent(Boolean b) {
+        dragLayout.setTouchMode(b);
+    }
+
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        EventBus.getDefault().register(this);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        EventBus.getDefault().unregister(this);
+    }
+
     private void initView(View rootView) {
         mActivity = this.getActivity();
-        meCommunity_PullScrollView = (PullScrollView) rootView.findViewById(R.id.meCommunity_PullScrollView);
-        View bodyview = LayoutInflater.from(mActivity).inflate(R.layout.layout_community, null);
-        meCommunity_PullScrollView.addBodyView(bodyview);
-      tab_exrcise = (RelativeLayout) bodyview.findViewById(R.id.tab_exrcise);
-        tab_topic = (RelativeLayout) bodyview.findViewById(R.id.tab_topic);
-        tab_change = (RelativeLayout) bodyview.findViewById(R.id.tab_change);
+        meCommunity_PullScrollView = (RelativeLayout) rootView.findViewById(R.id.meCommunity_PullScrollView);
+        dragLayout = (DragTopLayout) rootView.findViewById(R.id.drag_layout);
+        tab_exrcise = (RelativeLayout) rootView.findViewById(R.id.tab_exrcise);
+        tab_topic = (RelativeLayout) rootView.findViewById(R.id.tab_topic);
+        tab_change = (RelativeLayout) rootView.findViewById(R.id.tab_change);
         tab_exrcise.setOnClickListener(this);
         tab_topic.setOnClickListener(this);
         tab_change.setOnClickListener(this);
-        id_viewpager = (ViewPager) bodyview.findViewById(R.id.id_viewpager);
+        id_viewpager = (IndexViewPager) rootView.findViewById(R.id.id_viewpager);
         adapter = new MyFragmentPagerAdapter(getFragmentManager());
         id_viewpager.setAdapter(adapter);
         id_viewpager.setOnPageChangeListener(this);
@@ -67,6 +98,51 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         tab_exrcise.setSelected(true);
         tab_topic.setSelected(false);
         tab_change.setSelected(false);
+        if (dragLayout.getCollapseOffset() == 0) {
+            dragLayout.openTopView(true);
+            float v = ViewUtil.dip2px(mActivity, 40);
+            dragLayout.setCollapseOffset((int) v);
+        } else {
+            dragLayout.setCollapseOffset(0);
+        }
+        final Handler handler=new Handler();
+        dragLayout.listener(new DragTopLayout.SimplePanelListener() {
+            @Override
+            public void onPanelStateChanged(DragTopLayout.PanelState panelState) {
+                super.onPanelStateChanged(panelState);
+            }
+
+            @Override
+            public void onSliding(float ratio) {
+                super.onSliding(ratio);
+
+            }
+
+            @Override
+            public void onRefresh() {
+                super.onRefresh();
+               new Thread(){
+                   @Override
+                   public void run() {
+                       super.run();
+
+                       try {
+                           sleep(1000);
+                       } catch (InterruptedException e) {
+                           e.printStackTrace();
+                       }
+                       handler.post(new Runnable() {
+                           @Override
+                           public void run() {
+                               dragLayout.onRefreshComplete();
+                               ToastUtil.showShort(mActivity,"刷新完成");
+                           }
+                       });
+                   }
+               }.start();
+            }
+        });
+
     }
 
     @Override
