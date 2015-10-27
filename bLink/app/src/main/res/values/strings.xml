@@ -10,5 +10,12 @@
     <string name="tab_change">交换</string>
     <string name="login">登录</string>
     <string name="registe">注册</string>
-    <string name="user_service">点击注册即同意《<font color = "#ff0000">用户服务协议</font>》</string>
+    <string name="confirm">确定</string>
+    <string name="information">完善资料</string>
+    <string name="select_city">请选择您所在的城市</string>
+    <string name="select_area">请选择您所在的小区</string>
+    <string name="insert_name">请输入宝宝昵称或名字</string>
+    <string name="select_sex">请选择宝宝性别</string>
+    <string name="select_date">请选择宝宝出生日期</string>
+    <string name="select_relations">请选择您与宝宝的关系</string>
 </resources>

@@ -59,7 +59,7 @@ public class LoginActivity extends ActivitySupport implements OnClickListener{
                 mIntent(LoginActivity.this, MainTab.class);
             break;
             case R.id.forget_password:
-
+                mIntent(LoginActivity.this, ForgetPassActivity.class);
             break;
             case R.id.qq_login:
 
