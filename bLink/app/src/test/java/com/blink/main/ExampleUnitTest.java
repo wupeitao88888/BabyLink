@@ -1,4 +1,4 @@
-package com.blink.main;
+package com.shiliuke.BabyLink;
 
 import org.junit.Test;
 
