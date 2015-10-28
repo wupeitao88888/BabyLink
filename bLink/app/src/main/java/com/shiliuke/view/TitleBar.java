@@ -3,6 +3,7 @@ package com.shiliuke.view;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.Build;
 import android.util.AttributeSet;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -63,6 +64,11 @@ public class TitleBar extends FrameLayout {
         lc_right_menu = (TextView) inflate.findViewById(R.id.lc_right_menu);
         lc_right_image = (ImageView) inflate.findViewById(R.id.lc_right_image);
         lc_left_back_all.setOnClickListener(backListener);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            setNotifyIsVisibit(true);
+        } else {
+            setNotifyIsVisibit(false);
+        }
         addView(inflate);
     }
 
