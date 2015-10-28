@@ -27,7 +27,7 @@ public class FragmentBeanShow extends Fragment {
 
 		View view = inflater.inflate(R.layout.fragment_beanshow, null);
 
-
+		//aafae
 
 		return view;
 	}
