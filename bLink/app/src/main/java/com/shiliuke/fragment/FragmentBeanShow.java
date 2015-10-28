@@ -26,9 +26,6 @@ public class FragmentBeanShow extends Fragment {
 			Bundle savedInstanceState) {
 
 		View view = inflater.inflate(R.layout.fragment_beanshow, null);
-
-		//aafae
-
 		return view;
 	}
 
