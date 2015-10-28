@@ -94,7 +94,6 @@ public class FragmentExercise extends Fragment {
             public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
                                  int totalItemCount) {
                 EventBus.getDefault().post(AttachUtil.isAdapterViewAttach(view));
-
             }
         });
 

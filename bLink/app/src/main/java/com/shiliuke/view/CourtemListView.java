@@ -1,4 +1,4 @@
-package com.shiliuke.utils;
+package com.shiliuke.view;
 
 import android.content.Context;
 import android.util.AttributeSet;

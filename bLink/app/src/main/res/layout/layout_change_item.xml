@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginTop="20dp">
+
+
+        <RelativeLayout
+            android:id="@+id/userinfo"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <!--用户头像 -->
+            <ImageView
+                android:id="@+id/changepic"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/gray" />
+
+            <!--用户姓名 -->
+            <TextView
+                android:id="@+id/changeName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="10dp"
+                android:layout_toRightOf="@+id/changepic"
+                android:text="小明"/>
+
+
+            <TextView
+                android:id="@+id/changAddress"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true"
+                android:layout_marginTop="10dp"
+                android:text="日本" />
+
+
+        </RelativeLayout>
+
+
+        <ImageView
+            android:id="@+id/changeUrl"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:layout_below="@+id/userinfo"
+            android:layout_marginTop="10dp"
+            android:background="@color/gray" />
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/changeUrl"
+            android:paddingTop="20dp"
+            android:paddingLeft="10dp"
+            android:id="@+id/relativeLayout2">
+
+            <TextView
+                android:id="@+id/exist"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="有"
+                android:background="@color/gray"
+                />
+
+
+            <TextView
+                android:id="@+id/mineGoods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="自行车"
+                android:layout_toRightOf="@+id/exist"
+                />
+
+
+
+
+            <TextView
+                android:id="@+id/exchange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="换"
+                android:background="@color/gray"
+                android:layout_below="@+id/exist"
+                android:layout_marginTop="10dp"
+                />
+
+
+            <TextView
+                android:id="@+id/exchangeGoods"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="奔驰"
+                android:layout_alignBottom="@+id/exchange"
+                android:layout_toRightOf="@+id/exchange"
+                />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="查看详情"
+                android:id="@+id/look_info"
+                android:layout_alignParentRight="true"
+                android:layout_centerVertical="true" />
+
+
+        </RelativeLayout>
+    </RelativeLayout>
+</RelativeLayout>

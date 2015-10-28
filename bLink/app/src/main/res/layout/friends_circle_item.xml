@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@color/white"
     android:descendantFocusability="blocksDescendants"
-    android:orientation="horizontal" >
+    android:orientation="horizontal">
 
     <ImageView
         android:layout_width="50dp"
@@ -21,7 +21,7 @@
         android:layout_marginBottom="10dip"
         android:layout_marginLeft="12dip"
         android:layout_marginRight="10dip"
-        android:orientation="vertical" >
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,7 +34,7 @@
         <RelativeLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="5dip" >
+            android:layout_marginTop="5dip">
 
             <TextView
                 android:id="@+id/content"
@@ -45,17 +45,17 @@
                 android:textSize="16.0sp" />
         </RelativeLayout>
 
-       <com.shiliuke.view.NoScrollGridView
-           android:id="@+id/gridView"
-           android:layout_width="fill_parent"
-           android:layout_height="wrap_content"
-           android:layout_marginLeft="10dp"
-           android:horizontalSpacing="1dp"
-           android:numColumns="3"
-           android:stretchMode="columnWidth"
-           android:verticalSpacing="1dp"
-           android:visibility="gone" />
-       
+        <com.shiliuke.view.NoScrollGridView
+            android:id="@+id/gridView"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:horizontalSpacing="1dp"
+            android:numColumns="3"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="1dp"
+            android:visibility="gone" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -67,11 +67,11 @@
         <FrameLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dip" >
+            android:layout_marginTop="12dip">
 
             <RelativeLayout
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content" >
+                android:layout_height="wrap_content">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -89,7 +89,8 @@
                     android:layout_alignParentRight="true"
                     android:layout_marginRight="10dip"
                     android:background="@mipmap/feed_more"
-                    android:scaleType="fitXY" />
+                    android:scaleType="fitXY"
+                    android:id="@+id/comment_image" />
             </RelativeLayout>
 
             <RelativeLayout
@@ -97,13 +98,13 @@
                 android:layout_width="fill_parent"
                 android:layout_height="30dip"
                 android:layout_marginRight="32dip"
-                android:visibility="gone" >
+                android:visibility="gone">
 
                 <RelativeLayout
                     android:id="@+id/rl_good_rl"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentRight="true" >
+                    android:layout_alignParentRight="true">
 
                     <ImageView
                         android:id="@+id/good_img"
@@ -129,7 +130,7 @@
             android:layout_width="fill_parent"
             android:layout_height="20dip"
             android:layout_marginTop="10dip"
-            android:background="#e6e6e6" >
+            android:background="#e6e6e6">
 
             <ImageView
                 android:id="@+id/iv_share_heart"
@@ -163,71 +164,16 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:background="#e6e6e6"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
-            <LinearLayout
+            <com.shiliuke.view.NoScrollListView
+                android:id="@+id/noscrolllistview"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
+                android:layout_height="wrap_content">
 
-                <TextView
-                    android:id="@+id/tv_comment_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="评论一:"
-                    android:textColor="#7888a9"
-                    android:textSize="14.0sp" />
+            </com.shiliuke.view.NoScrollListView>
 
-                <TextView
-                    android:id="@+id/tv_comment_content"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="不错啊，很好。"
-                    android:textColor="@color/gray"
-                    android:textSize="14.0sp" />
-            </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal" >
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="WeChat"
-                    android:textColor="#7888a9"
-                    android:textSize="14.0sp" />
-
-                <TextView
-                 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="回复"
-                    android:textColor="@color/gray"
-                    android:textSize="14.0sp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="评论一:"
-                    android:textColor="#7888a9"
-                    android:textSize="14.0sp" />
-
-                <TextView
-                 
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="2dip"
-                    android:text="谢谢。"
-                    android:textColor="@color/gray"
-                    android:textSize="14.0sp" />
-            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>

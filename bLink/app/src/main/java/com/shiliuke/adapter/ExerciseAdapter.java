@@ -109,7 +109,6 @@ public class ExerciseAdapter extends BaseAdapter {
                 .error(R.drawable.title_bar)
                 .crossFade()
                 .into(iview);
-
     }
 
 

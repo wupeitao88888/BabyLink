@@ -447,7 +447,7 @@ public class ViewUtil {
 			String sizePixels) {
 		if (textView != null) {
 			if (!TextUtils.isEmpty(sizePixels)) {
-				textView.setText(sizePixels);
+				textView.setText(sizePixels+"");
 			}else{
 				textView.setText("");
 //				ToastUtil.showToast(context, AppConfig.TEXT_NULL);
