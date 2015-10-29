@@ -1,6 +1,7 @@
 package com.shiliuke.fragment;
 
 
+import com.shiliuke.BabyLink.ExerciseActivity;
 import com.shiliuke.adapter.ExerciseAdapter;
 import com.shiliuke.bean.Exercise;
 import com.shiliuke.bean.UserInfo;
@@ -102,7 +103,7 @@ public class FragmentExercise extends Fragment {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Exercise exercise = list.get(i);
-//                Intent intent=new
+
             }
         });
 

@@ -1,6 +1,7 @@
 package com.shiliuke.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
+import com.shiliuke.BabyLink.ChangeInfoActivity;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.Change;
 import com.shiliuke.bean.Exercise;
@@ -70,16 +72,17 @@ public class ChangeAdapter extends BaseAdapter {
         TextView exchangeGoods = ViewHolder.get(convertView, R.id.exchangeGoods);
         Button look_info = ViewHolder.get(convertView, R.id.look_info);
 
-        setImage(changeUrl, classList.getChangeUrl(),context);
+        setImage(changeUrl, classList.getChangeUrl(), context);
         setImageUserPic(changepic, classList.getChangePic(), context);
         ViewUtil.setText(context, changeName, classList.getChangeName());
-        ViewUtil.setText(context,changAddress,classList.getChangAddress());
-        ViewUtil.setText(context,mineGoods,classList.getMineGoods());
-        ViewUtil.setText(context,exchangeGoods,classList.getExchangeGoods());
+        ViewUtil.setText(context, changAddress, classList.getChangAddress());
+        ViewUtil.setText(context, mineGoods, classList.getMineGoods());
+        ViewUtil.setText(context, exchangeGoods, classList.getExchangeGoods());
         look_info.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Intent intent = new Intent(context, ChangeInfoActivity.class);
+                context.startActivity(intent);
             }
         });
         return convertView;
