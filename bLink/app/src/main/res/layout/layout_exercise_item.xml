@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/background">
 
     <RelativeLayout
         android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_marginTop="20dp">
+        android:layout_marginLeft="7dp"
+        android:layout_marginRight="7dp"
+        android:layout_marginTop="7dp"
+        android:background="@drawable/button"
+        android:padding="5dp">
 
         <ImageView
             android:id="@+id/exercise_pic"
             android:layout_width="match_parent"
-            android:layout_height="150dp"
+            android:layout_height="180dp"
             android:background="@color/gray" />
 
         <RelativeLayout
@@ -81,8 +84,8 @@
 
             <ImageView
                 android:id="@+id/exercise_authorPic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_centerHorizontal="true"
                 android:background="@color/gray" />
 
@@ -122,38 +125,38 @@
 
             <ImageView
                 android:id="@+id/layout_icon1"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
                 android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/layout_icon2"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
                 android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/layout_icon3"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
 
                 android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/layout_icon4"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
 
                 android:background="@color/gray" />
 
             <ImageView
                 android:id="@+id/layout_icon5"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
                 android:background="@color/gray" />
         </LinearLayout>

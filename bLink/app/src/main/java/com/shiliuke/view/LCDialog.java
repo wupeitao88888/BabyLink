@@ -16,19 +16,7 @@ import android.view.Window;
 import com.shiliuke.BabyLink.R;
 
 
-/**
- * <pre>
- * 业务名:
- * 功能说明:
- * 编写日期:	2015-4-21
- * 编写人员:	 吴培涛
- *
- * 历史记录
- * 1、修改日期：
- *    修改人：
- *    修改内容：
- * </pre>
- */
+
 public class LCDialog extends Dialog {
 	Context context;
 	private View view;
@@ -51,7 +39,7 @@ public class LCDialog extends Dialog {
 		super.onCreate(savedInstanceState);
 		this.setContentView(view);
 		Window window = getWindow();
-		window.setWindowAnimations(R.style.mystyle); // 添加动画
+		window.setWindowAnimations(R.style.mystyle);
 	}
 
 	@Override

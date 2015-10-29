@@ -45,7 +45,7 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
     private RelativeLayout tab_exrcise;
     private RelativeLayout tab_topic;
     private RelativeLayout tab_change;
-    private DragTopLayout dragLayout;
+
 
 
     @Override
@@ -64,26 +64,26 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
 
     // fragmentExercise回调
     public void onEvent(Boolean b) {
-        dragLayout.setTouchMode(b);
+//        dragLayout.setTouchMode(b);
     }
 
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);
-    }
+//
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        EventBus.getDefault().register(this);
+//    }
+//
+//    @Override
+//    public void onPause() {
+//        super.onPause();
+//        EventBus.getDefault().unregister(this);
+//    }
 
     private void initView(View rootView) {
         mActivity = this.getActivity();
         meCommunity_PullScrollView = (RelativeLayout) rootView.findViewById(R.id.meCommunity_PullScrollView);
-        dragLayout = (DragTopLayout) rootView.findViewById(R.id.drag_layout);
+//        dragLayout = (DragTopLayout) rootView.findViewById(R.id.drag_layout);
         tab_exrcise = (RelativeLayout) rootView.findViewById(R.id.tab_exrcise);
         tab_topic = (RelativeLayout) rootView.findViewById(R.id.tab_topic);
         tab_change = (RelativeLayout) rootView.findViewById(R.id.tab_change);
@@ -98,50 +98,43 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         tab_exrcise.setSelected(true);
         tab_topic.setSelected(false);
         tab_change.setSelected(false);
-        if (dragLayout.getCollapseOffset() == 0) {
-            dragLayout.openTopView(true);
-            float v = ViewUtil.dip2px(mActivity, 40);
-            dragLayout.setCollapseOffset((int) v);
-        } else {
-            dragLayout.setCollapseOffset(0);
-        }
-        final Handler handler=new Handler();
-        dragLayout.listener(new DragTopLayout.SimplePanelListener() {
-            @Override
-            public void onPanelStateChanged(DragTopLayout.PanelState panelState) {
-                super.onPanelStateChanged(panelState);
-            }
-
-            @Override
-            public void onSliding(float ratio) {
-                super.onSliding(ratio);
-
-            }
-
-            @Override
-            public void onRefresh() {
-                super.onRefresh();
-               new Thread(){
-                   @Override
-                   public void run() {
-                       super.run();
-
-                       try {
-                           sleep(1000);
-                       } catch (InterruptedException e) {
-                           e.printStackTrace();
-                       }
-                       handler.post(new Runnable() {
-                           @Override
-                           public void run() {
-                               dragLayout.onRefreshComplete();
-                               ToastUtil.showShort(mActivity,"刷新完成");
-                           }
-                       });
-                   }
-               }.start();
-            }
-        });
+//        final Handler handler=new Handler();
+//        dragLayout.listener(new DragTopLayout.SimplePanelListener() {
+//            @Override
+//            public void onPanelStateChanged(DragTopLayout.PanelState panelState) {
+//                super.onPanelStateChanged(panelState);
+//            }
+//
+//            @Override
+//            public void onSliding(float ratio) {
+//                super.onSliding(ratio);
+//
+//            }
+//
+//            @Override
+//            public void onRefresh() {
+//                super.onRefresh();
+//               new Thread(){
+//                   @Override
+//                   public void run() {
+//                       super.run();
+//
+//                       try {
+//                           sleep(1000);
+//                       } catch (InterruptedException e) {
+//                           e.printStackTrace();
+//                       }
+//                       handler.post(new Runnable() {
+//                           @Override
+//                           public void run() {
+//                               dragLayout.onRefreshComplete();
+//                               ToastUtil.showShort(mActivity,"刷新完成");
+//                           }
+//                       });
+//                   }
+//               }.start();
+//            }
+//        });
 
     }
 

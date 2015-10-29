@@ -108,8 +108,8 @@ public class ExerciseAdapter extends BaseAdapter {
         Glide.with(context)
                 .load(url)
                 .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL)
-                .placeholder(R.drawable.title_bar)
-                .error(R.drawable.title_bar)
+                .placeholder(R.drawable.gray)
+                .error(R.drawable.gray)
                 .crossFade()
                 .into(iview);
 
@@ -119,8 +119,8 @@ public class ExerciseAdapter extends BaseAdapter {
         Glide.with(context)
                 .load(url)
                 .override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).transform(new GlideCircleTransform(context))
-                .placeholder(R.drawable.title_bar)
-                .error(R.drawable.title_bar)
+                .placeholder(R.drawable.gray)
+                .error(R.drawable.gray)
                 .crossFade()
                 .into(iview);
     }

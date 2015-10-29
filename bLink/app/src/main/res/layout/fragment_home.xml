@@ -1,111 +1,102 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
-
-    <com.shiliuke.view.TitleBar
-        android:id="@+id/meCommunity_title"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"></com.shiliuke.view.TitleBar>
+    android:background="@color/background">
 
 
     <RelativeLayout
         android:id="@+id/meCommunity_PullScrollView"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_below="@+id/meCommunity_title">
+        android:layout_height="fill_parent">
 
 
+        <RelativeLayout
+            android:id="@+id/top_title"
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+            android:background="#E77CA4"
 
-            <github.chenupt.dragtoplayout.DragTopLayout
-                android:id="@+id/drag_layout"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                >
+            >
+            </RelativeLayout>
+
+
+        <RelativeLayout
+            android:id="@+id/top_View"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/top_title"
+            android:background="#E77CA4"
+
+            >
+
+            <LinearLayout
+                android:id="@+id/meCommunity_tab"
+                android:layout_width="fill_parent"
+                android:layout_height="40dp"
+                android:layout_below="@+id/meCommunity_image"
+                android:orientation="horizontal">
 
 
                 <RelativeLayout
-                    android:id="@+id/top_View"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-
-                    <ImageView
-                        android:id="@+id/meCommunity_image"
-                        android:layout_width="fill_parent"
-                        android:layout_height="180dp"
-                        android:background="@color/black"
-
-                        />
-
-                    <LinearLayout
-                        android:id="@+id/meCommunity_tab"
-                        android:layout_width="fill_parent"
-                        android:layout_height="40dp"
-                        android:layout_below="@+id/meCommunity_image"
-                        android:layout_marginLeft="20dp"
-                        android:layout_marginRight="20dp"
-                        android:orientation="horizontal">
-
-
-                        <RelativeLayout
-                            android:id="@+id/tab_exrcise"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_weight="1"
-                            android:background="@drawable/button">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:text="@string/tab_exercise"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/tab_topic"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_marginLeft="-1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/button">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:text="@string/tab_topic"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-
-                        <RelativeLayout
-                            android:id="@+id/tab_change"
-                            android:layout_width="fill_parent"
-                            android:layout_height="fill_parent"
-                            android:layout_marginLeft="-1dp"
-                            android:layout_weight="1"
-                            android:background="@drawable/button">
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
-                                android:text="@string/tab_change"
-                                android:textColor="@color/black" />
-                        </RelativeLayout>
-                    </LinearLayout>
-                </RelativeLayout>
-
-                <com.shiliuke.view.IndexViewPager
-                    android:id="@+id/id_viewpager"
+                    android:id="@+id/tab_exrcise"
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:layout_below="@+id/top_View"></com.shiliuke.view.IndexViewPager>
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tab_exercise"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/selector_title_home" />
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tab_topic"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="-1dp"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tab_topic"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/selector_title_home"/>
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:id="@+id/tab_change"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="-1dp"
+                    android:layout_weight="1"
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+                        android:text="@string/tab_change"
+                        android:textSize="18sp"
+                        android:textColor="@drawable/selector_title_home" />
+                </RelativeLayout>
+            </LinearLayout>
+        </RelativeLayout>
 
 
-            </github.chenupt.dragtoplayout.DragTopLayout>
+        <com.shiliuke.view.IndexViewPager
+            android:id="@+id/id_viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_below="@+id/top_View"></com.shiliuke.view.IndexViewPager>
 
 
     </RelativeLayout>
