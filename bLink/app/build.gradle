@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.blink.main"
+        applicationId "com.shiliuke.Babylink"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
