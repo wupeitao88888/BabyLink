@@ -1,14 +1,22 @@
 package com.shiliuke.BabyLink;
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TabHost;
+import android.widget.TextView;
 
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.fragment.FragmentFind;
 import com.shiliuke.fragment.FragmentHome;
 import com.shiliuke.fragment.FragmentBeanShow;
 import com.shiliuke.fragment.FragmentMy;
+import com.shiliuke.fragment.FragmentSend;
+import com.shiliuke.utils.L;
+import com.shiliuke.view.LCDialog;
 import com.shiliuke.view.TabFragmentHost;
 
 
@@ -17,18 +25,18 @@ public class MainTab extends ActivitySupport {
 
 	public TabFragmentHost mTabHost;
 	// 标签
-	private String[] TabTag = { "tab1", "tab2", "tab3","tab4" };
+	private String[] TabTag = { "tab1", "tab2","tab3","tab4","tab5" };
 	// 自定义tab布局显示文本和顶部的图片
 	private Integer[] ImgTab = { R.layout.tab_main_home,
-			R.layout.tab_main_beanshow,R.layout.tab_main_find, R.layout.tab_main_my };
+			R.layout.tab_main_beanshow,R.layout.tab_main_send,R.layout.tab_main_find, R.layout.tab_main_my };
 
 	// tab 选中的activity
-	private Class[] ClassTab = { FragmentHome.class, FragmentBeanShow.class,
+	private Class[] ClassTab = { FragmentHome.class, FragmentBeanShow.class, FragmentSend.class,
 			FragmentFind.class,FragmentMy.class };
 
 	// tab选中背景 drawable 样式图片 背景都是同一个,背景颜色都是 白色。。。
 	private Integer[] StyleTab = { R.color.white, R.color.white, R.color.white,
-			R.color.white };
+			R.color.white ,R.color.white };
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -47,7 +55,15 @@ public class MainTab extends ActivitySupport {
 		mTabHost = (TabFragmentHost) findViewById(android.R.id.tabhost);
 		mTabHost.setup(this, getSupportFragmentManager(),
 				android.R.id.tabcontent);
-
+		mTabHost.setOnTabChangedListener(new TabHost.OnTabChangeListener() {
+			@Override
+			public void onTabChanged(String s) {
+				if (s.equals("tab3")) {
+					mTabHost.setCurrentTab(0);
+					showDialog();
+				}
+			}
+		});
 	}
 
 	private void initValue() {
@@ -65,6 +81,8 @@ public class MainTab extends ActivitySupport {
 		// TODO Auto-generated method stub
 
 	}
+
+
 
 	// 初始化 tab 自定义的选项卡 ///////////////
 	private void InitTabView() {
@@ -92,4 +110,47 @@ public class MainTab extends ActivitySupport {
 
 		return v;
 	}
+
+
+	public LCDialog showDialog() {
+		View dialogView = LayoutInflater.from(context).inflate(R.layout.layout_addmenu,
+				null);
+		LCDialog dialog = new LCDialog(MainTab.this, R.style.MyDialog, dialogView);
+		ImageView publish_activity=(ImageView)dialogView.findViewById(R.id.publish_activity);
+		ImageView publish_topic=(ImageView)dialogView.findViewById(R.id.publish_topic);
+		ImageView publish_show=(ImageView)dialogView.findViewById(R.id.publish_show);
+		ImageView publish_swap=(ImageView)dialogView.findViewById(R.id.publish_swap);
+		dialog.show();
+
+		publish_activity.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+
+			}
+		});
+		publish_topic.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+			}
+		});
+		publish_show.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+			}
+		});
+		publish_swap.setOnClickListener(new View.OnClickListener() {
+			@Override
+			public void onClick(View view) {
+
+			}
+		});
+		return dialog;
+	}
+
+
+
+
 }
