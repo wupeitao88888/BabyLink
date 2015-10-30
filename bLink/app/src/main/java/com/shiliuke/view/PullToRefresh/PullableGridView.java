@@ -32,7 +32,7 @@ public class PullableGridView extends GridView implements Pullable
 		} else if (getFirstVisiblePosition() == 0
 				&& getChildAt(0).getTop() >= 0)
 		{
-			// 滑到顶部�?
+			// 滑到顶部
 			return true;
 		} else
 			return false;
@@ -47,7 +47,7 @@ public class PullableGridView extends GridView implements Pullable
 			return true;
 		} else if (getLastVisiblePosition() == (getCount() - 1))
 		{
-			// 滑到底部�?
+			// 滑到底部
 			if (getChildAt(getLastVisiblePosition() - getFirstVisiblePosition()) != null
 					&& getChildAt(
 							getLastVisiblePosition()

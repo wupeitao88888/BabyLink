@@ -4,12 +4,6 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 
-/**
- * LoginFragment-登录界面
- * 
- * @author 周继光
- * 
- */
 public class FragmentEvent extends Fragment {
 
 	public interface OnEventListener {
