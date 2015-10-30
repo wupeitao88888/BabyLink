@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:padding="@dimen/dp5"
+              android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:padding="@dimen/dp5"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/image_beanshow_item_head"
+            android:layout_width="40dp"
+            android:scaleType="centerCrop"
+            android:layout_centerVertical="true"
+            android:src="@mipmap/ic_launcher"
+            android:layout_height="40dp"/>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@id/image_beanshow_item_head"
+            android:layout_marginLeft="@dimen/dp3"
+            android:layout_centerVertical="true"
+            android:orientation="vertical"
+            >
+
+            <TextView
+                android:id="@+id/tv_beanshow_item_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp12"
+                android:text="小阿狸"
+                />
+
+            <TextView
+                android:id="@+id/tv_beanshow_item_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/sp12"
+                android:text="3分钟前"
+                />
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_beanshow_item_addfocus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:text="加关注"
+            android:layout_centerVertical="true"
+            />
+    </RelativeLayout>
+
+    <com.shiliuke.view.stickerview.StickerImageView
+        android:id="@+id/sticker_beanshow_item"
+        android:layout_width="400dp"
+        android:layout_height="400dp"/>
+
+    <TextView
+        android:id="@+id/tv_beanshow_item_dou"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp12"
+        android:text="189999逗"
+        android:textStyle="bold"
+        android:textColor="@color/red"
+        />
+
+    <TextView
+        android:id="@+id/tv_beanshow_item_msg"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_marginLeft="@dimen/dp5"
+        android:layout_height="wrap_content"
+        android:textSize="@dimen/sp12"
+        android:text="自拍照求逗，不逗走远"
+        />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:gravity="right"
+        android:layout_marginTop="@dimen/dp5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_beanshow_item_dou"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="逗一逗"
+            />
+
+        <Button
+            android:id="@+id/btn_beanshow_item_share"
+            android:layout_width="wrap_content"
+            android:text="分享"
+            android:layout_height="wrap_content"/>
+
+    </LinearLayout>
+
+</LinearLayout>

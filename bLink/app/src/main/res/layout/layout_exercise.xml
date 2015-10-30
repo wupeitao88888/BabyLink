@@ -117,10 +117,4 @@
     </RelativeLayout>
 
 
-    <RelativeLayout
-        android:layout_width=""
-        android:layout_height=""></RelativeLayout>
-
-
-
 </RelativeLayout>
