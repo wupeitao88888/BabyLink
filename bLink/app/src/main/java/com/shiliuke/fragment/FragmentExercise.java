@@ -126,7 +126,7 @@ public class FragmentExercise extends Fragment implements LCViewPageSelectListen
     private void initCarousel(final List<AdvertisementList> list) {
         advertisement = (LCSlideShowView) inflate.findViewById(R.id.lc_slideshowview_carousel);
         lc_slideshowview_select = (LinearLayout) inflate.findViewById(R.id.lc_slideshowview_select);
-        advertisement.setIsAutoPlay(true);
+//        advertisement.setIsAutoPlay(true);
         advertisement.setCirculation(true);
         List<View> imageUris = new ArrayList<View>();
         listurl = list;
