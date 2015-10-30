@@ -13,4 +13,5 @@
 
     <drawable name="title_bar">#3F51B5</drawable>
     <drawable name="gray">#c1c1c1</drawable>
+    <color name="light_blue">#6593cb</color>
 </resources>

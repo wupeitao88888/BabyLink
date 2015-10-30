@@ -149,8 +149,4 @@ public class MainTab extends ActivitySupport {
 		});
 		return dialog;
 	}
-
-
-
-
 }
