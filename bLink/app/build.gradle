@@ -5,7 +5,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.blink.main"
+        applicationId "com.shiliuke.Babylink"
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -23,11 +23,4 @@ dependencies {
     compile fileTree(include: ['*.jar'], dir: 'libs')
     compile 'com.android.support:support-v4:23.1.0'
     compile files('libs/glide-3.6.1.jar')
-    compile project(':library')
-    compile 'com.github.chenupt.android:multiplemodel:1.1.0@aar'
-    compile 'de.greenrobot:eventbus:2.4.0'
-    compile 'com.google.guava:guava:18.0'
-    compile 'com.jpardogo.materialtabstrip:library:1.0.8'
-    compile 'com.github.shell-software:fab:1.0.5'
-    compile 'com.navercorp.pulltorefresh:library:3.2.0@aar'
 }

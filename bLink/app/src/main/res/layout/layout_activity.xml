@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.shiliuke.view.LCSlideShowView
+        android:id="@+id/lc_slideshowview_carousel"
+        android:layout_width="fill_parent"
+        android:layout_height="130dp" />
+
+    <LinearLayout
+        android:id="@+id/lc_slideshowview_select"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/lc_slideshowview_carousel"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal"></LinearLayout>
+
+
+    <com.shiliuke.view.NoScrollListView
+        android:id="@+id/exrcise_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/lc_slideshowview_carousel"
+        android:cacheColorHint="#fff"></com.shiliuke.view.NoScrollListView>
+
+    <ViewStub
+        android:id="@+id/exrcise_nodate"
+        layout="@layout/layout_nodate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</RelativeLayout>

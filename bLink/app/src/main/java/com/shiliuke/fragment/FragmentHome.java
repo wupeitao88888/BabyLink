@@ -4,6 +4,7 @@ package com.shiliuke.fragment;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.os.Bundle;
 import android.support.v4.app.FragmentManager;
@@ -19,18 +20,16 @@ import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 
 import com.shiliuke.BabyLink.R;
+import com.shiliuke.utils.FragmentEvent;
 import com.shiliuke.utils.L;
+import com.shiliuke.utils.MSG;
 import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.utils.ViewUtil;
 import com.shiliuke.view.IndexViewPager;
 import com.shiliuke.view.PullScrollView;
 
 
-import de.greenrobot.event.EventBus;
-import github.chenupt.dragtoplayout.DragTopLayout;
-
-
-public class FragmentHome extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener {
+public class FragmentHome extends Fragment implements View.OnClickListener, ViewPager.OnPageChangeListener,FragmentEvent.OnEventListener{
     private View rootView;
     private Activity mActivity = null;
     private RelativeLayout meCommunity_PullScrollView;
@@ -45,9 +44,28 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
     private RelativeLayout tab_exrcise;
     private RelativeLayout tab_topic;
     private RelativeLayout tab_change;
-    private DragTopLayout dragLayout;
 
+    Handler mainHandler = new Handler() {
 
+        /*
+         * （非 Javadoc）
+         *
+         * @see android.os.Handler#handleMessage(android.os.Message)
+         */
+        @Override
+        public void handleMessage(Message msg) {
+            // TODO 自动生成的方法存根
+            super.handleMessage(msg);
+            switch (msg.what) {
+                case MSG.INTO_05:
+                    fragments[3] = fc;
+                    fragmentsUpdateFlag[3] = true;
+                    adapter.notifyDataSetChanged();
+                    break;
+                default:
+            }
+        }
+    };
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -62,28 +80,10 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         return rootView;
     }
 
-    // fragmentExercise回调
-    public void onEvent(Boolean b) {
-        dragLayout.setTouchMode(b);
-    }
-
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onPause() {
-        super.onPause();
-        EventBus.getDefault().unregister(this);
-    }
-
     private void initView(View rootView) {
         mActivity = this.getActivity();
         meCommunity_PullScrollView = (RelativeLayout) rootView.findViewById(R.id.meCommunity_PullScrollView);
-        dragLayout = (DragTopLayout) rootView.findViewById(R.id.drag_layout);
+//        dragLayout = (DragTopLayout) rootView.findViewById(R.id.drag_layout);
         tab_exrcise = (RelativeLayout) rootView.findViewById(R.id.tab_exrcise);
         tab_topic = (RelativeLayout) rootView.findViewById(R.id.tab_topic);
         tab_change = (RelativeLayout) rootView.findViewById(R.id.tab_change);
@@ -98,51 +98,6 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         tab_exrcise.setSelected(true);
         tab_topic.setSelected(false);
         tab_change.setSelected(false);
-        if (dragLayout.getCollapseOffset() == 0) {
-            dragLayout.openTopView(true);
-            float v = ViewUtil.dip2px(mActivity, 40);
-            dragLayout.setCollapseOffset((int) v);
-        } else {
-            dragLayout.setCollapseOffset(0);
-        }
-        final Handler handler=new Handler();
-        dragLayout.listener(new DragTopLayout.SimplePanelListener() {
-            @Override
-            public void onPanelStateChanged(DragTopLayout.PanelState panelState) {
-                super.onPanelStateChanged(panelState);
-            }
-
-            @Override
-            public void onSliding(float ratio) {
-                super.onSliding(ratio);
-
-            }
-
-            @Override
-            public void onRefresh() {
-                super.onRefresh();
-               new Thread(){
-                   @Override
-                   public void run() {
-                       super.run();
-
-                       try {
-                           sleep(1000);
-                       } catch (InterruptedException e) {
-                           e.printStackTrace();
-                       }
-                       handler.post(new Runnable() {
-                           @Override
-                           public void run() {
-                               dragLayout.onRefreshComplete();
-                               ToastUtil.showShort(mActivity,"刷新完成");
-                           }
-                       });
-                   }
-               }.start();
-            }
-        });
-
     }
 
     @Override
@@ -184,6 +139,11 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
 
     }
 
+    @Override
+    public void onEvent(int what, Bundle data, Object object) {
+        mainHandler.sendEmptyMessage(what);
+    }
+
 
     class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         FragmentManager fm;
@@ -207,6 +167,12 @@ public class FragmentHome extends Fragment implements View.OnClickListener, View
         @Override
         public int getItemPosition(Object object) {
             return POSITION_NONE;
+        }
+
+        @Override
+        public void destroyItem(ViewGroup container, int position, Object object) {
+        //重载该方法，防止其它视图被销毁，防止加载视图卡顿
+        // super.destroyItem(container, position, object);
         }
 
         @Override

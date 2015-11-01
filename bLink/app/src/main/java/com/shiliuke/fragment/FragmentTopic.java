@@ -19,8 +19,7 @@ import android.widget.ListView;
 import java.util.ArrayList;
 import java.util.List;
 
-import de.greenrobot.event.EventBus;
-import github.chenupt.dragtoplayout.AttachUtil;
+
 
 /***
  *
@@ -89,7 +88,7 @@ public class FragmentTopic extends Fragment {
 			@Override
 			public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
 								 int totalItemCount) {
-				EventBus.getDefault().post(AttachUtil.isAdapterViewAttach(view));
+
 			}
 		});
 		return view;

@@ -2,119 +2,417 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/gray">
 
-    <RelativeLayout
-        android:id="@+id/exercise_info_top"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/white">
-
-        <ImageView
-            android:id="@+id/exercise_pic"
-            android:layout_width="match_parent"
-            android:layout_height="150dp"
-            android:layout_margin="10dp"
-            android:background="@color/gray" />
+        android:layout_height="match_parent">
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_alignBottom="@+id/exercise_pic"
-            android:background="@color/transparent_black">
+            android:layout_height="match_parent"
+            android:background="@color/gray">
 
-            <TextView
-                android:id="@+id/exercise_title"
-                android:layout_width="wrap_content"
+            <!--&lt;!&ndash; 活动图片与标题 ->-->
+            <RelativeLayout
+                android:id="@+id/exercise_info_top"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_marginLeft="20dp"
-                android:text="周末去传媒大学看妹子！"
-                android:textColor="@color/white"
-                android:textSize="18sp" />
+                android:background="@color/white">
 
+                <ImageView
+                    android:id="@+id/exercise_pic"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_margin="10dp"
+                    android:background="@color/gray" />
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_alignBottom="@+id/exercise_pic"
+                    android:background="@color/transparent_black">
+
+                    <TextView
+                        android:id="@+id/exercise_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="20dp"
+                        android:text="周末去传媒大学看妹子！"
+                        android:textColor="@color/white"
+                        android:textSize="18sp" />
+
+                </RelativeLayout>
+
+                <!--&lt;!&ndash; 活动介绍 ->-->
+
+                <LinearLayout
+                    android:id="@+id/exercise_info"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/exercise_pic"
+                    android:layout_marginLeft="20dp"
+                    android:layout_toRightOf="@+id/exercise_a">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+
+                <!--发起人头像-->
+                <RelativeLayout
+                    android:id="@+id/exercise_a"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignTop="@+id/exercise_info"
+                    android:layout_marginRight="20dp">
+
+                    <ImageView
+                        android:id="@+id/exercise_authorPic"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:layout_centerHorizontal="true"
+                        android:background="@color/gray" />
+
+
+                    <TextView
+                        android:id="@+id/exercise_authorName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@+id/exercise_authorPic"
+                        android:layout_centerHorizontal="true"
+                        android:text="小明" />
+                </RelativeLayout>
+            </RelativeLayout>
+
+            <!--活动介绍-->
+            <RelativeLayout
+                android:id="@+id/introduce"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/exercise_info_top"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/exercise_introduce"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="活动介绍"
+                    android:textColor="#AF255C"
+                    android:textSize="18sp" />
+
+
+                <View
+                    android:id="@+id/line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_introduce"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <TextView
+                    android:id="@+id/exercise_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/line"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="    运行数码测色计后，鼠标指针所指到的位置的色号及放大的详细情况就直接的被显示在数码测色计上了，在这个窗口上我们还可以对色彩的的量化显示及光圈的大小进行设置，更多的设置还可以通过数码测色计的预置来进行设置。在预置中我们可以对放大的倍率进行设置，这样可以使鼠标指针所在的位置变的更大，能看到更多的细节，还可以设置刷新方式为连续设置或当鼠标移动时刷新，默认为鼠标移动时就进行刷新，这样将具有更高的效率。还可以对光圈的彩色进行设置，另外还可以设置为在选色时动态显示鼠标的指针坐标以及直接对当前显示的样本进行拷贝和颜色拖移。"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+
+            <!--babylink支持-->
+            <RelativeLayout
+                android:id="@+id/joincount"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/introduce"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/exercise_joincount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="BabyLink以提供支持"
+                    android:textColor="#AF255C"
+                    android:textSize="18sp" />
+
+
+                <View
+                    android:id="@+id/join_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_joincount"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <TextView
+                    android:id="@+id/exercise_offer_content"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/join_line"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="马桶一个"
+                    android:textColor="@color/black"
+                    android:textSize="14dp" />
+
+
+            </RelativeLayout>
+            <!--报名人数-->
+            <RelativeLayout
+                android:id="@+id/offer"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/joincount"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp">
+
+
+                <TextView
+                    android:id="@+id/exercise_offer"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="报名人数（10人）"
+                    android:textColor="#AF255C"
+                    android:textSize="18sp" />
+
+
+
+                <View
+                    android:id="@+id/bl_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_offer"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <com.shiliuke.view.NoScrollGridView
+                    android:id="@+id/exercise_gridView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/bl_line"
+                    android:layout_marginLeft="10dp"
+                    android:horizontalSpacing="1dp"
+                    android:numColumns="6"
+                    android:stretchMode="columnWidth"
+                    android:verticalSpacing="1dp"
+                     />
+
+
+            </RelativeLayout>
+            <!--评价-->
+            <RelativeLayout
+                android:id="@+id/comment"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/offer"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp"
+                >
+
+                <TextView
+                    android:id="@+id/exercise_comment"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="评价"
+                    android:textColor="#AF255C"
+                    android:textSize="18sp" />
+
+                <ImageView
+                    android:id="@+id/exercise_arrow"
+                    android:layout_width="20dp"
+                    android:layout_height="30dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <View
+                    android:id="@+id/comment_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_comment"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+                <com.shiliuke.view.NoScrollListView
+                    android:id="@+id/exercise_noscrolllistview"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/comment_line">
+
+                </com.shiliuke.view.NoScrollListView>
+
+                <View
+                    android:id="@+id/c_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_noscrolllistview"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_below="@+id/c_line"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:text="评论" />
+            </RelativeLayout>
+            <!--分享报名-->
+            <RelativeLayout
+                android:id="@+id/apply"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/comment"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:layout_marginTop="10dp"
+                android:background="@color/white"
+                android:paddingBottom="20dp">
+
+                <TextView
+                    android:id="@+id/exercise_apply_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp"
+                    android:text="分享一下感兴趣的活动吧"
+                    android:textColor="#AF255C"
+                    android:textSize="18sp" />
+
+                <View
+                    android:id="@+id/apply_line"
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/exercise_apply_title"
+                    android:layout_marginTop="10dp"
+                    android:background="@color/gray" />
+
+
+                <LinearLayout
+                    android:id="@+id/exercise_apply_share"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/apply_line"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="10dp">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/gray" />
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:background="@color/gray" />
+                </LinearLayout>
+
+
+                <Button
+                    android:id="@+id/exercise_apply_bt"
+                    android:layout_width="fill_parent"
+                    android:layout_height="40dp"
+                    android:layout_below="@+id/exercise_apply_share"
+                    android:layout_marginLeft="50dp"
+                    android:layout_marginRight="50dp"
+                    android:layout_marginTop="10dp"
+                    android:text="我要报名"
+
+                    />
+
+            </RelativeLayout>
         </RelativeLayout>
 
-
-        <LinearLayout
-            android:id="@+id/exercise_info"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_below="@+id/exercise_pic"
-            android:layout_marginLeft="20dp"
-            android:layout_toRightOf="@+id/exercise_a">
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/exercise_a"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_alignTop="@+id/exercise_info"
-            android:layout_marginRight="20dp">
-
-            <ImageView
-                android:id="@+id/exercise_authorPic"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:background="@color/gray" />
-
-
-            <TextView
-                android:id="@+id/exercise_authorName"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@+id/exercise_authorPic"
-                android:layout_centerHorizontal="true"
-                android:text="小明" />
-        </RelativeLayout>
-    </RelativeLayout>
-
-
+    </ScrollView>
 </RelativeLayout>
