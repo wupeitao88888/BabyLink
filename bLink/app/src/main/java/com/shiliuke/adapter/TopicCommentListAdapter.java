@@ -19,12 +19,12 @@ import com.shiliuke.utils.ViewUtil;
 
 import java.util.List;
 
-public class MyListAdapter extends BaseAdapter {
+public class TopicCommentListAdapter extends BaseAdapter {
     private List<Comment> mUI;
     private Context context;
     private LayoutInflater mLayoutInflater;
 
-    public MyListAdapter(List<Comment> ui, Context context) {
+    public TopicCommentListAdapter(List<Comment> ui, Context context) {
         mLayoutInflater = LayoutInflater.from(context);
         this.mUI = ui;
         this.context = context;

@@ -5,9 +5,13 @@ import com.shiliuke.adapter.TopicAdapter;
 import com.shiliuke.bean.Comment;
 import com.shiliuke.bean.Topic;
 import com.shiliuke.bean.UserImgs;
+import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
+import com.shiliuke.view.PullToRefresh.PullableListView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,8 +32,9 @@ import java.util.List;
 public class FragmentTopic extends Fragment {
 	private View rootView;
 	private  LayoutInflater inflater;
-	private ListView toaic_listView;
+	private PullableListView toaic_listView;
 	private Activity mActivity = null;
+	private PullToRefreshLayout toaic_PullToRefreshLayout;
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			Bundle savedInstanceState) {
@@ -50,7 +55,36 @@ public class FragmentTopic extends Fragment {
 		mActivity = this.getActivity();
 		mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		View view = inflater.inflate(R.layout.fragment_topic, null);
-		toaic_listView=(ListView)view.findViewById(R.id.toaic_listView);
+		toaic_listView=(PullableListView)view.findViewById(R.id.toaic_listView);
+		toaic_PullToRefreshLayout=(PullToRefreshLayout)view.findViewById(R.id.toaic_PullToRefreshLayout);
+
+
+
+		toaic_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+			@Override
+			public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+				// 下拉刷新操作
+				new Handler() {
+					@Override
+					public void handleMessage(Message msg) {
+						toaic_PullToRefreshLayout.refreshFinish(pullToRefreshLayout.SUCCEED);
+					}
+				}.sendEmptyMessageDelayed(0, 2000);
+
+			}
+
+			@Override
+			public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
+				// 下拉刷新操作
+				new Handler() {
+					@Override
+					public void handleMessage(Message msg) {
+						toaic_PullToRefreshLayout.loadmoreFinish(pullToRefreshLayout.SUCCEED);
+					}
+				}.sendEmptyMessageDelayed(0, 2000);
+
+			}
+		});
 
 		List<Topic> mList = new ArrayList<Topic>();
 		Topic mUserInfo = new Topic();

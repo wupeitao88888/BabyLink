@@ -13,14 +13,12 @@ import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import android.widget.ListView;
 import android.widget.PopupWindow;
 
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.Topic;
 import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.utils.ViewHolder;
-import com.shiliuke.view.EditTextPop;
 import com.shiliuke.view.NoScrollGridView;
 import com.shiliuke.view.NoScrollListView;
 
@@ -68,7 +66,7 @@ public class TopicAdapter extends BaseAdapter {
 		final Topic mUserInfo = getItem(position);
 		if (mList != null && mList.size() > 0) {
 			gridView.setVisibility(View.VISIBLE);
-			gridView.setAdapter(new MyGridAdapter(mUserInfo.getUi(),
+			gridView.setAdapter(new TopicPicGridAdapter(mUserInfo.getUi(),
 					mContext));
 			gridView
 					.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -82,7 +80,7 @@ public class TopicAdapter extends BaseAdapter {
 
 		if(mUserInfo.getCt()!=null&mUserInfo.getCt().size()>0){
 			noscrolllistview.setVisibility(View.VISIBLE);
-			noscrolllistview.setAdapter(new MyListAdapter(mUserInfo.getCt(),
+			noscrolllistview.setAdapter(new TopicCommentListAdapter(mUserInfo.getCt(),
 					mContext));
 			final String commentName = mUserInfo.getCt().get(position).getCommentName();
 			noscrolllistview

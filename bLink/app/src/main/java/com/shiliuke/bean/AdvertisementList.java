@@ -1,4 +1,4 @@
-package com.shiliuke.utils;
+package com.shiliuke.bean;
 
 import java.io.Serializable;
 

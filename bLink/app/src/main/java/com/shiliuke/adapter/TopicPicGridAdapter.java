@@ -15,12 +15,12 @@ import com.bumptech.glide.request.target.Target;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.UserImgs;
 
-public class MyGridAdapter extends BaseAdapter {
+public class TopicPicGridAdapter extends BaseAdapter {
     private List<UserImgs> mUI;
     private Context context;
     private LayoutInflater mLayoutInflater;
 
-    public MyGridAdapter(List<UserImgs> ui, Context context) {
+    public TopicPicGridAdapter(List<UserImgs> ui, Context context) {
         mLayoutInflater = LayoutInflater.from(context);
         this.mUI = ui;
         this.context=context;

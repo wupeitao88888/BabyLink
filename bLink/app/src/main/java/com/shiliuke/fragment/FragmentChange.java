@@ -3,9 +3,13 @@ package com.shiliuke.fragment;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.ChangeAdapter;
 import com.shiliuke.bean.Change;
+import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
+import com.shiliuke.view.PullToRefresh.PullableListView;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -22,9 +26,10 @@ import java.util.List;
  */
 public class FragmentChange extends Fragment {
     private View rootView;//缓存Fragment view
-    private ListView change_listView;
+    private PullableListView change_listView;
     private ChangeAdapter changeAdapter;
     private Activity mActivity;
+    private PullToRefreshLayout change_PullToRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -42,8 +47,38 @@ public class FragmentChange extends Fragment {
     }
 
     private void initView(View rootView) {
-        change_listView = (ListView) rootView.findViewById(R.id.change_listView);
-        mActivity=getActivity();
+        mActivity = getActivity();
+        change_listView = (PullableListView) rootView.findViewById(R.id.change_listView);
+        change_PullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.change_PullToRefreshLayout);
+
+
+        change_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
+                // 下拉刷新操作
+                new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        change_PullToRefreshLayout.refreshFinish(pullToRefreshLayout.SUCCEED);
+                    }
+                }.sendEmptyMessageDelayed(0, 2000);
+
+            }
+
+            @Override
+            public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
+                // 下拉刷新操作
+                new Handler() {
+                    @Override
+                    public void handleMessage(Message msg) {
+                        change_PullToRefreshLayout.loadmoreFinish(pullToRefreshLayout.SUCCEED);
+                    }
+                }.sendEmptyMessageDelayed(0, 2000);
+
+            }
+        });
+
+
         List<Change> list = new ArrayList<>();
         for (int i = 0; i < 9; i++) {
             Change cg = new Change();
@@ -55,7 +90,7 @@ public class FragmentChange extends Fragment {
             cg.setChangeUrl("http://m1.img.srcdd.com/farm2/d/2011/0817/01/5A461954F44D8DC67A17838AA356FE4B_S64_64_64.JPEG");
             list.add(cg);
         }
-        changeAdapter = new ChangeAdapter(mActivity,list);
+        changeAdapter = new ChangeAdapter(mActivity, list);
         change_listView.setAdapter(changeAdapter);
         change_listView.setOnScrollListener(new AbsListView.OnScrollListener() {
             @Override
