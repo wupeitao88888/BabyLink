@@ -14,7 +14,6 @@ import com.shiliuke.bean.BeanShowModel;
  * Created by wangzhi on 15/10/30.
  */
 public class StickerImageView extends View {
-
     private enum TYPE {
         COMPILE,//编辑模式
         BROWSE
@@ -25,6 +24,8 @@ public class StickerImageView extends View {
     private StickerImageModel compileModel;
     private BeanShowModel beanShowModel;
     private TYPE style = TYPE.COMPILE;
+    private Paint mTextPaint;
+    private Paint mBgPaint;
 
     public void setStyle(TYPE style) {
         this.style = style;
@@ -41,6 +42,27 @@ public class StickerImageView extends View {
 
     public StickerImageView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
+        initPaint();
+    }
+
+    /**
+     * 初始化画笔
+     */
+    private void initPaint() {
+        mTextPaint = new Paint();
+        mTextPaint.setAntiAlias(true);
+        mTextPaint.setFilterBitmap(true);
+        mTextPaint.setStyle(Paint.Style.FILL);
+        mTextPaint.setStrokeWidth(1.0f);
+        mTextPaint.setTextSize(StickerImageContans.DEFAULTTEXTSIZE);
+        mTextPaint.setColor(StickerImageContans.DEFAULTTEXTCOLOR);
+        mBgPaint = new Paint();
+        mBgPaint.setAntiAlias(true);
+        mBgPaint.setFilterBitmap(true);
+        mBgPaint.setStyle(Paint.Style.FILL);
+        mBgPaint.setStrokeWidth(1.0f);
+        mBgPaint.setTextSize(StickerImageContans.DEFAULTTEXTSIZE);
+        mBgPaint.setColor(StickerImageContans.DEFAULTCIRCLECOLOR);
     }
 
     /**
@@ -64,21 +86,22 @@ public class StickerImageView extends View {
         if (beanShowModel.getStickerlist().isEmpty()) {
             return;
         }
-        Paint paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setFilterBitmap(true);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setStrokeWidth(1.0f);
-        paint.setTextSize(StickerImageContans.DEFAULTTEXTSIZE);
-        paint.setColor(Color.WHITE);
         for (int i = 0; i < beanShowModel.getStickerlist().size(); i++) {
             StickerImageModel model = beanShowModel.getStickerlist().get(i);
-            paint.setAlpha(model.getAlpha());
-            canvas.drawText(model.getText(), model.getX(), model.getY(), paint);
+            mTextPaint.setAlpha(model.getAlpha());
+            mBgPaint.setAlpha(model.getAlpha());
+
+//            float y = model.getY() - StickerImageContans.DEFAULTTEXTSIZE / 4;
+//            canvas.drawCircle(model.getX(), y, StickerImageContans.DEFAULTCIRCLERADIUS / 2, mBgPaint);
+//            canvas.drawCircle(model.getX() + getTextWidth(mTextPaint, model.getText()), y, StickerImageContans.DEFAULTCIRCLERADIUS / 2, mBgPaint);
+            RectF oval3 = new RectF(model.getX() - StickerImageContans.DEFAULTBGLEFT, model.getY() - StickerImageContans.DEFAULTBGHEIGHT, model.getX() + getTextWidth(mTextPaint, model.getText()) + StickerImageContans.DEFAULTBGLEFT, model.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
+            canvas.drawRoundRect(oval3, StickerImageContans.DEFAULTBGX, StickerImageContans.DEFAULTBGY, mBgPaint);
+
+            canvas.drawText(model.getText(), model.getX(), model.getY(), mTextPaint);
         }
         if (compileModel != null) {
-            paint.setAlpha(compileModel.getAlpha());
-            canvas.drawText(compileModel.getText(), compileModel.getX(), compileModel.getY(), paint);
+            mTextPaint.setAlpha(compileModel.getAlpha());
+            canvas.drawText(compileModel.getText(), compileModel.getX(), compileModel.getY(), mTextPaint);
         }
     }
 
@@ -187,6 +210,26 @@ public class StickerImageView extends View {
      */
     public void stopAnim() {
         beanShowModel.setCanAnim(false);
+    }
+
+    /**
+     * 得到文字的长度
+     *
+     * @param paint
+     * @param str
+     * @return
+     */
+    public static int getTextWidth(Paint paint, String str) {
+        int iRet = 0;
+        if (str != null && str.length() > 0) {
+            int len = str.length();
+            float[] widths = new float[len];
+            paint.getTextWidths(str, widths);
+            for (int j = 0; j < len; j++) {
+                iRet += (int) Math.ceil(widths[j]);
+            }
+        }
+        return iRet;
     }
 
 }

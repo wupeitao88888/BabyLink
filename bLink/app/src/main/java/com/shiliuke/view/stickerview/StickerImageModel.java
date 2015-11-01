@@ -2,7 +2,6 @@ package com.shiliuke.view.stickerview;
 
 import android.os.Handler;
 import com.shiliuke.bean.BeanShowModel;
-import com.shiliuke.utils.L;
 
 /**
  * 图片贴纸Model
@@ -11,6 +10,7 @@ import com.shiliuke.utils.L;
 public class StickerImageModel {
     private String text;//贴纸文字
     private int alpha;//透明度
+    private int f;//透明度
     private float x;
     private float y;
 
@@ -26,11 +26,20 @@ public class StickerImageModel {
                 while (model.isCanAnim()) {
                     if (alpha == StickerImageContans.MAXALPHA) {
                         try {
-                            Thread.sleep(StickerImageContans.DEFAULTNOMALTIME);
+                            Thread.sleep(StickerImageContans.DEFAULTMAXALTIME);
                         } catch (InterruptedException e) {
                             e.printStackTrace();
                         }
-                        alpha = 0;
+                        f = -1;
+                        handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLER);
+                    }
+                    if (alpha == StickerImageContans.MINALPHA) {
+                        try {
+                            Thread.sleep(StickerImageContans.DEFAULTMINALTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
+                        f = 1;
                         handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLER);
                     }
                     try {
@@ -48,9 +57,12 @@ public class StickerImageModel {
     }
 
     private void updateAlpha() {
-        alpha += StickerImageContans.COMPILEALPHA;
+        alpha = StickerImageContans.COMPILEALPHA * f + alpha;
         if (alpha >= StickerImageContans.MAXALPHA) {
             alpha = StickerImageContans.MAXALPHA;
+        }
+        if (alpha <= StickerImageContans.MINALPHA) {
+            alpha = StickerImageContans.MINALPHA;
         }
     }
 
