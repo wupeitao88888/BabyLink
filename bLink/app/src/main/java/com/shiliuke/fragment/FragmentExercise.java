@@ -81,32 +81,7 @@ public class FragmentExercise extends Fragment {
 
         lc_slideshowview_carousel = (MyImgScroll) inflate.findViewById(R.id.lc_slideshowview_carousel);
 
-         //解决滑动冲突
-        lc_slideshowview_carousel.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // TODO Auto-generated method stub
-                System.out.println("event.getAction()====" +
-                        event.getAction());
-                if (event.getAction() == MotionEvent.ACTION_CANCEL) {
-                    canscoll = true;
-                } else {
-                    canscoll = false;
-                }
-                // System.out.println("canscoll==" + canscoll);
-                return false;
-            }
-        });
-        exrcise_listview.setOnTouchListener(new View.OnTouchListener() {
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // System.out.println("canscoll===" + event.getAction());
-                if (event.getAction() == MotionEvent.ACTION_UP) {
-                    canscoll = false;
-                }
-                return canscoll;
-            }
-        });
+
 
 
         ovalLayout = (LinearLayout) inflate.findViewById(R.id.vb);

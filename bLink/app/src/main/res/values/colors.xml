@@ -11,7 +11,7 @@
     <color name="transparent_black">#40000000</color>
     <color name="background">#F0F0F0</color>
 
-    <drawable name="title_bar">#3F51B5</drawable>
+    <drawable name="title_bar">#E77CA4</drawable>
     <drawable name="gray">#c1c1c1</drawable>
     <color name="light_blue">#6593cb</color>
 </resources>

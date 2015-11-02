@@ -3,24 +3,36 @@ package com.shiliuke.view.PullToRefresh;
 import android.content.Context;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
+import android.view.View;
 import android.widget.ListView;
+
+import com.shiliuke.utils.L;
 
 public class PullableListView extends ListView implements Pullable
 {
-
+	private GestureDetector mGestureDetector;
+	View.OnTouchListener mGestureListener;
 	public PullableListView(Context context)
 	{
 		super(context);
+		mGestureDetector = new GestureDetector(new YScrollDetector());
+		setFadingEdgeLength(0);
 	}
 
 	public PullableListView(Context context, AttributeSet attrs)
 	{
 		super(context, attrs);
+		mGestureDetector = new GestureDetector(new YScrollDetector());
+		setFadingEdgeLength(0);
 	}
 
 	public PullableListView(Context context, AttributeSet attrs, int defStyle)
 	{
 		super(context, attrs, defStyle);
+		mGestureDetector = new GestureDetector(new YScrollDetector());
+		setFadingEdgeLength(0);
 	}
 
 	@Override
@@ -56,5 +68,25 @@ public class PullableListView extends ListView implements Pullable
 				return true;
 		}
 		return false;
+	}
+
+	@Override
+	public boolean onInterceptTouchEvent(MotionEvent ev) {
+		return super.onInterceptTouchEvent(ev)
+				&& mGestureDetector.onTouchEvent(ev);
+	}
+
+	class YScrollDetector extends GestureDetector.SimpleOnGestureListener {
+		@Override
+		public boolean onScroll(MotionEvent e1, MotionEvent e2,
+								float distanceX, float distanceY) {
+			if (distanceY != 0 && distanceX != 0) {
+
+			}
+			if (Math.abs(distanceY) >= Math.abs(distanceX)) {
+				return true;
+			}
+			return false;
+		}
 	}
 }

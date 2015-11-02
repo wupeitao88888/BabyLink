@@ -12,14 +12,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/gray">
+            >
 
             <!--&lt;!&ndash; 活动图片与标题 ->-->
             <RelativeLayout
                 android:id="@+id/exercise_info_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white">
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:background="@drawable/relativelayout">
 
                 <ImageView
                     android:id="@+id/exercise_pic"
@@ -32,6 +34,8 @@
                     android:layout_width="match_parent"
                     android:layout_height="50dp"
                     android:layout_alignBottom="@+id/exercise_pic"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
                     android:background="@color/transparent_black">
 
                     <TextView
@@ -137,9 +141,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:paddingBottom="20dp"
-                >
+                android:background="@drawable/relativelayout"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:id="@+id/exercise_introduce"
@@ -185,9 +188,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:paddingBottom="20dp"
-                >
+                android:background="@drawable/relativelayout"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:id="@+id/exercise_joincount"
@@ -232,7 +234,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
+                android:background="@drawable/relativelayout"
                 android:paddingBottom="20dp">
 
 
@@ -245,7 +247,6 @@
                     android:text="报名人数（10人）"
                     android:textColor="#AF255C"
                     android:textSize="18sp" />
-
 
 
                 <View
@@ -266,8 +267,7 @@
                     android:horizontalSpacing="1dp"
                     android:numColumns="6"
                     android:stretchMode="columnWidth"
-                    android:verticalSpacing="1dp"
-                     />
+                    android:verticalSpacing="1dp" />
 
 
             </RelativeLayout>
@@ -280,9 +280,8 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
-                android:paddingBottom="20dp"
-                >
+                android:background="@drawable/relativelayout"
+                android:paddingBottom="20dp">
 
                 <TextView
                     android:id="@+id/exercise_comment"
@@ -347,7 +346,7 @@
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:layout_marginTop="10dp"
-                android:background="@color/white"
+                android:background="@drawable/relativelayout"
                 android:paddingBottom="20dp">
 
                 <TextView
