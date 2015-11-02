@@ -13,6 +13,7 @@ import android.widget.TextView;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.BeanShowModel;
 import com.shiliuke.utils.ViewHolder;
+import com.shiliuke.view.stickerview.StickerExecutor;
 import com.shiliuke.view.stickerview.StickerImageView;
 
 import java.util.ArrayList;
@@ -25,7 +26,6 @@ public class BeanShowAdapter extends BaseAdapter {
     private View footView;
     private ArrayList<BeanShowModel> data;
     private Context context;
-    private int animItem = -1;
 
     public BeanShowAdapter(View footView, Context context, ArrayList<BeanShowModel> data) {
         this.footView = footView;
@@ -50,16 +50,10 @@ public class BeanShowAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        if (animItem == -1) {
-            animItem = position;
-        } else if (animItem != position) {
-            data.get(animItem).setCanAnim(false);
-            animItem = position;
-        }
         if (convertView == null) {
             convertView = LayoutInflater.from(context).inflate(R.layout.item_beanshow, null);
         }
-        final BeanShowModel model = data.get(position);
+        BeanShowModel model = data.get(position);
         ImageView image_beanshow_item_head = ViewHolder.get(convertView, R.id.image_beanshow_item_head);
         TextView tv_beanshow_item_name = ViewHolder.get(convertView, R.id.tv_beanshow_item_name);
         TextView tv_beanshow_item_time = ViewHolder.get(convertView, R.id.tv_beanshow_item_time);
@@ -75,7 +69,9 @@ public class BeanShowAdapter extends BaseAdapter {
         ////////////
         Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.bg_login_guide);
         sticker_beanshow_item.setBgBitmap(bitmap, model);
-        sticker_beanshow_item.startAnim();
+        if (position == 0) {
+            sticker_beanshow_item.startAnim();
+        }
         ////////////
         Button btn_beanshow_item_dou = ViewHolder.get(convertView, R.id.btn_beanshow_item_dou);
         Button btn_beanshow_item_share = ViewHolder.get(convertView, R.id.btn_beanshow_item_share);
@@ -87,8 +83,9 @@ public class BeanShowAdapter extends BaseAdapter {
      * 关闭在执行的“动画”
      */
     public void stopAnim() {
-        data.get(animItem).setCanAnim(false);
-        animItem = -1;
+        for (int i = 0; i < data.size(); i++) {
+            data.get(i).setCanAnim(false);
+        }
     }
 
     /**
@@ -98,14 +95,9 @@ public class BeanShowAdapter extends BaseAdapter {
      * @param visibleItemCount
      */
     public void updateAnimItem(int firstVisibleItem, int visibleItemCount) {
-        if (visibleItemCount == 1) {
-            if (animItem == -1) {
-                animItem = firstVisibleItem;
-            } else if (animItem != firstVisibleItem) {
-                data.get(animItem).setCanAnim(false);
-                animItem = firstVisibleItem;
-            }
-            ((StickerImageView) footView.findViewWithTag(animItem)).startAnim();
+        for (; visibleItemCount > 0; visibleItemCount--, firstVisibleItem++) {
+            data.get(firstVisibleItem).setCanAnim(true);
+            ((StickerImageView) footView.findViewWithTag(firstVisibleItem)).startAnim();
         }
     }
 }

@@ -20,7 +20,7 @@ public class StickerImageModel {
      * @param handler
      */
     public void startLooper(final BeanShowModel model, final Handler handler) {
-        new Thread(new Runnable() {
+        StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
             public void run() {
                 while (model.isCanAnim()) {
@@ -31,7 +31,9 @@ public class StickerImageModel {
                             e.printStackTrace();
                         }
                         f = -1;
+                        updateAlpha();
                         handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLER);
+                        continue;
                     }
                     if (alpha == StickerImageContans.MINALPHA) {
                         try {
@@ -40,7 +42,9 @@ public class StickerImageModel {
                             e.printStackTrace();
                         }
                         f = 1;
+                        updateAlpha();
                         handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLER);
+                        continue;
                     }
                     try {
                         Thread.sleep(StickerImageContans.DEFAULTCOMPILETIME);
@@ -53,7 +57,7 @@ public class StickerImageModel {
                 }
                 handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLERSTOP);
             }
-        }).start();
+        });
     }
 
     private void updateAlpha() {

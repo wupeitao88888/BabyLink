@@ -167,7 +167,7 @@ public class StickerImageView extends View {
                     invalidate();
                     break;
                 case StickerImageContans.DEFAULTHANDLERSTOP:
-                    isAniming = false;
+                    beanShowModel.setIsAniming(false);
                     break;
             }
             super.handleMessage(msg);
@@ -175,41 +175,34 @@ public class StickerImageView extends View {
     };
 //    public static boolean canAnim;
 
-    private boolean isAniming = false;
 
     /**
      * 开始”动画"
      */
     public void startAnim() {
-        if (isAniming) {
+        if (beanShowModel.isAniming()) {
             return;
         }
-        beanShowModel.setCanAnim(true);
-        isAniming = true;
-        new Thread(new Runnable() {
+        beanShowModel.setIsAniming(true);
+        StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
             public void run() {
                 for (int i = 0; i < beanShowModel.getStickerlist().size(); i++) {
-                    beanShowModel.getStickerlist().get(i).startLooper(beanShowModel, handler);
+                    StickerImageModel model = beanShowModel.getStickerlist().get(i);
+                    model.startLooper(beanShowModel, handler);
                     if (!beanShowModel.isCanAnim()) {
                         break;
                     }
-                    try {
-                        Thread.sleep(StickerImageContans.DEFAULTSECONDTIME);
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
+                    if (model.getAlpha() == StickerImageContans.MAXALPHA) {
+                        try {
+                            Thread.sleep(StickerImageContans.DEFAULTSECONDTIME);
+                        } catch (InterruptedException e) {
+                            e.printStackTrace();
+                        }
                     }
-                    handler.sendEmptyMessage(StickerImageContans.DEFAULTHANDLER);
                 }
             }
-        }).start();
-    }
-
-    /**
-     * 停止”动画"
-     */
-    public void stopAnim() {
-        beanShowModel.setCanAnim(false);
+        });
     }
 
     /**

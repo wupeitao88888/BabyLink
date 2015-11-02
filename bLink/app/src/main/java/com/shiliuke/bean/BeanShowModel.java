@@ -1,5 +1,6 @@
 package com.shiliuke.bean;
 
+import com.shiliuke.utils.L;
 import com.shiliuke.view.stickerview.StickerImageModel;
 
 import java.util.ArrayList;
@@ -17,6 +18,7 @@ public class BeanShowModel {
     private String msg;//签名
     private ArrayList<StickerImageModel> stickerlist;//贴纸数据
     private boolean canAnim = true;//
+    private boolean isAniming = false;//
 
 
     public BeanShowModel(String headurl, String name, String time, String contenturl, String totaldou, String msg, ArrayList<StickerImageModel> stickerlist) {
@@ -92,5 +94,13 @@ public class BeanShowModel {
     public boolean isCanAnim() {
 
         return canAnim;
+    }
+
+    public boolean isAniming() {
+        return isAniming;
+    }
+
+    public void setIsAniming(boolean isAniming) {
+        this.isAniming = isAniming;
     }
 }

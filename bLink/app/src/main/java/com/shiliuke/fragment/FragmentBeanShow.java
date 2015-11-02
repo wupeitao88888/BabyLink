@@ -11,7 +11,6 @@ import android.widget.ListView;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.BeanShowAdapter;
 import com.shiliuke.bean.BeanShowModel;
-import com.shiliuke.utils.L;
 import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.view.stickerview.StickerImageModel;
 
@@ -47,7 +46,7 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
         btn_beanshow_public.setOnClickListener(this);
         btn_beanshow_public.setOnClickListener(this);
         initData();
-        beanShowAdapter = new BeanShowAdapter(listview_beanshow,getActivity(), data);
+        beanShowAdapter = new BeanShowAdapter(listview_beanshow, getActivity(), data);
         listview_beanshow.setAdapter(beanShowAdapter);
         listview_beanshow.setOnScrollListener(this);
         return view;
@@ -100,19 +99,35 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
         }
     }
 
+    private int firstVisibleItem = 0, visibleItemCount = 0;
+
     @Override
     public void onScrollStateChanged(AbsListView view, int scrollState) {
-
+        switch (scrollState) {
+            case AbsListView.OnScrollListener.SCROLL_STATE_IDLE:
+                beanShowAdapter.updateAnimItem(firstVisibleItem, visibleItemCount);
+                break;
+            case AbsListView.OnScrollListener.SCROLL_STATE_TOUCH_SCROLL:
+                beanShowAdapter.stopAnim();
+                break;
+        }
     }
 
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
-        beanShowAdapter.updateAnimItem(firstVisibleItem,visibleItemCount);
+        this.firstVisibleItem = firstVisibleItem;
+        this.visibleItemCount = visibleItemCount;
+
+    }
+
+    @Override
+    public void onStop() {
+        beanShowAdapter.stopAnim();
+        super.onStop();
     }
 
     @Override
     public void onDestroy() {
-        beanShowAdapter.stopAnim();
         super.onDestroy();
     }
 }
