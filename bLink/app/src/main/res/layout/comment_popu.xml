@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="50dp"
     android:gravity="center_vertical" >
 
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:id="@+id/b"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_weight="1"
-        android:ems="10"
-        android:background="@color/black"
-        android:inputType="textPersonName" >
+        android:layout_alignParentBottom="true" >
 
-        <requestFocus />
-    </EditText>
+        <!-- 聊天输入框 -->
 
-</LinearLayout>
+        <include
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            layout="@layout/custom_facerelativelayout" />
+    </FrameLayout>
+
+</RelativeLayout>

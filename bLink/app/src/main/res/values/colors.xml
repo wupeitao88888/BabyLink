@@ -14,4 +14,7 @@
     <drawable name="title_bar">#E77CA4</drawable>
     <drawable name="gray">#c1c1c1</drawable>
     <color name="light_blue">#6593cb</color>
+    <color name="sdk_chat_ll_facechoose_color">#f6f5f5</color>
+    <color name="sdk_chat_ll_pluschoose_color">#f6f5f5</color>
+    <color name="sdk_face_textitem_color">#BFBFBF</color>
 </resources>

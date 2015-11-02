@@ -5,6 +5,7 @@ import com.shiliuke.adapter.TopicAdapter;
 import com.shiliuke.bean.Comment;
 import com.shiliuke.bean.Topic;
 import com.shiliuke.bean.UserImgs;
+import com.shiliuke.utils.FaceConversionUtil;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
 import com.shiliuke.view.PullToRefresh.PullableListView;
 
@@ -53,6 +54,14 @@ public class FragmentTopic extends Fragment {
 
 	private View initView() {
 		mActivity = this.getActivity();
+		new Thread(new Runnable() {
+			@Override
+			public void run() {
+				FaceConversionUtil
+						.getInstace().getFileText(
+						mActivity);
+			}
+		}).start();
 		mActivity.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 		View view = inflater.inflate(R.layout.fragment_topic, null);
 		toaic_listView=(PullableListView)view.findViewById(R.id.toaic_listView);

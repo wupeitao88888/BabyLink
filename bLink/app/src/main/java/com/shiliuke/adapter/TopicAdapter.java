@@ -17,6 +17,7 @@ import android.widget.PopupWindow;
 
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.Topic;
+import com.shiliuke.utils.FaceConversionUtil;
 import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.utils.ViewHolder;
 import com.shiliuke.view.NoScrollGridView;
@@ -27,8 +28,10 @@ public class TopicAdapter extends BaseAdapter {
 	private List<Topic> mList;
 	private Context mContext;
 	private PopupWindow popWindow;
-	public TopicAdapter(Context _context) {
+	public TopicAdapter(final Context _context) {
+
 		this.mContext = _context;
+
 	}
 
 	public void setData(List<Topic> _list) {
@@ -138,6 +141,9 @@ public class TopicAdapter extends BaseAdapter {
 				return false;
 			}
 		});
+
+
+
 	}
 
 }
