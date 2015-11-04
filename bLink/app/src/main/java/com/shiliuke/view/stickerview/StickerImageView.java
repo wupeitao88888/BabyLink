@@ -8,15 +8,17 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.utils.L;
 
 /**
  * 图片贴纸View
  * Created by wangzhi on 15/10/30.
  */
 public class StickerImageView extends View {
+
     private enum TYPE {
         COMPILE,//编辑模式
-        BROWSE
+        BROWSE;
     }
 
     private Bitmap bgBitmap;
@@ -27,10 +29,13 @@ public class StickerImageView extends View {
     private Paint mTextPaint;
     private Paint mBgPaint;
 
+    private float x1, x2, y1, y2;
+    private boolean isCurrentClick = false;
+
+
     public void setStyle(TYPE style) {
         this.style = style;
     }
-
 
     public StickerImageView(Context context) {
         this(context, null);
@@ -101,6 +106,9 @@ public class StickerImageView extends View {
         }
         if (compileModel != null) {
             mTextPaint.setAlpha(compileModel.getAlpha());
+            mBgPaint.setAlpha(compileModel.getAlpha());
+            RectF oval3 = new RectF(compileModel.getX() - StickerImageContans.DEFAULTBGLEFT, compileModel.getY() - StickerImageContans.DEFAULTBGHEIGHT, compileModel.getX() + getTextWidth(mTextPaint, compileModel.getText()) + StickerImageContans.DEFAULTBGLEFT, compileModel.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
+            canvas.drawRoundRect(oval3, StickerImageContans.DEFAULTBGX, StickerImageContans.DEFAULTBGY, mBgPaint);
             canvas.drawText(compileModel.getText(), compileModel.getX(), compileModel.getY(), mTextPaint);
         }
     }
@@ -110,18 +118,24 @@ public class StickerImageView extends View {
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (style == TYPE.COMPILE && compileModel != null) {
-                    compileModel.setXy(event.getX(), event.getY());
-                    invalidate();
+                    if (event.getX() > x1 && event.getX() < x2 && event.getY() > y1 && event.getY() < y2) {
+                        getParent().requestDisallowInterceptTouchEvent(true);
+                        compileModel.setXy(event.getX(), event.getY());
+                        invalidate();
+                        isCurrentClick = true;
+                    }
                 }
                 break;
             case MotionEvent.ACTION_MOVE:
-                if (style == TYPE.COMPILE && compileModel != null) {
+                if (style == TYPE.COMPILE && compileModel != null && isCurrentClick) {
+                    getParent().requestDisallowInterceptTouchEvent(true);
                     compileModel.setXy(event.getX(), event.getY());
                     invalidate();
                 }
                 break;
             case MotionEvent.ACTION_UP:
-
+                setCurrentXy();
+                isCurrentClick = false;
                 break;
         }
         return true;
@@ -137,8 +151,19 @@ public class StickerImageView extends View {
             } else {
                 compileModel.setText(text);
             }
+            setCurrentXy();
             invalidate();
         }
+    }
+
+    /**
+     * 更新新建贴纸的点击区域
+     */
+    private void setCurrentXy() {
+        x1 = compileModel.getX() - StickerImageContans.DEFAULTBGLEFT;
+        y1 = compileModel.getY() - StickerImageContans.DEFAULTBGHEIGHT;
+        x2 = compileModel.getX() + getTextWidth(mTextPaint, compileModel.getText()) + StickerImageContans.DEFAULTBGLEFT;
+        y2 = compileModel.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2;
     }
 
     /**
@@ -225,4 +250,7 @@ public class StickerImageView extends View {
         return iRet;
     }
 
+    public StickerImageModel getCompileModel() {
+        return compileModel;
+    }
 }

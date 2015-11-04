@@ -1,5 +1,8 @@
 package com.shiliuke.fragment;
 
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -12,6 +15,9 @@ import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.BeanShowAdapter;
 import com.shiliuke.bean.BeanShowModel;
 import com.shiliuke.utils.ToastUtil;
+import com.shiliuke.view.TitleBar;
+import com.shiliuke.view.stickerview.StickerExecutor;
+import com.shiliuke.view.stickerview.StickerImageContans;
 import com.shiliuke.view.stickerview.StickerImageModel;
 
 import java.util.ArrayList;
@@ -49,6 +55,7 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
         beanShowAdapter = new BeanShowAdapter(listview_beanshow, getActivity(), data);
         listview_beanshow.setAdapter(beanShowAdapter);
         listview_beanshow.setOnScrollListener(this);
+        ((TitleBar)view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
         return view;
     }
 
@@ -123,7 +130,23 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     @Override
     public void onStop() {
         beanShowAdapter.stopAnim();
+        StickerExecutor.stopExecutor();
         super.onStop();
+    }
+
+    @Override
+    public void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        switch (requestCode){
+            case StickerImageContans.REQUESTADDMODEL:
+                if (resultCode == Activity.RESULT_OK) {
+                    int position = data.getIntExtra("position",0);
+                    StickerImageModel model = (StickerImageModel) data.getSerializableExtra("model");
+                    this.data.get(position).getStickerlist().add(model);
+                    this.beanShowAdapter.notifyDataSetChanged();
+                }
+            break;
+        }
     }
 
     @Override

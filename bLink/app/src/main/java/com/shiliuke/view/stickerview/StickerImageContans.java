@@ -8,11 +8,15 @@ import com.shiliuke.BabyLink.R;
  * 图片贴纸常量
  */
 public class StickerImageContans {
+    public static final int REQUESTADDMODEL = 0;//增加贴纸的requestcode
+
+
+
     public static final int DEFAULTHANDLER = 0;//handler接收刷新view的标识
     public static final int DEFAULTHANDLERSTOP = -1;//handler接收停止变化标识
 
-    public static final int DEFAULTX = 300;//添加贴纸默认X
-    public static final int DEFAULTY = 900;//添加贴纸默认Y
+    public static final int DEFAULTX = 500;//添加贴纸默认X
+    public static final int DEFAULTY = 650;//添加贴纸默认Y
     public static final int DEFAULTTEXTSIZE = 30;//贴纸默认字体大小
     public static final int DEFAULTTEXTCOLOR = Color.WHITE;//贴纸默认字体颜色
     public static final int DEFAULTBGHEIGHT = 36;//贴纸背景高度

@@ -1,6 +1,8 @@
 package com.shiliuke.adapter;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.view.LayoutInflater;
@@ -11,9 +13,11 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.shiliuke.BabyLink.R;
+import com.shiliuke.BabyLink.StickerModifyActivity;
 import com.shiliuke.bean.BeanShowModel;
 import com.shiliuke.utils.ViewHolder;
 import com.shiliuke.view.stickerview.StickerExecutor;
+import com.shiliuke.view.stickerview.StickerImageContans;
 import com.shiliuke.view.stickerview.StickerImageView;
 
 import java.util.ArrayList;
@@ -25,9 +29,9 @@ import java.util.ArrayList;
 public class BeanShowAdapter extends BaseAdapter {
     private View footView;
     private ArrayList<BeanShowModel> data;
-    private Context context;
+    private Activity context;
 
-    public BeanShowAdapter(View footView, Context context, ArrayList<BeanShowModel> data) {
+    public BeanShowAdapter(View footView, Activity context, ArrayList<BeanShowModel> data) {
         this.footView = footView;
         this.context = context;
         this.data = data;
@@ -74,6 +78,8 @@ public class BeanShowAdapter extends BaseAdapter {
         }
         ////////////
         Button btn_beanshow_item_dou = ViewHolder.get(convertView, R.id.btn_beanshow_item_dou);
+        btn_beanshow_item_dou.setTag(position);
+        btn_beanshow_item_dou.setOnClickListener(douClick);
         Button btn_beanshow_item_share = ViewHolder.get(convertView, R.id.btn_beanshow_item_share);
         Button btn_beanshow_item_addfocus = ViewHolder.get(convertView, R.id.btn_beanshow_item_addfocus);
         return convertView;
@@ -100,4 +106,17 @@ public class BeanShowAdapter extends BaseAdapter {
             ((StickerImageView) footView.findViewWithTag(firstVisibleItem)).startAnim();
         }
     }
+
+    /**
+     * button“逗一逗”
+     */
+    private View.OnClickListener douClick = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            Intent intent = new Intent(context, StickerModifyActivity.class);
+            intent.putExtra("model",data.get((Integer) v.getTag()));
+            intent.putExtra("position", (int) v.getTag());
+            context.startActivityForResult(intent, StickerImageContans.REQUESTADDMODEL);
+        }
+    };
 }

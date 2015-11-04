@@ -1,15 +1,15 @@
 package com.shiliuke.bean;
 
-import com.shiliuke.utils.L;
 import com.shiliuke.view.stickerview.StickerImageModel;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  * 秀逗页面list实体
  * Created by wangzhi on 15/10/30.
  */
-public class BeanShowModel {
+public class BeanShowModel implements Serializable {
     private String headurl;//发布人头像地址
     private String name;//发布人姓名
     private String time;//发布时间

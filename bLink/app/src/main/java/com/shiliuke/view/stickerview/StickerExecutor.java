@@ -44,9 +44,11 @@ public class StickerExecutor {
     public static void stopExecutor() {
         if (scheduledThreadPool != null) {
             scheduledThreadPool.shutdown();
+            scheduledThreadPool = null;
         }
         if (cachedThreadPool != null) {
             cachedThreadPool.shutdown();
+            cachedThreadPool = null;
         }
     }
 }

@@ -3,11 +3,13 @@ package com.shiliuke.view.stickerview;
 import android.os.Handler;
 import com.shiliuke.bean.BeanShowModel;
 
+import java.io.Serializable;
+
 /**
  * 图片贴纸Model
  * Created by wangzhi on 15/10/30.
  */
-public class StickerImageModel {
+public class StickerImageModel implements Serializable{
     private String text;//贴纸文字
     private int alpha;//透明度
     private int f;//透明度
@@ -89,6 +91,10 @@ public class StickerImageModel {
 
     public int getAlpha() {
         return alpha;
+    }
+
+    public void setAlpha(int alpha) {
+        this.alpha = alpha;
     }
 
     public float getX() {
