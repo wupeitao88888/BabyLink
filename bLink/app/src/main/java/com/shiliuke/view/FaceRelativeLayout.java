@@ -40,6 +40,7 @@ import com.shiliuke.adapter.ViewPagerAdapter;
 import com.shiliuke.bean.ChatEmoji;
 import com.shiliuke.bean.MessagePlusEndity;
 import com.shiliuke.utils.FaceConversionUtil;
+import com.shiliuke.utils.L;
 
 
 @SuppressLint("NewApi")
@@ -110,10 +111,6 @@ public class FaceRelativeLayout extends RelativeLayout implements
      * // 发送其他数据
      */
     ImageButton faceBtn = null;
-    /**
-     * // 发送其他数据
-     */
-    ImageButton addBtn = null;
 
     /**
      * 功能选中监听事件
@@ -125,7 +122,6 @@ public class FaceRelativeLayout extends RelativeLayout implements
         @Override
         public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
                                 long arg3) {
-            Log.e("我的item点机会", "////////////////////////????");
             MessagePlusEndity item = function_list.get(current).get(arg2);
             if (mFunctionClickListener != null) {
                 mFunctionClickListener.onClick(item);
@@ -133,7 +129,7 @@ public class FaceRelativeLayout extends RelativeLayout implements
             }
         }
     };
-
+   private InputMethodManager mInputMethodManager;
     public void setmListener(OnCorpusSelectedListener mListener) {
         this.mListener = mListener;
     }
@@ -141,16 +137,28 @@ public class FaceRelativeLayout extends RelativeLayout implements
     public FaceRelativeLayout(Context context) {
         super(context);
         this.context = context;
+        mInputMethodManager= (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        boolean isOpen=mInputMethodManager.isActive();
+//        if(!isOpen)
+        mInputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     public FaceRelativeLayout(Context context, AttributeSet attrs) {
         super(context, attrs);
         this.context = context;
+        mInputMethodManager= (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        boolean isOpen=mInputMethodManager.isActive();
+//        if(!isOpen)
+        mInputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     public FaceRelativeLayout(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         this.context = context;
+        mInputMethodManager= (InputMethodManager) context.getSystemService(Context.INPUT_METHOD_SERVICE);
+        boolean isOpen=mInputMethodManager.isActive();
+//        if(!isOpen)
+        mInputMethodManager.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS);
     }
 
     public void setOnCorpusSelectedListener(OnCorpusSelectedListener listener) {
@@ -159,88 +167,30 @@ public class FaceRelativeLayout extends RelativeLayout implements
 
     @Override
     public void onClick(View v) {
-        // if (view.getVisibility() == 0) {
-        // view.setVisibility(View.GONE);
-        // Chat.mInputMethodManager.hideSoftInputFromWindow(
-        // et_sendmessage.getWindowToken(), 0);
-        // } else if (view.getVisibility() == 0) {
-        // view.setVisibility(View.GONE);
-        // Chat.mInputMethodManager.hideSoftInputFromWindow(
-        // et_sendmessage.getWindowToken(), 0);
-        // }
-
         if (R.id.btn_face == v.getId()) {
             Init_viewPager();
             Init_Point();
             Init_Data();
             view.findViewById(R.id.btn_face);
+
             // 隐藏表情选择框
             if (view.getVisibility() == View.VISIBLE) {
                 view.setVisibility(View.GONE);
 
-//				Chat.mInputMethodManager.toggleSoftInput(0,
-//						InputMethodManager.HIDE_NOT_ALWAYS);
+                mInputMethodManager.toggleSoftInput(0,
+						InputMethodManager.HIDE_NOT_ALWAYS);
             } else {
                 view.setVisibility(View.VISIBLE);
-//				Chat.mInputMethodManager.hideSoftInputFromWindow(
-//						et_sendmessage.getWindowToken(), 0);
+				mInputMethodManager.hideSoftInputFromWindow(
+						et_sendmessage.getWindowToken(), 0);
             }
         } else if (R.id.et_sendmessage == v.getId()) {
             // 隐藏表情选择框
             if (view.getVisibility() == View.VISIBLE) {
                 view.setVisibility(View.GONE);
             }
-
-        } else if (R.id.btn_plus == v.getId()) {
-            Init_functionViewPager();
-            Init_Point();
-            Init_functionData();
-            if (view.getVisibility() == View.GONE) {
-                view.setVisibility(View.VISIBLE);
-//				Chat.mInputMethodManager.hideSoftInputFromWindow(
-//						et_sendmessage.getWindowToken(), 0);
-            } else {
-                view.setVisibility(View.GONE);
-//				Chat.mInputMethodManager.toggleSoftInput(0,
-//                InputMethodManager.HIDE_NOT_ALWAYS);
-            }
         }
 
-        // switch (v.getId()) {
-        // case R.id.btn_face:
-        //
-        // Init_viewPager();
-        // Init_Point();
-        // Init_Data();
-        // view.findViewById(R.id.btn_face);
-        // // 隐藏表情选择框
-        // if (view.getVisibility() == View.VISIBLE) {
-        // view.setVisibility(View.GONE);
-        // } else {
-        // view.setVisibility(View.VISIBLE);
-        // }
-        // Chat.mInputMethodManager.hideSoftInputFromWindow(
-        // et_sendmessage.getWindowToken(), 0);
-        // break;
-        // case R.id.et_sendmessage:
-        // // 隐藏表情选择框
-        // if (view.getVisibility() == View.VISIBLE) {
-        // view.setVisibility(View.GONE);
-        // }
-        // break;
-        // case R.id.btn_plus:
-        // // TODO 标记
-        // Init_functionViewPager();
-        // Init_Point();
-        // Init_functionData();
-        // if (view.getVisibility() == View.GONE) {
-        // view.setVisibility(View.VISIBLE);
-        // } else
-        // view.setVisibility(View.GONE);
-        // Chat.mInputMethodManager.hideSoftInputFromWindow(
-        // et_sendmessage.getWindowToken(), 0);
-        // break;
-        // }
     }
 
     /**
@@ -297,16 +247,12 @@ public class FaceRelativeLayout extends RelativeLayout implements
     private void Init_View() {
         vp_face = (ViewPager) findViewById(R.id.vp_contains);
         et_sendmessage = (EditText) findViewById(R.id.et_sendmessage);
-
         layout_point = (LinearLayout) findViewById(R.id.iv_image);
         et_sendmessage.setOnClickListener(this);
         findViewById(R.id.btn_face).setOnClickListener(this);
         faceBtn = (ImageButton) findViewById(R.id.btn_face);
         faceBtn.setOnClickListener(this);
         view = findViewById(R.id.ll_facechoose);
-        addBtn = (ImageButton) findViewById(R.id.btn_plus);
-        addBtn.setOnClickListener(this);
-
         et_sendmessage.addTextChangedListener(watcher);
         send = (Button) findViewById(R.id.btn_send);
         et_sendmessage.setOnFocusChangeListener(new OnFocusChangeListener() {
@@ -319,7 +265,7 @@ public class FaceRelativeLayout extends RelativeLayout implements
                 }
             }
         });
-
+        mInputMethodManager.showSoftInput(et_sendmessage, InputMethodManager.SHOW_FORCED);
     }
 
     private TextWatcher watcher = new TextWatcher() {
@@ -349,15 +295,15 @@ public class FaceRelativeLayout extends RelativeLayout implements
 
             // TODO Auto-generated method stub
 
-            String etStr = et_sendmessage.getText().toString().trim(); // 获得输入的值
-            int selectionStart = et_sendmessage.getSelectionStart();
-            if (selectionStart != 0) {
-                send.setVisibility(View.VISIBLE);
-                addBtn.setVisibility(View.INVISIBLE);
-            } else {
-                send.setVisibility(View.INVISIBLE);
-                addBtn.setVisibility(View.VISIBLE);
-            }
+//            String etStr = et_sendmessage.getText().toString().trim(); // 获得输入的值
+//            int selectionStart = et_sendmessage.getSelectionStart();
+//            if (selectionStart != 0) {
+//                send.setVisibility(View.VISIBLE);
+//                addBtn.setVisibility(View.INVISIBLE);
+//            } else {
+//                send.setVisibility(View.INVISIBLE);
+//                addBtn.setVisibility(View.VISIBLE);
+//            }
         }
     };
 
@@ -375,6 +321,7 @@ public class FaceRelativeLayout extends RelativeLayout implements
         // 中间添加表情页
 
         faceAdapters = new ArrayList<FaceAdapter>();
+
 
         for (int i = 0; i < emojis.size() - 1; i++) {
             GridView view = new GridView(context);
@@ -435,46 +382,7 @@ public class FaceRelativeLayout extends RelativeLayout implements
         }
     }
 
-    /**
-     * 表情ViewPager初始化数据
-     */
-    private void Init_functionData() {
-        vp_face.setAdapter(new FacePagerAdapter(pageViews));
-        vp_face.setCurrentItem(1);
-        current = 0;
-        vp_face.setOnPageChangeListener(new OnPageChangeListener() {
 
-            @Override
-            public void onPageSelected(int arg0) {
-                // TODO Auto-generated method stub
-
-                current = arg0 - 1;
-                draw_Point(arg0);
-                if (arg0 == pointViews.size() - 1 || arg0 == 0) {
-                    if (arg0 == 0) {
-                        vp_face.setCurrentItem(arg0 + 1);
-                        pointViews.get(1).setBackgroundResource(R.mipmap.d1);
-                    } else {
-                        vp_face.setCurrentItem(arg0 - 1);
-                        pointViews.get(arg0 - 1).setBackgroundResource(
-                                R.mipmap.d2);
-                    }
-                }
-            }
-
-            @Override
-            public void onPageScrolled(int arg0, float arg1, int arg2) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onPageScrollStateChanged(int arg0) {
-                // TODO Auto-generated method stub
-
-            }
-        });
-    }
 
     /**
      * 填充数据
@@ -519,59 +427,19 @@ public class FaceRelativeLayout extends RelativeLayout implements
 
     }
 
-    /**
-     * 发送其他数据
-     */
-    @SuppressWarnings("deprecation")
-    public void Init_functionViewPager() {
-        pageViews = new ArrayList<View>();
-        // 左侧添加空白页
-        View nullview = new View(context);
-        // 设置背景透明
-        nullview.setBackgroundColor(Color.TRANSPARENT);
-        pageViews.add(nullview);
-        // 添加表情页
-        functionAdapter_list = new ArrayList<MessagePlusAdapter>();
-        for (int i = 0; i < function_list.size(); i++) {
-            GridView gridView = new GridView(context);
-            MessagePlusAdapter adapter = new MessagePlusAdapter(context,
-                    function_list.get(i));
-            gridView.setAdapter(adapter);
-            gridView.requestFocus();
-            functionAdapter_list.add(adapter);
-            gridView.setOnItemClickListener(functionOnItemClickListener);
-            gridView.setNumColumns(4);
-            gridView.setBackgroundColor(Color.TRANSPARENT);
-            gridView.setHorizontalSpacing(1);
-            gridView.setVerticalSpacing(1);
-            gridView.setStretchMode(GridView.STRETCH_COLUMN_WIDTH);
-            gridView.setCacheColorHint(0);
-            gridView.setPadding(5, 0, 5, 0);
-            gridView.setSelector(new ColorDrawable(Color.TRANSPARENT));
-            gridView.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT,
-                    LayoutParams.WRAP_CONTENT));
 
-            gridView.setGravity(Gravity.CENTER);
-            pageViews.add(gridView);
-        }
-        // 右侧添加空白页
-        View nullview1 = new View(context);
-        // 设置背景透明
-        nullview.setBackgroundColor(Color.TRANSPARENT);
-        pageViews.add(nullview1);
-    }
 
     /**
      * 绘制游标背景
      */
     public void draw_Point(int index) {
-//        for (int i = 1; i < pointViews.size(); i++) {
-//            if (index == i) {
-//                pointViews.get(i).setBackgroundResource(R.mipmap.d2);
-//            } else {
-//                pointViews.get(i).setBackgroundResource(R.mipmap.d1);
-//            }
-//        }
+        for (int i = 1; i < pointViews.size(); i++) {
+            if (index == i) {
+                pointViews.get(i).setBackgroundResource(R.mipmap.d2);
+            } else {
+                pointViews.get(i).setBackgroundResource(R.mipmap.d1);
+            }
+        }
     }
 
     @Override

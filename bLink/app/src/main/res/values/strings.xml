@@ -33,4 +33,25 @@
     <string name="load_succeed">加载成功</string>
     <string name="load_fail">加载失败</string>
 
+
+    <string name="subject_activity">主题活动:</string>
+    <string name="activity_address">主题地点:</string>
+    <string name="activity_time">活动时间:</string>
+    <string name="assemble_address">集合地点:</string>
+    <string name="means_of_transportation">交通工具:</string>
+    <string name="contact_man">联系人:</string>
+    <string name="contact_phone">联系电话:</string>
+    <string name="max_person">上限人数:</string>
+    <string name="cost_issue">报名费用:</string>
+    <string name="method_of_payment">支付方式:</string>
+    <string name="add_pic">添加活动主图</string>
+    <string name="activity_hint">输入活动介绍</string>
+    <string name="hold_out">是否需要活动支持</string>
+    <string name="need">请输入所需要的物品</string>
+    <string name="change_article">请输入置换物品描述</string>
+    <string name="change_article_name">请输入物品名称</string>
+    <string name="change_want_article_name">请输入想换的物品名称</string>
+    <string name="certain">确定</string>
+    <string name="all_person">所有人可见</string>
+    <string name="me_home">本小区可见</string>
 </resources>

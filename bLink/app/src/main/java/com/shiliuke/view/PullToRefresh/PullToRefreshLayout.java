@@ -395,8 +395,6 @@ public class PullToRefreshLayout extends RelativeLayout
 				break;
 			case MotionEvent.ACTION_MOVE:
 				if(ev.getY()>=ev.getX()) {
-
-
 					if (mEvents == 0) {
 
 						if (pullDownY > 0

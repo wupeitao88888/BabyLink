@@ -166,9 +166,7 @@ public class FaceConversionUtil {
 						.substring(0, text[0].lastIndexOf("."));
 				emojiMap.put(text[1], fileName);
 				int resID = context.getResources().getIdentifier(fileName,
-						"mipmap", context.getPackageName());
-
-
+						"drawable", context.getPackageName());
 
 				if (resID != 0) {
 					emojEentry = new ChatEmoji();

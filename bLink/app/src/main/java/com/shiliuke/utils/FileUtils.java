@@ -27,7 +27,6 @@ public class FileUtils {
 			while ((str = br.readLine()) != null) {
 				list.add(str);
 			}
-
 			return list;
 		} catch (IOException e) {
 			e.printStackTrace();
