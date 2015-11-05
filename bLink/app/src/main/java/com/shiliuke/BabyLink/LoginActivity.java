@@ -62,8 +62,9 @@ public class LoginActivity extends ActivitySupport implements OnClickListener,Vo
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.login_Btn:
-                BasicRequest.getInstance().request(this,
-                        TaskID.ACTION_LOGIN, "article");
+//                BasicRequest.getInstance().request(this,
+//                        TaskID.ACTION_LOGIN, "article");
+                mIntent(LoginActivity.this,MainTab.class);
             break;
             case R.id.forget_password:
                 mIntent(LoginActivity.this, ForgetPassActivity.class);

@@ -10,29 +10,29 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import com.shiliuke.BabyLink.MeActivity;
+import com.shiliuke.BabyLink.MeConvertCodeActivity;
+import com.shiliuke.BabyLink.MeHomePage;
 import com.shiliuke.BabyLink.MeTopic;
+import com.shiliuke.BabyLink.MyHomeActivity;
 import com.shiliuke.BabyLink.R;
 
 
 public class FragmentMy extends Fragment implements OnClickListener {
 
-    private RelativeLayout user_icon_rl,//用户信息
-            user_activity_re,//我的活动
-            user_topic_re,//我的话题
-            user_change_re,//我的置换
-            user_showbean_re,//我的秀逗
-            user_friends_re//我的朋友
-                    ;
-    private ImageView user_icon_image;//用户头像
 
-
-    private TextView user_name;//用户姓名
     private View rootView;
     private Activity mActivity = null;
+
+    private RelativeLayout user_home_rl,//我的主页
+            user_order_rl,//我的订单
+            user_information_rl,//个人资料
+            user_help_rl,//帮助中心
+            version_update_rl,//版本升级
+            exchange_code_rl,//兑换码
+            pay_rl;//支付尾款
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -52,21 +52,24 @@ public class FragmentMy extends Fragment implements OnClickListener {
 
     private View initView() {
         mActivity = getActivity();
-        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_my, null);
-        user_icon_rl = (RelativeLayout) view.findViewById(R.id.user_activity_re);
-        user_friends_re = (RelativeLayout) view.findViewById(R.id.user_friends_re);
-        user_activity_re = (RelativeLayout) view.findViewById(R.id.user_activity_re);
-        user_topic_re = (RelativeLayout) view.findViewById(R.id.user_topic_re);
-        user_change_re = (RelativeLayout) view.findViewById(R.id.user_change_re);
-        user_showbean_re = (RelativeLayout) view.findViewById(R.id.user_showbean_re);
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_me, null);
+        user_home_rl = (RelativeLayout) view.findViewById(R.id.user_home_rl);
+        user_order_rl = (RelativeLayout) view.findViewById(R.id.user_order_rl);
+        user_information_rl = (RelativeLayout) view.findViewById(R.id.user_information_rl);
+        user_help_rl = (RelativeLayout) view.findViewById(R.id.user_help_rl);
+        version_update_rl = (RelativeLayout) view.findViewById(R.id.version_update_rl);
+        exchange_code_rl= (RelativeLayout) view.findViewById(R.id.exchange_code_rl);
+        pay_rl= (RelativeLayout) view.findViewById(R.id.pay_rl);
 
-        user_icon_rl.setOnClickListener(this);
-        user_friends_re.setOnClickListener(this);
-        user_activity_re.setOnClickListener(this);
-        user_topic_re.setOnClickListener(this);
-        user_change_re.setOnClickListener(this);
-        user_showbean_re.setOnClickListener(this);
 
+
+        user_home_rl.setOnClickListener(this);
+        user_order_rl.setOnClickListener(this);
+        user_information_rl.setOnClickListener(this);
+        user_help_rl.setOnClickListener(this);
+        version_update_rl.setOnClickListener(this);
+        exchange_code_rl.setOnClickListener(this);
+        pay_rl.setOnClickListener(this);
 
 
 
@@ -76,26 +79,28 @@ public class FragmentMy extends Fragment implements OnClickListener {
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.user_icon_rl:
-                // 我的信息
+            case R.id.user_home_rl:
+                // 我的主页
+                startActivity(new Intent(mActivity, MeHomePage.class));
                 break;
-            case R.id.user_activity_re:
-                // 我的活动
-                Intent intent=new Intent(mActivity, MeActivity.class);
-                startActivity(intent);
+            case R.id.user_order_rl:
+                //我的订单
                 break;
-            case R.id.user_topic_re:
-                // 我的话题
-                startActivity(new Intent(mActivity, MeTopic.class));
+            case R.id.user_information_rl:
+                //个人资料
                 break;
-            case R.id.user_change_re:
-                // 我的置换
+            case R.id.user_help_rl:
+                //帮助中心
                 break;
-            case R.id.user_showbean_re:
-                // 我的秀逗
+            case R.id.version_update_rl:
+                //版本升级
                 break;
-            case R.id.user_friends:
-                // 我的朋友
+            case R.id.exchange_code_rl:
+                //兑换码
+                startActivity(new Intent(mActivity,MeConvertCodeActivity.class));
+                break;
+            case R.id.pay_rl:
+                //支付尾款
                 break;
 
         }

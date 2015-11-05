@@ -26,5 +26,12 @@ public class UserImgs {
 		this.urls = urls;
 	}
 
+	public UserImgs(int id, String name, String urls) {
+		this.id = id;
+		this.name = name;
+		this.urls = urls;
+	}
 
+	public UserImgs() {
+	}
 }

@@ -5,17 +5,13 @@
     android:orientation="vertical">
 
 
-    <com.shiliuke.view.TitleBar
-        android:id="@+id/user_title"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />å
 
 
     <RelativeLayout
         android:id="@+id/user_icon_rl"
         android:layout_width="match_parent"
         android:layout_height="150dp"
-        android:layout_below="@+id/user_title"
+
         android:background="@color/gray">
 
         <ImageView

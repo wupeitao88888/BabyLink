@@ -148,6 +148,24 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
+        <!-- 我的话题详情 -->
+        <activity
+            android:name=".MeTopicInfo"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的主页 -->
+        <activity
+            android:name=".MeHomePage"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的兑换码 -->
+        <activity
+            android:name=".MeConvertCodeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
     </application>
 
 </manifest>
