@@ -1,6 +1,7 @@
 package com.shiliuke.BabyLink;
 
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -8,11 +9,15 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import com.shiliuke.base.ActivitySupport;
+import com.shiliuke.internet.TaskID;
+import com.shiliuke.internet.VolleyListerner;
+import com.shiliuke.model.BasicRequest;
+import com.shiliuke.utils.LCSharedPreferencesHelper;
 
 /**
  * Created by lc-php1 on 2015/10/26.
  */
-public class LoginActivity extends ActivitySupport implements OnClickListener{
+public class LoginActivity extends ActivitySupport implements OnClickListener,VolleyListerner {
 
     private EditText user_name;
     private EditText password;
@@ -21,6 +26,7 @@ public class LoginActivity extends ActivitySupport implements OnClickListener{
     private TextView qq_login;
     private TextView wx_login;
     private TextView sina_login;
+    public static String BASE_URL = "http://124.248.42.200:8087/tyfo";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,7 +62,8 @@ public class LoginActivity extends ActivitySupport implements OnClickListener{
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.login_Btn:
-                mIntent(LoginActivity.this, MainTab.class);
+                BasicRequest.getInstance().request(this,
+                        TaskID.ACTION_LOGIN, "article");
             break;
             case R.id.forget_password:
                 mIntent(LoginActivity.this, ForgetPassActivity.class);
@@ -71,5 +78,21 @@ public class LoginActivity extends ActivitySupport implements OnClickListener{
 
             break;
         }
+    }
+
+    @Override
+    public void onResponse(String str, int taskid) {
+        try {
+            if(taskid == TaskID.ACTION_LOGIN){
+                mIntent(LoginActivity.this, MainTab.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onResponseError(String error, int taskid) {
+
     }
 }

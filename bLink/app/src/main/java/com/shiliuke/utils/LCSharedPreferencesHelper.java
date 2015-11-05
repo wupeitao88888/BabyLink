@@ -23,6 +23,9 @@ public class LCSharedPreferencesHelper {
 	SharedPreferences.Editor editor;
 
 	Context mContext;
+	// 基础url
+	public final static String BABYLINK_KEY_BASE_URL = "babylink_key_base_url";
+
 	private static LCSharedPreferencesHelper sh;
 
 	public static synchronized LCSharedPreferencesHelper instance(

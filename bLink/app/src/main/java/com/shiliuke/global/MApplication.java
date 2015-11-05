@@ -18,10 +18,12 @@ public class MApplication extends Application {
 	private static List<Activity> activityList = new LinkedList<Activity>();
 //    public static  String VERSION;
 	public static Context context;
+	private static MApplication app;
 	@Override
 	public void onCreate() {
 		// TODO Auto-generated method stub
 		super.onCreate();
+		app = this;
 		// �쳣����
 //        if(!L.isDebug){
 ////            CrashHandler crashHandler = CrashHandler.getInstance();
@@ -43,5 +45,9 @@ public class MApplication extends Application {
 		}
 		System.gc();
 		System.exit(0);
+	}
+
+	public static MApplication getApp() {
+		return app;
 	}
 }
