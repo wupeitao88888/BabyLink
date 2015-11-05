@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.UUID;
 
 import android.annotation.SuppressLint;
+import android.app.FragmentManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -60,6 +61,7 @@ public class ActivitySupport extends FragmentActivity implements
     private Toast mToast;
     private TitleBar titleBar;
     private LinearLayout linearLayout;
+
 
 
     @Override

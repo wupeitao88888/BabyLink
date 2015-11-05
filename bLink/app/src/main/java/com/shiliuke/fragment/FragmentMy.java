@@ -1,63 +1,103 @@
 package com.shiliuke.fragment;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.view.View.OnClickListener;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Switch;
+import android.widget.TextView;
 
+import com.shiliuke.BabyLink.MeActivity;
+import com.shiliuke.BabyLink.MeTopic;
 import com.shiliuke.BabyLink.R;
 
 
-public class FragmentMy extends Fragment implements OnClickListener{
+public class FragmentMy extends Fragment implements OnClickListener {
 
-	private RelativeLayout user_home_rl;
-	private RelativeLayout user_order_rl;
-	private RelativeLayout user_information_rl;
-	private RelativeLayout user_help_rl;
-	private RelativeLayout version_update_rl;
+    private RelativeLayout user_icon_rl,//用户信息
+            user_activity_re,//我的活动
+            user_topic_re,//我的话题
+            user_change_re,//我的置换
+            user_showbean_re,//我的秀逗
+            user_friends_re//我的朋友
+                    ;
+    private ImageView user_icon_image;//用户头像
 
-	@Override
-	public View onCreateView(LayoutInflater inflater, ViewGroup container,
-			Bundle savedInstanceState) {
 
-		View view = inflater.inflate(R.layout.fragment_my, null);
-		user_home_rl = (RelativeLayout) view.findViewById(R.id.user_home_rl);
-		user_order_rl = (RelativeLayout) view.findViewById(R.id.user_order_rl);
-		user_information_rl = (RelativeLayout) view.findViewById(R.id.user_information_rl);
-		user_help_rl = (RelativeLayout) view.findViewById(R.id.user_help_rl);
-		version_update_rl = (RelativeLayout) view.findViewById(R.id.version_update_rl);
-		user_home_rl.setOnClickListener(this);
-		user_order_rl.setOnClickListener(this);
-		user_information_rl.setOnClickListener(this);
-		user_help_rl.setOnClickListener(this);
-		version_update_rl.setOnClickListener(this);
+    private TextView user_name;//用户姓名
+    private View rootView;
+    private Activity mActivity = null;
 
-		return view;
-	}
+    @Override
+    public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                             Bundle savedInstanceState) {
 
-	@Override
-	public void onClick(View v) {
-		switch(v.getId()){
-			case R.id.user_home_rl :
-				// 我的主页
-				break;
-			case R.id.user_order_rl :
-				// 我的订单
-				break;
-			case R.id.user_information_rl :
-				// 个人资料
-				break;
-			case R.id.user_help_rl :
-				// 帮助中心
-				break;
-			case R.id.version_update_rl :
-				// 版本升级
-				break;
 
-		}
-	}
+        if (rootView == null) {
+            rootView = initView();
+
+        }
+        ViewGroup parent = (ViewGroup) rootView.getParent();
+        if (parent != null) {
+            parent.removeView(rootView);
+        }
+        return rootView;
+    }
+
+    private View initView() {
+        mActivity = getActivity();
+        View view = LayoutInflater.from(getContext()).inflate(R.layout.fragment_my, null);
+        user_icon_rl = (RelativeLayout) view.findViewById(R.id.user_activity_re);
+        user_friends_re = (RelativeLayout) view.findViewById(R.id.user_friends_re);
+        user_activity_re = (RelativeLayout) view.findViewById(R.id.user_activity_re);
+        user_topic_re = (RelativeLayout) view.findViewById(R.id.user_topic_re);
+        user_change_re = (RelativeLayout) view.findViewById(R.id.user_change_re);
+        user_showbean_re = (RelativeLayout) view.findViewById(R.id.user_showbean_re);
+
+        user_icon_rl.setOnClickListener(this);
+        user_friends_re.setOnClickListener(this);
+        user_activity_re.setOnClickListener(this);
+        user_topic_re.setOnClickListener(this);
+        user_change_re.setOnClickListener(this);
+        user_showbean_re.setOnClickListener(this);
+
+
+
+
+        return view;
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()) {
+            case R.id.user_icon_rl:
+                // 我的信息
+                break;
+            case R.id.user_activity_re:
+                // 我的活动
+                Intent intent=new Intent(mActivity, MeActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.user_topic_re:
+                // 我的话题
+                startActivity(new Intent(mActivity, MeTopic.class));
+                break;
+            case R.id.user_change_re:
+                // 我的置换
+                break;
+            case R.id.user_showbean_re:
+                // 我的秀逗
+                break;
+            case R.id.user_friends:
+                // 我的朋友
+                break;
+
+        }
+    }
 }

@@ -54,4 +54,6 @@
     <string name="certain">确定</string>
     <string name="all_person">所有人可见</string>
     <string name="me_home">本小区可见</string>
+
+    <string name="exit">再按一次退出程序</string>
 </resources>
