@@ -1,6 +1,7 @@
 package com.shiliuke.BabyLink;
 
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
@@ -22,7 +23,7 @@ import com.shiliuke.view.TabFragmentHost;
 
 public class MainTab extends ActivitySupport {
 
-
+    private long exitTime = 0;
     public TabFragmentHost mTabHost;
     // 标签
     private String[] TabTag = {"tab1", "tab2", "tab3", "tab4", "tab5"};
@@ -110,6 +111,23 @@ public class MainTab extends ActivitySupport {
         return v;
     }
 
+
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            exit();
+        }
+        return false;
+    }
+
+    public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 2000) {
+            showToast(getResources().getString(R.string.exit));
+            exitTime = System.currentTimeMillis();
+        } else {
+            isExit();
+        }
+    }
 
     public LCDialog showDialog() {
         View dialogView = LayoutInflater.from(context).inflate(R.layout.layout_addmenu,

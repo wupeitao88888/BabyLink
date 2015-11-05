@@ -24,6 +24,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <!-- tab标签 -->
         <activity
             android:name=".MainTab"
             android:label="@string/app_name"
@@ -32,6 +33,7 @@
             >
 
         </activity>
+        <!-- 登陆 -->
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
@@ -40,6 +42,7 @@
             >
 
         </activity>
+        <!-- 注册 -->
         <activity
             android:name=".RegisterActivity"
             android:label="@string/app_name"
@@ -48,6 +51,7 @@
             >
 
         </activity>
+        <!-- 忘记密码 -->
         <activity
             android:name=".ForgetPassActivity"
             android:label="@string/app_name"
@@ -56,6 +60,7 @@
             >
 
         </activity>
+        <!-- 活动详情 -->
         <activity
             android:name=".ExerciseActivity"
             android:label="@string/app_name"
@@ -64,6 +69,7 @@
             >
 
         </activity>
+        <!-- 报名 -->
         <activity
             android:name=".ApplyActivity"
             android:screenOrientation="portrait"
@@ -71,6 +77,7 @@
             >
 
         </activity>
+        <!--  置换详情 -->
         <activity
             android:name=".ChangeInfoActivity"
             android:screenOrientation="portrait"
@@ -113,6 +120,18 @@
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
 
+        <!-- 我的活动 -->
+        <activity
+            android:name=".MeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的话题 -->
+        <activity
+            android:name=".MeTopic"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
     </application>
 
 </manifest>
