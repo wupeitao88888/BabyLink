@@ -104,7 +104,7 @@ public class StickerModifyActivity extends ActivitySupport implements View.OnCli
                     Intent intent = new Intent();
                     intent.putExtra("model", mSticker_View.getCompileModel());
                     intent.putExtra("position", getIntent().getIntExtra("position", 0));
-                    setResult(RESULT_CANCELED, intent);
+                    setResult(RESULT_OK, intent);
                     finish();
                 }else{
                     setResult(RESULT_CANCELED);

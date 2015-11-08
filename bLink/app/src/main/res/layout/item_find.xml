@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+    >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/m_top_img"
+            android:id="@+id/image_item_find_topbg"
+            />
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@mipmap/ic_launcher"
+            android:id="@+id/image_item_find_top"
+            android:layout_marginLeft="@dimen/dp5"
+            />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:padding="@dimen/dp5"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:text="红黄蓝亲子园"
+            android:id="@+id/tv_item_find_title"
+
+            />
+
+
+        <TextView
+            android:id="@+id/tv_item_find_price"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:text="$2500.00-$2000.00"
+            android:layout_alignParentRight="true"
+            android:textColor="@color/red"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:layout_marginRight="@dimen/dp5"
+            android:text="价格:"
+            android:layout_toLeftOf="@id/tv_item_find_price"
+            />
+    </RelativeLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/black"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp5"
+        android:padding="@dimen/dp5"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:text="大兴区枣园路"
+            android:id="@+id/tv_item_find_address"
+            android:drawableLeft="@mipmap/ad_select"
+
+            />
+
+        <TextView
+            android:id="@+id/tv_item_find_distance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="@dimen/sp14"
+            android:layout_marginRight="@dimen/dp5"
+            android:layout_alignParentRight="true"
+            android:text="800米"
+            />
+    </RelativeLayout>
+</LinearLayout>

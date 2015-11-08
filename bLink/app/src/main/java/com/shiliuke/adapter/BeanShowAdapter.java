@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import android.widget.TextView;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.BabyLink.StickerModifyActivity;
 import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.fragment.FragmentBeanShow;
 import com.shiliuke.utils.ViewHolder;
 import com.shiliuke.view.stickerview.StickerExecutor;
 import com.shiliuke.view.stickerview.StickerImageContans;
@@ -29,9 +31,9 @@ import java.util.ArrayList;
 public class BeanShowAdapter extends BaseAdapter {
     private View footView;
     private ArrayList<BeanShowModel> data;
-    private Activity context;
+    private Fragment context;
 
-    public BeanShowAdapter(View footView, Activity context, ArrayList<BeanShowModel> data) {
+    public BeanShowAdapter(View footView, Fragment context, ArrayList<BeanShowModel> data) {
         this.footView = footView;
         this.context = context;
         this.data = data;
@@ -55,7 +57,7 @@ public class BeanShowAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
-            convertView = LayoutInflater.from(context).inflate(R.layout.item_beanshow, null);
+            convertView = LayoutInflater.from(context.getActivity()).inflate(R.layout.item_beanshow, null);
         }
         BeanShowModel model = data.get(position);
         ImageView image_beanshow_item_head = ViewHolder.get(convertView, R.id.image_beanshow_item_head);
@@ -113,7 +115,8 @@ public class BeanShowAdapter extends BaseAdapter {
     private View.OnClickListener douClick = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent(context, StickerModifyActivity.class);
+            Intent intent = new Intent();
+            intent.setAction("com.shiliuke.StickerModifyActivity");
             intent.putExtra("model",data.get((Integer) v.getTag()));
             intent.putExtra("position", (int) v.getTag());
             context.startActivityForResult(intent, StickerImageContans.REQUESTADDMODEL);

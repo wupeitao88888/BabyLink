@@ -52,7 +52,7 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
         btn_beanshow_public.setOnClickListener(this);
         btn_beanshow_public.setOnClickListener(this);
         initData();
-        beanShowAdapter = new BeanShowAdapter(listview_beanshow, getActivity(), data);
+        beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data);
         listview_beanshow.setAdapter(beanShowAdapter);
         listview_beanshow.setOnScrollListener(this);
         ((TitleBar)view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
