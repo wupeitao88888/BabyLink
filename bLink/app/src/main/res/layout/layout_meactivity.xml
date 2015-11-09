@@ -8,7 +8,10 @@
     <LinearLayout
         android:id="@+id/me_title"
         android:layout_width="fill_parent"
-        android:layout_height="40dp"
+        android:layout_height="35dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
         android:orientation="horizontal">
 
         <Button
@@ -17,7 +20,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="我发起的"
-            android:textColor="@drawable/selector_title_home"
+            android:layout_marginRight="2dp"
+            android:background="@drawable/button_viewpager_change"
+            android:textColor="@drawable/selector_button"
             android:textSize="15sp" />
 
         <Button
@@ -26,7 +31,9 @@
             android:layout_height="fill_parent"
             android:layout_weight="1"
             android:text="我参与的"
-            android:textColor="@drawable/selector_title_home"
+            android:layout_marginLeft="2dp"
+            android:background="@drawable/button_viewpager_change"
+            android:textColor="@drawable/selector_button"
             android:textSize="15sp" />
     </LinearLayout>
 

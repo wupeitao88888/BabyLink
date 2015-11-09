@@ -6,7 +6,7 @@
     >
 
     <LinearLayout
-        android:id="@+id/convert_code_title"
+        android:id="@+id/change_title"
         android:layout_width="fill_parent"
         android:layout_height="35dp"
         android:layout_marginTop="10dp"
@@ -15,11 +15,11 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/mconvert_code_unconsume"
+            android:id="@+id/me_start_change"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="未消费"
+            android:text="我发起的"
 
             android:layout_marginRight="2dp"
             android:background="@drawable/button_viewpager_change"
@@ -27,11 +27,11 @@
             android:textSize="15sp" />
 
         <Button
-            android:id="@+id/convert_code_consume"
+            android:id="@+id/me_take_change"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             android:layout_weight="1"
-            android:text="已消费"
+            android:text="我参与的"
             android:layout_marginLeft="2dp"
             android:background="@drawable/button_viewpager_change"
             android:textColor="@drawable/selector_button"
@@ -40,10 +40,11 @@
 
 
     <com.shiliuke.view.IndexViewPager
-        android:id="@+id/convert_code_viewpager"
+        android:id="@+id/mechange_viewpager"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:layout_below="@+id/convert_code_title"></com.shiliuke.view.IndexViewPager>
+        android:layout_below="@+id/change_title"></com.shiliuke.view.IndexViewPager>
+
 
 
 </RelativeLayout>

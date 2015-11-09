@@ -1,6 +1,7 @@
 package com.shiliuke.fragment;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -8,8 +9,10 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 
 import com.shiliuke.BabyLink.R;
+import com.shiliuke.BabyLink.UnconsumeCode;
 import com.shiliuke.adapter.MeInitateAdapter;
 import com.shiliuke.adapter.UnconsumeAdapter;
 import com.shiliuke.bean.MeInitateActivity;
@@ -78,13 +81,20 @@ public class FragmentUnconsume extends Fragment {
             }
         });
         List<Unconsume> mList = new ArrayList<>();
-        for(int i=0;i<9;i++){
-            Unconsume ma=new Unconsume("去国土局","2015/11/11 11:11","1");
+        for (int i = 0; i < 9; i++) {
+            Unconsume ma = new Unconsume("去国土局", "2015/11/11 11:11", "1");
             mList.add(ma);
         }
 
         unconsumeAdapter = new UnconsumeAdapter(mActivity, mList);
         unconsume_listView.setAdapter(unconsumeAdapter);
+        unconsume_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(mActivity, UnconsumeCode.class);
+                startActivity(intent);
+            }
+        });
     }
 
 

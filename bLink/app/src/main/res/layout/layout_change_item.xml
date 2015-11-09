@@ -115,10 +115,14 @@
                 />
 
             <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_width="70dp"
+                android:layout_height="32dp"
                 android:text="查看详情"
+                android:textSize="14dp"
                 android:id="@+id/look_info"
+                android:layout_marginTop="25dp"
+                android:background="@drawable/button_normal"
+                android:textColor="@drawable/selector_button_normal"
                 android:layout_marginRight="10dp"
                 android:layout_alignParentRight="true"
                 android:layout_centerVertical="true" />

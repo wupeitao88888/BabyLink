@@ -17,6 +17,7 @@ import com.shiliuke.BabyLink.MeConvertCodeActivity;
 import com.shiliuke.BabyLink.MeHomePage;
 import com.shiliuke.BabyLink.MeTopic;
 import com.shiliuke.BabyLink.MyHomeActivity;
+import com.shiliuke.BabyLink.PayEndActivity;
 import com.shiliuke.BabyLink.R;
 
 
@@ -100,6 +101,7 @@ public class FragmentMy extends Fragment implements OnClickListener {
                 startActivity(new Intent(mActivity,MeConvertCodeActivity.class));
                 break;
             case R.id.pay_rl:
+                startActivity(new Intent(mActivity,PayEndActivity.class));
                 //支付尾款
                 break;
 

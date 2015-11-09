@@ -21,7 +21,7 @@ import java.util.List;
 
 /*****
  *
- * 我参与的与我发起的共用一个adapter
+ * 未消费与已消费共用一个adapter
  *
  *
  */

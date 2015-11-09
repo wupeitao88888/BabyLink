@@ -82,6 +82,7 @@ public class MeActivity extends ActivitySupport implements View.OnClickListener,
         id_viewpager.setAdapter(adapter);
         id_viewpager.setOnPageChangeListener(this);
         id_viewpager.setCurrentItem(0);
+        me_initiate.setSelected(true);
     }
 
     @Override
@@ -89,9 +90,13 @@ public class MeActivity extends ActivitySupport implements View.OnClickListener,
         switch (v.getId()) {
             case R.id.me_initiate:
                 id_viewpager.setCurrentItem(0);
+                me_initiate.setSelected(true);
+                me_take_part_in.setSelected(false);
                 break;
             case R.id.me_take_part_in:
                 id_viewpager.setCurrentItem(1);
+                me_initiate.setSelected(false);
+                me_take_part_in.setSelected(true);
                 break;
         }
     }

@@ -66,6 +66,7 @@ public class MeHomePage extends ActivitySupport implements View.OnClickListener 
                 break;
             case R.id.user_change_re:
                 // 我的置换
+                mIntent(context,MeChange.class);
                 break;
             case R.id.user_showbean_re:
                 // 我的秀逗

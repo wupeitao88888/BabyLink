@@ -163,12 +163,14 @@
 
         <Button
             android:id="@+id/signup"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="70dp"
+            android:layout_height="32dp"
             android:layout_alignParentRight="true"
             android:layout_below="@+id/line"
             android:layout_marginRight="12dp"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="15dp"
+            android:background="@drawable/button_normal"
+            android:textColor="@drawable/selector_button_normal"
             android:text="我要报名" />
 
     </RelativeLayout>

@@ -4,44 +4,35 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.shiliuke.adapter.FragmentAdapter;
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.fragment.FragmentConsume;
-import com.shiliuke.fragment.FragmentMeInitate;
-import com.shiliuke.fragment.FragmentMeTakePartIn;
+import com.shiliuke.fragment.FragmentMeStartChange;
+import com.shiliuke.fragment.FragmentMeTakeChange;
 import com.shiliuke.fragment.FragmentUnconsume;
 import com.shiliuke.utils.FragmentEvent;
 import com.shiliuke.utils.MSG;
 import com.shiliuke.view.IndexViewPager;
 
 /**
- * 我的兑换码
- * Created by wupeitao on 15/11/5.
+ * 我的置换
+ * Created by wupeitao on 15/11/8.
  */
-public class MeConvertCodeActivity extends ActivitySupport implements View.OnClickListener, ViewPager.OnPageChangeListener,FragmentEvent.OnEventListener {
-    private IndexViewPager convert_code_viewpager;
-    private Button mconvert_code_unconsume,//我组织的
-            convert_code_consume;//我参与的
+public class MeChange extends ActivitySupport implements View.OnClickListener, ViewPager.OnPageChangeListener, FragmentEvent.OnEventListener {
+    private IndexViewPager mechange_viewpager;
+    private Button me_start_change,//我组织的
+            me_take_change;//我参与的
 
-    private FragmentUnconsume fe = new FragmentUnconsume();
-    private FragmentConsume ft = new FragmentConsume();
+    private FragmentMeStartChange fe = new FragmentMeStartChange();
+    private FragmentMeTakeChange ft = new FragmentMeTakeChange();
 
     private Fragment[] fragments = {fe, ft};
     private boolean[] fragmentsUpdateFlag = {false, false};
     private FragmentAdapter adapter;
-
-
-
-
-
 
 
     Handler mainHandler = new Handler() {
@@ -69,38 +60,39 @@ public class MeConvertCodeActivity extends ActivitySupport implements View.OnCli
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_me_convert_code);
+        setContentView(R.layout.layout_mechange);
         initView();
     }
 
     private void initView() {
-        convert_code_viewpager = (IndexViewPager) findViewById(R.id.convert_code_viewpager);
-        mconvert_code_unconsume = (Button) findViewById(R.id.mconvert_code_unconsume);
-        convert_code_consume = (Button) findViewById(R.id.convert_code_consume);
-        mconvert_code_unconsume.setOnClickListener(this);
-        convert_code_consume.setOnClickListener(this);
-        adapter = new FragmentAdapter(this.getSupportFragmentManager(),fragments,fragmentsUpdateFlag);
-        convert_code_viewpager.setAdapter(adapter);
-        convert_code_viewpager.setOnPageChangeListener(this);
-        convert_code_viewpager.setCurrentItem(0);
-        mconvert_code_unconsume.setSelected(true);
+        mechange_viewpager = (IndexViewPager) findViewById(R.id.mechange_viewpager);
+        me_start_change = (Button) findViewById(R.id.me_start_change);
+        me_take_change = (Button) findViewById(R.id.me_take_change);
+        me_start_change.setOnClickListener(this);
+        me_take_change.setOnClickListener(this);
+        adapter = new FragmentAdapter(this.getSupportFragmentManager(), fragments, fragmentsUpdateFlag);
+        mechange_viewpager.setAdapter(adapter);
+        mechange_viewpager.setOnPageChangeListener(this);
+        mechange_viewpager.setCurrentItem(0);
+        me_start_change.setSelected(true);
     }
 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.mconvert_code_unconsume:
-                convert_code_viewpager.setCurrentItem(0);
-                mconvert_code_unconsume.setSelected(true);
-                convert_code_consume.setSelected(false);
+            case R.id.me_start_change:
+                mechange_viewpager.setCurrentItem(0);
+                me_start_change.setSelected(true);
+                me_take_change.setSelected(false);
                 break;
-            case R.id.convert_code_consume:
-                convert_code_viewpager.setCurrentItem(1);
-                mconvert_code_unconsume.setSelected(false);
-                convert_code_consume.setSelected(true);
+            case R.id.me_take_change:
+                mechange_viewpager.setCurrentItem(1);
+                me_start_change.setSelected(false);
+                me_take_change.setSelected(true);
                 break;
         }
     }
+
     @Override
     public void onPageScrolled(int i, float v, int i1) {
 
@@ -120,5 +112,4 @@ public class MeConvertCodeActivity extends ActivitySupport implements View.OnCli
     public void onEvent(int what, Bundle data, Object object) {
         mainHandler.sendEmptyMessage(what);
     }
-
 }

@@ -54,6 +54,7 @@
             android:layout_marginTop="15dp"
             android:layout_toRightOf="@+id/initate_pic"
             android:text="报名人数"
+            android:visibility="invisible"
             android:textColor="@color/black"
             android:textSize="14dp" />
 
@@ -64,6 +65,7 @@
             android:layout_alignBottom="@+id/initate_pic"
             android:layout_toRightOf="@+id/initate_count_text"
             android:text="10人"
+            android:visibility="invisible"
             android:textColor="#AE1F5C"
             android:textSize="14dp" />
 
@@ -72,12 +74,12 @@
             android:layout_width="70dp"
             android:layout_height="32dp"
             android:layout_alignParentRight="true"
-            android:text="进行中"
+            android:text="待确认"
             android:textSize="14dp"
             android:layout_marginTop="-25dp"
             android:layout_below="@+id/initate_count"
-            android:background="@drawable/button_normal"
-            android:textColor="@drawable/selector_button_normal"
+            android:background="@drawable/button_normal_select_gray"
+            android:textColor="@color/white"
             />
 
 
