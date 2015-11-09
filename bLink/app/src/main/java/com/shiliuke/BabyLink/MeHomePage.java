@@ -62,17 +62,19 @@ public class MeHomePage extends ActivitySupport implements View.OnClickListener 
                 break;
             case R.id.user_topic_re:
                 // 我的话题
-                startActivity(new Intent(context, MeTopic.class));
+                startActivity(new Intent(context, MeTopicActivity.class));
                 break;
             case R.id.user_change_re:
                 // 我的置换
-                mIntent(context,MeChange.class);
+                mIntent(context,MeChangeActivity.class);
                 break;
             case R.id.user_showbean_re:
                 // 我的秀逗
+                mIntent(context,MeShowBeanActivity.class);
                 break;
-            case R.id.user_friends:
+            case R.id.user_friends_re:
                 // 我的朋友
+                mIntent(context,MeFriendsActivity.class);
                 break;
 
         }

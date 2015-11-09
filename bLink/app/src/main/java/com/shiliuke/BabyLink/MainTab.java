@@ -4,11 +4,9 @@ import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TabHost;
-import android.widget.TextView;
 
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.fragment.FragmentFind;
@@ -16,7 +14,6 @@ import com.shiliuke.fragment.FragmentHome;
 import com.shiliuke.fragment.FragmentBeanShow;
 import com.shiliuke.fragment.FragmentMy;
 import com.shiliuke.fragment.FragmentSend;
-import com.shiliuke.utils.L;
 import com.shiliuke.view.LCDialog;
 import com.shiliuke.view.TabFragmentHost;
 
@@ -150,7 +147,7 @@ public class MainTab extends ActivitySupport {
         publish_topic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIntent(MainTab.this, SendTopic.class);
+                mIntent(MainTab.this, SendTopicActivity.class);
                 dialog.cancel();
             }
         });
@@ -164,7 +161,7 @@ public class MainTab extends ActivitySupport {
         publish_swap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mIntent(MainTab.this, SendChange.class);
+                mIntent(MainTab.this, SendChangeActivity.class);
                 dialog.cancel();
             }
         });

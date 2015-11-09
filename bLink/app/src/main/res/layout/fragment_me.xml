@@ -141,8 +141,7 @@
                     android:layout_marginLeft="20dp"
                     android:text="我的主页"
                     android:textColor="@color/black_e0"
-                    android:textSize="15dp"
-                    />
+                    android:textSize="15dp" />
 
                 <ImageView
                     android:layout_width="20dp"
@@ -155,16 +154,17 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/relativelayout"
-                android:layout_marginRight="10dp"
                 android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:background="@drawable/relativelayout"
                 android:orientation="vertical">
 
                 <RelativeLayout
                     android:id="@+id/user_order_rl"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -173,9 +173,8 @@
                         android:layout_centerVertical="true"
                         android:layout_marginLeft="20dp"
                         android:text="我的订单"
-
                         android:textColor="@color/black_e0"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -188,13 +187,14 @@
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/gray"
-                    />
+                    android:background="@color/gray" />
+
                 <RelativeLayout
                     android:id="@+id/user_information_rl"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -204,7 +204,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="个人资料"
                         android:textColor="@color/black_e0"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -213,17 +213,18 @@
                         android:layout_marginRight="10dp"
                         android:background="@color/gray" />
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/gray"
-                    />
+                    android:background="@color/gray" />
 
                 <RelativeLayout
                     android:id="@+id/user_help_rl"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -233,7 +234,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="帮助中心"
                         android:textColor="@color/black_e0"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -242,16 +243,18 @@
                         android:layout_marginRight="10dp"
                         android:background="@color/gray" />
                 </RelativeLayout>
+
                 <View
                     android:layout_width="match_parent"
                     android:layout_height="0.5dp"
-                    android:background="@color/gray"
-                    />
+                    android:background="@color/gray" />
+
                 <RelativeLayout
                     android:id="@+id/version_update_rl"
                     android:layout_width="match_parent"
                     android:layout_height="45dp"
-
+                    android:layout_marginLeft="3dp"
+                    android:layout_marginRight="3dp"
                     android:gravity="center_vertical">
 
                     <TextView
@@ -261,7 +264,7 @@
                         android:layout_marginLeft="20dp"
                         android:text="版本升级"
                         android:textColor="@color/black_e0"
-                        android:textSize="15dp"/>
+                        android:textSize="15dp" />
 
                     <ImageView
                         android:layout_width="20dp"
@@ -271,8 +274,6 @@
                         android:background="@color/gray" />
                 </RelativeLayout>
             </LinearLayout>
-
-
         </LinearLayout>
     </ScrollView>
 </LinearLayout>

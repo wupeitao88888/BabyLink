@@ -62,7 +62,7 @@ public class FragmentMeTakePartIn extends Fragment {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-                // 下拉刷新操作
+                // 上拉刷新操作
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {

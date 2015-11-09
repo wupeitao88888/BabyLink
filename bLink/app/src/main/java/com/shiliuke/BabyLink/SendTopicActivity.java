@@ -8,7 +8,7 @@ import com.shiliuke.base.ActivitySupport;
  * 发布话题
  * Created by wupeitao on 15/11/3.
  */
-public class SendTopic extends ActivitySupport {
+public class SendTopicActivity extends ActivitySupport {
 
 
     @Override

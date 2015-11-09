@@ -7,7 +7,7 @@ import android.widget.Button;
 
 import com.shiliuke.base.ActivitySupport;
 
-public class Welcome extends ActivitySupport implements View.OnClickListener {
+public class WelcomeActivity extends ActivitySupport implements View.OnClickListener {
     private Button login;
 
     @Override
@@ -25,7 +25,7 @@ public class Welcome extends ActivitySupport implements View.OnClickListener {
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.login:
-                mIntent(Welcome.this,LoginActivity.class);
+                mIntent(WelcomeActivity.this,LoginActivity.class);
                 break;
 
         }

@@ -12,7 +12,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
-import com.shiliuke.BabyLink.MeTopicInfo;
+import com.shiliuke.BabyLink.MeTopicInfoActivity;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.MeInitateActivity;
 import com.shiliuke.utils.ViewHolder;
@@ -75,7 +75,7 @@ public class MeTopicAdapter extends BaseAdapter {
         initate_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent=new Intent(mContext,MeTopicInfo.class);
+                Intent intent=new Intent(mContext,MeTopicInfoActivity.class);
                 mContext.startActivity(intent);
             }
         });

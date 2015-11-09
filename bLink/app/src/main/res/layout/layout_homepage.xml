@@ -70,7 +70,7 @@
                 android:layout_marginTop="10dp"
                 android:text="我的活动"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
 
         </RelativeLayout>
@@ -97,7 +97,7 @@
                 android:layout_marginTop="10dp"
                 android:text="我的话题"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
 
         </RelativeLayout>
@@ -124,7 +124,7 @@
                 android:layout_marginTop="10dp"
                 android:text="我的置换"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
         </RelativeLayout>
 
@@ -162,7 +162,7 @@
                 android:layout_marginTop="10dp"
                 android:text="我的秀逗"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
 
 
@@ -189,7 +189,7 @@
                 android:layout_marginTop="10dp"
                 android:text="我的朋友"
                 android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:textSize="15sp" />
 
 
 

@@ -14,9 +14,8 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.target.Target;
 import com.shiliuke.BabyLink.ChangeInfoActivity;
 import com.shiliuke.BabyLink.R;
-import com.shiliuke.bean.MeInitateActivity;
 import com.shiliuke.bean.MeStarChange;
-import com.shiliuke.utils.L;
+import com.shiliuke.bean.MyShowBean;
 import com.shiliuke.utils.ViewHolder;
 import com.shiliuke.utils.ViewUtil;
 
@@ -24,17 +23,17 @@ import java.util.List;
 
 /*****
  *
- * 我参与的置换与我发起的置换的共用一个adapter
+ * 我的秀逗
  *
  *
  */
-public class MeStarChangeAdapter extends BaseAdapter {
+public class MyShowBeanAdapter extends BaseAdapter {
 
-    private List<MeStarChange> mList;
+    private List<MyShowBean> mList;
     private Context mContext;
 
 
-    public MeStarChangeAdapter(final Context _context, List<MeStarChange> mList) {
+    public MyShowBeanAdapter(final Context _context, List<MyShowBean> mList) {
         this.mContext = _context;
         this.mList = mList;
     }
@@ -46,7 +45,7 @@ public class MeStarChangeAdapter extends BaseAdapter {
     }
 
     @Override
-    public MeStarChange getItem(int position) {
+    public MyShowBean getItem(int position) {
         return mList.get(position);
     }
 
@@ -59,25 +58,24 @@ public class MeStarChangeAdapter extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         if (convertView == null) {
             convertView = LayoutInflater.from(mContext).inflate(
-                    R.layout.layout_mestarchange_item, parent, false);
+                    R.layout.layout_myshowbean_item, parent, false);
         }
-        MeStarChange meInitateActivity = mList.get(position);
-        ImageView initate_pic = ViewHolder.get(convertView, R.id.initate_pic);
-        TextView initate_name = ViewHolder.get(convertView, R.id.initate_name);
-        TextView initate_time = ViewHolder.get(convertView, R.id.initate_time);
-        Button initate_status = ViewHolder.get(convertView, R.id.initate_status);
+        MyShowBean memyshowbeanActivity = mList.get(position);
+        ImageView myshowbean_pic = ViewHolder.get(convertView, R.id.myshowbean_pic);
+        TextView myshowbean_name = ViewHolder.get(convertView, R.id.myshowbean_name);
+//        TextView myshowbean_time = ViewHolder.get(convertView, R.id.myshowbean_time);
+        Button myshowbean_status = ViewHolder.get(convertView, R.id.myshowbean_status);
 
 
-        setImage(initate_pic, meInitateActivity.getchange_pic(), mContext);
-        ViewUtil.setText(mContext, initate_name, meInitateActivity.getchange_name());
-        ViewUtil.setText(mContext, initate_time, meInitateActivity.getchange_time());
+        setImage(myshowbean_pic, memyshowbeanActivity.getSbean_pic(), mContext);
+        ViewUtil.setText(mContext, myshowbean_name, memyshowbeanActivity.getSbean_name());
+//        ViewUtil.setText(mContext, myshowbean_time, memyshowbeanActivity.getchange_time());
+//        myshowbean_status.setSelected(true);//true是灰色
 
-//        initate_status.setSelected(true);//true是灰色
-
-        initate_status.setOnClickListener(new View.OnClickListener() {
+        myshowbean_status.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.startActivity(new Intent(mContext, ChangeInfoActivity.class));
+//                mContext.startActivity(new Intent(mContext, ChangeInfoActivity.class));
             }
         });
 

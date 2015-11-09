@@ -12,7 +12,6 @@ import com.shiliuke.adapter.TopicPicGridAdapter;
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.bean.Comment;
 import com.shiliuke.bean.UserImgs;
-import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.view.NoScrollGridView;
 import com.shiliuke.view.NoScrollListView;
 
@@ -23,7 +22,7 @@ import java.util.List;
  * 我的话题详情
  * Created by wupeitao on 15/11/5.
  */
-public class MeTopicInfo extends ActivitySupport implements View.OnClickListener {
+public class MeTopicInfoActivity extends ActivitySupport implements View.OnClickListener {
 
     private ImageView user_pic;//用户头像
 
@@ -108,7 +107,7 @@ public class MeTopicInfo extends ActivitySupport implements View.OnClickListener
     public void onClick(View v) {
         switch(v.getId()){
             case R.id.user_edit:
-                startActivity(new Intent(MeTopicInfo.this,SendTopic.class));
+                startActivity(new Intent(MeTopicInfoActivity.this,SendTopicActivity.class));
                 break;
         }
     }

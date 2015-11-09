@@ -22,7 +22,7 @@ import com.shiliuke.view.IndexViewPager;
  * 我的置换
  * Created by wupeitao on 15/11/8.
  */
-public class MeChange extends ActivitySupport implements View.OnClickListener, ViewPager.OnPageChangeListener, FragmentEvent.OnEventListener {
+public class MeChangeActivity extends ActivitySupport implements View.OnClickListener, ViewPager.OnPageChangeListener, FragmentEvent.OnEventListener {
     private IndexViewPager mechange_viewpager;
     private Button me_start_change,//我组织的
             me_take_change;//我参与的

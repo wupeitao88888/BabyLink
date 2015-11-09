@@ -42,7 +42,7 @@
         </activity>
         <!-- tab标签 -->
         <activity
-            android:name=".Welcome"
+            android:name=".WelcomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden"
@@ -113,7 +113,7 @@
         </activity>
         <!--  发布话题 -->
         <activity
-            android:name=".SendTopic"
+            android:name=".SendTopicActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden">
         </activity>
@@ -125,7 +125,7 @@
         </activity>
         <!-- 发布置换 -->
         <activity
-            android:name=".SendChange"
+            android:name=".SendChangeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateVisible|adjustPan">
         </activity>
@@ -148,13 +148,13 @@
         </activity>
         <!-- 我的话题 -->
         <activity
-            android:name=".MeTopic"
+            android:name=".MeTopicActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
         <!-- 我的话题详情 -->
         <activity
-            android:name=".MeTopicInfo"
+            android:name=".MeTopicInfoActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
@@ -178,7 +178,7 @@
         </activity>
         <!-- 未消费(已消费)——兑换码 -->
         <activity
-            android:name=".UnconsumeCode"
+            android:name=".UnconsumeCodeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
@@ -190,13 +190,25 @@
         </activity>
         <!-- 我的置换 -->
         <activity
-            android:name=".MeChange"
+            android:name=".MeChangeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
         <!-- 我的秀逗 -->
         <activity
             android:name=".MeShowBeanActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的好友 -->
+        <activity
+            android:name=".MeFriendsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的订单 -->
+        <activity
+            android:name=".MeOrderActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>

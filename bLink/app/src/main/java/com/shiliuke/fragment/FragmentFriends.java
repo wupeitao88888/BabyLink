@@ -11,32 +11,32 @@ import android.view.ViewGroup;
 import android.widget.AbsListView;
 
 import com.shiliuke.BabyLink.R;
-import com.shiliuke.adapter.ChangeAdapter;
-import com.shiliuke.adapter.MeInitateAdapter;
-import com.shiliuke.bean.Change;
-import com.shiliuke.bean.MeInitateActivity;
+import com.shiliuke.adapter.FriendsAdapter;
+import com.shiliuke.adapter.NeighbourAdapter;
+import com.shiliuke.bean.Friends;
+import com.shiliuke.bean.Neighbour;
+import com.shiliuke.view.PullToRefresh.NOViewPagerPullableListView;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
-import com.shiliuke.view.PullToRefresh.PullableListView;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
 /**
- * 我组织的
+ * 我的好友
  */
-public class FragmentMeInitate extends Fragment {
+public class FragmentFriends extends Fragment {
     private View rootView;//缓存Fragment view
-    private PullableListView initate_listView;
-    private MeInitateAdapter meInitateAdapter;
+    private NOViewPagerPullableListView friends_listView;
+    private FriendsAdapter changeAdapter;
     private Activity mActivity;
-    private PullToRefreshLayout initate_PullToRefreshLayout;
+    private PullToRefreshLayout friends_PullToRefreshLayout;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         if (rootView == null) {
-            rootView = inflater.inflate(R.layout.fragment_meinitate, null);
+            rootView = inflater.inflate(R.layout.fragment_friends, null);
             initView(rootView);
         }
         //缓存的rootView需要判断是否已经被加过parent， 如果有parent需要从parent删除，要不然会发生这个rootview已经有parent的错误。
@@ -49,18 +49,18 @@ public class FragmentMeInitate extends Fragment {
 
     private void initView(View rootView) {
         mActivity = getActivity();
-        initate_listView = (PullableListView) rootView.findViewById(R.id.initate_listView);
-        initate_PullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.initate_PullToRefreshLayout);
+        friends_listView = (NOViewPagerPullableListView) rootView.findViewById(R.id.friends_listView);
+        friends_PullToRefreshLayout = (PullToRefreshLayout) rootView.findViewById(R.id.friends_PullToRefreshLayout);
 
 
-        initate_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+        friends_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
                 // 下拉刷新操作
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
-                        initate_PullToRefreshLayout.refreshFinish(pullToRefreshLayout.SUCCEED);
+                        friends_PullToRefreshLayout.refreshFinish(pullToRefreshLayout.SUCCEED);
                     }
                 }.sendEmptyMessageDelayed(0, 2000);
 
@@ -68,24 +68,40 @@ public class FragmentMeInitate extends Fragment {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-                // 上拉刷新操作
+                // 上拉
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
-                        initate_PullToRefreshLayout.loadmoreFinish(pullToRefreshLayout.SUCCEED);
+                        friends_PullToRefreshLayout.loadmoreFinish(pullToRefreshLayout.SUCCEED);
                     }
                 }.sendEmptyMessageDelayed(0, 2000);
 
             }
         });
-        List<MeInitateActivity> mList = new ArrayList<>();
-        for(int i=0;i<9;i++){
-            MeInitateActivity ma=new MeInitateActivity("","去国土局","2015/11/11 11:11","1","10");
-            mList.add(ma);
+
+
+        List<Friends> list = new ArrayList<>();
+        for (int i = 0; i < 9; i++) {
+            Friends cg = new Friends();
+            cg.setName("小狗");
+            cg.setPic("http://m1.img.srcdd.com/farm2/d/2011/0817/01/5A461954F44D8DC67A17838AA356FE4B_S64_64_64.JPEG");
+            list.add(cg);
         }
 
-        meInitateAdapter = new MeInitateAdapter(mActivity, mList);
-        initate_listView.setAdapter(meInitateAdapter);
+
+        changeAdapter = new FriendsAdapter(mActivity, list);
+        friends_listView.setAdapter(changeAdapter);
+        friends_listView.setOnScrollListener(new AbsListView.OnScrollListener() {
+            @Override
+            public void onScrollStateChanged(AbsListView view, int scrollState) {
+            }
+
+            @Override
+            public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount,
+                                 int totalItemCount) {
+
+            }
+        });
     }
 
 

@@ -8,15 +8,11 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.RelativeLayout;
-import android.widget.TextView;
 
-import com.shiliuke.BabyLink.MeActivity;
 import com.shiliuke.BabyLink.MeConvertCodeActivity;
 import com.shiliuke.BabyLink.MeHomePage;
-import com.shiliuke.BabyLink.MeTopic;
-import com.shiliuke.BabyLink.MyHomeActivity;
+import com.shiliuke.BabyLink.MeOrderActivity;
 import com.shiliuke.BabyLink.PayEndActivity;
 import com.shiliuke.BabyLink.R;
 
@@ -86,6 +82,7 @@ public class FragmentMy extends Fragment implements OnClickListener {
                 break;
             case R.id.user_order_rl:
                 //我的订单
+                startActivity(new Intent(mActivity, MeOrderActivity.class));
                 break;
             case R.id.user_information_rl:
                 //个人资料

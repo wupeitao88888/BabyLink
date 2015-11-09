@@ -12,10 +12,8 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.shiliuke.BabyLink.R;
-import com.shiliuke.BabyLink.UnconsumeCode;
-import com.shiliuke.adapter.MeInitateAdapter;
+import com.shiliuke.BabyLink.UnconsumeCodeActivity;
 import com.shiliuke.adapter.UnconsumeAdapter;
-import com.shiliuke.bean.MeInitateActivity;
 import com.shiliuke.bean.Unconsume;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
 import com.shiliuke.view.PullToRefresh.PullableListView;
@@ -70,7 +68,7 @@ public class FragmentConsume extends Fragment {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-                // 下拉刷新操作
+                // 上拉刷新操作
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
@@ -91,7 +89,7 @@ public class FragmentConsume extends Fragment {
         consume_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Intent intent = new Intent(mActivity, UnconsumeCode.class);
+                Intent intent = new Intent(mActivity, UnconsumeCodeActivity.class);
                 startActivity(intent);
             }
         });

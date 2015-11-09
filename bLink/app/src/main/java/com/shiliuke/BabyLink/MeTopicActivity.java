@@ -18,7 +18,7 @@ import java.util.List;
  * 我的话题
  * Created by wupeitao on 15/11/5.
  */
-public class MeTopic extends ActivitySupport {
+public class MeTopicActivity extends ActivitySupport {
 
 
     private PullableListView meTopic_listView;
@@ -53,7 +53,7 @@ public class MeTopic extends ActivitySupport {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-                // 下拉刷新操作
+                // 上拉加载
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
