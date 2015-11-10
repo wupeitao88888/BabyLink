@@ -10,11 +10,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 
+import com.shiliuke.BabyLink.HelpActivity;
 import com.shiliuke.BabyLink.MeConvertCodeActivity;
 import com.shiliuke.BabyLink.MeHomePage;
 import com.shiliuke.BabyLink.MeOrderActivity;
 import com.shiliuke.BabyLink.PayEndActivity;
 import com.shiliuke.BabyLink.R;
+import com.shiliuke.BabyLink.PersonalData;
 
 
 public class FragmentMy extends Fragment implements OnClickListener {
@@ -55,9 +57,8 @@ public class FragmentMy extends Fragment implements OnClickListener {
         user_information_rl = (RelativeLayout) view.findViewById(R.id.user_information_rl);
         user_help_rl = (RelativeLayout) view.findViewById(R.id.user_help_rl);
         version_update_rl = (RelativeLayout) view.findViewById(R.id.version_update_rl);
-        exchange_code_rl= (RelativeLayout) view.findViewById(R.id.exchange_code_rl);
-        pay_rl= (RelativeLayout) view.findViewById(R.id.pay_rl);
-
+        exchange_code_rl = (RelativeLayout) view.findViewById(R.id.exchange_code_rl);
+        pay_rl = (RelativeLayout) view.findViewById(R.id.pay_rl);
 
 
         user_home_rl.setOnClickListener(this);
@@ -67,7 +68,6 @@ public class FragmentMy extends Fragment implements OnClickListener {
         version_update_rl.setOnClickListener(this);
         exchange_code_rl.setOnClickListener(this);
         pay_rl.setOnClickListener(this);
-
 
 
         return view;
@@ -86,19 +86,21 @@ public class FragmentMy extends Fragment implements OnClickListener {
                 break;
             case R.id.user_information_rl:
                 //个人资料
+                startActivity(new Intent(mActivity, PersonalData.class));
                 break;
             case R.id.user_help_rl:
                 //帮助中心
+                startActivity(new Intent(mActivity, HelpActivity.class));
                 break;
             case R.id.version_update_rl:
                 //版本升级
                 break;
             case R.id.exchange_code_rl:
                 //兑换码
-                startActivity(new Intent(mActivity,MeConvertCodeActivity.class));
+                startActivity(new Intent(mActivity, MeConvertCodeActivity.class));
                 break;
             case R.id.pay_rl:
-                startActivity(new Intent(mActivity,PayEndActivity.class));
+                startActivity(new Intent(mActivity, PayEndActivity.class));
                 //支付尾款
                 break;
 
