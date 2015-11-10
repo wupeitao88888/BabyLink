@@ -8,7 +8,6 @@ import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import com.shiliuke.bean.BeanShowModel;
-import com.shiliuke.utils.L;
 
 /**
  * 图片贴纸View
@@ -115,23 +114,25 @@ public class StickerImageView extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
+        if (style != TYPE.COMPILE || compileModel == null) {
+            return false;
+        }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
-                if (style == TYPE.COMPILE && compileModel != null) {
-                    if (event.getX() > x1 && event.getX() < x2 && event.getY() > y1 && event.getY() < y2) {
-                        getParent().requestDisallowInterceptTouchEvent(true);
-                        compileModel.setXy(event.getX(), event.getY());
-                        invalidate();
-                        isCurrentClick = true;
-                    }
-                }
-                break;
-            case MotionEvent.ACTION_MOVE:
-                if (style == TYPE.COMPILE && compileModel != null && isCurrentClick) {
+                if (event.getX() > x1 && event.getX() < x2 && event.getY() > y1 && event.getY() < y2) {
                     getParent().requestDisallowInterceptTouchEvent(true);
                     compileModel.setXy(event.getX(), event.getY());
                     invalidate();
+                    isCurrentClick = true;
                 }
+                break;
+            case MotionEvent.ACTION_MOVE:
+                if (!isCurrentClick) {
+                    break;
+                }
+                getParent().requestDisallowInterceptTouchEvent(true);
+                compileModel.setXy(event.getX(), event.getY());
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 setCurrentXy();

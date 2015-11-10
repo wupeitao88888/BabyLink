@@ -13,6 +13,8 @@ import com.shiliuke.BabyLink.FindDesActivity;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.FindAdapter;
 import com.shiliuke.bean.FindModel;
+import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
+import com.shiliuke.view.PullToRefresh.PullableListView;
 import com.shiliuke.view.TitleBar;
 
 import java.util.ArrayList;
@@ -22,7 +24,8 @@ public class FragmentFind extends Fragment implements AdapterView.OnItemClickLis
 
     private TextView tv_fragment_find_category;//发现页面分类选项
     private TextView tv_fragment_find_sort;//发现页面排序方式选项
-    private ListView list_fragment_find;//页面list
+    private PullableListView list_fragment_find;//页面list
+    private PullToRefreshLayout find_PullToRefreshLayout;
     private FindAdapter mAdapter;
     private ArrayList<FindModel> mData;
 
@@ -33,11 +36,23 @@ public class FragmentFind extends Fragment implements AdapterView.OnItemClickLis
         View view = inflater.inflate(R.layout.fragment_find, null);
 
         ((TitleBar) view.findViewById(R.id.meCommunity_title)).setCenterTitle("发现");
-        list_fragment_find = (ListView) view.findViewById(R.id.list_fragment_find);
+        list_fragment_find = (PullableListView) view.findViewById(R.id.list_fragment_find);
+        find_PullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.find_PullToRefreshLayout);
         initData();
         mAdapter = new FindAdapter(list_fragment_find, this, mData);
         list_fragment_find.setAdapter(mAdapter);
         list_fragment_find.setOnItemClickListener(this);
+        find_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+                find_PullToRefreshLayout.refreshFinish(find_PullToRefreshLayout.SUCCEED);
+            }
+
+            @Override
+            public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+                find_PullToRefreshLayout.loadmoreFinish(find_PullToRefreshLayout.SUCCEED);
+            }
+        });
         return view;
     }
 

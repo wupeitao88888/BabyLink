@@ -35,14 +35,23 @@
 
     </LinearLayout>
 
-    <ListView
-        android:layout_marginTop="@dimen/dp5"
-        android:id="@+id/listview_beanshow"
+    <com.shiliuke.view.PullToRefresh.PullToRefreshLayout
+        android:id="@+id/beanshow_PullToRefreshLayout"
         android:layout_width="match_parent"
-        android:dividerHeight="@dimen/dp10"
-        android:divider="@color/black"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
 
+        <include layout="@layout/refresh_head"/>
+
+        <com.shiliuke.view.PullToRefresh.PullableListView
+            android:layout_marginTop="@dimen/dp5"
+            android:id="@+id/listview_beanshow"
+            android:layout_width="match_parent"
+            android:dividerHeight="@dimen/dp10"
+            android:divider="@color/black"
+            android:layout_height="wrap_content"/>
+
+        <include layout="@layout/load_more"/>
+    </com.shiliuke.view.PullToRefresh.PullToRefreshLayout>
 
 
 </LinearLayout>

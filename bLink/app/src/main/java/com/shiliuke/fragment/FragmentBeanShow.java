@@ -1,7 +1,6 @@
 package com.shiliuke.fragment;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -10,11 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
-import android.widget.ListView;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.BeanShowAdapter;
 import com.shiliuke.bean.BeanShowModel;
-import com.shiliuke.utils.ToastUtil;
+import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
+import com.shiliuke.view.PullToRefresh.PullableListView;
 import com.shiliuke.view.TitleBar;
 import com.shiliuke.view.stickerview.StickerExecutor;
 import com.shiliuke.view.stickerview.StickerImageContans;
@@ -29,8 +28,9 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
 
     private Button btn_beanshow_link;//link按钮
     private Button btn_beanshow_public;//广场按钮
-    private ListView listview_beanshow;//列表
+    private PullableListView listview_beanshow;//列表
     private BeanShowAdapter beanShowAdapter;
+    private PullToRefreshLayout beanshow_PullToRefreshLayout;
     private ArrayList<BeanShowModel> data;
 
     @Override
@@ -44,18 +44,30 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         View view = inflater.inflate(R.layout.fragment_beanshow, null);
+        ((TitleBar) view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
         btn_beanshow_link = (Button) view.findViewById(R.id.btn_beanshow_link);
         btn_beanshow_public = (Button) view.findViewById(R.id.btn_beanshow_public);
-        listview_beanshow = (ListView) view.findViewById(R.id.listview_beanshow);
         btn_beanshow_public.setOnClickListener(this);
         btn_beanshow_public.setOnClickListener(this);
+        listview_beanshow = (PullableListView) view.findViewById(R.id.listview_beanshow);
+        beanshow_PullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.beanshow_PullToRefreshLayout);
         initData();
         beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data);
         listview_beanshow.setAdapter(beanShowAdapter);
         listview_beanshow.setOnScrollListener(this);
-        ((TitleBar)view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
+        beanshow_PullToRefreshLayout.setOnRefreshListener(new PullToRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh(PullToRefreshLayout pullToRefreshLayout) {
+                beanshow_PullToRefreshLayout.refreshFinish(beanshow_PullToRefreshLayout.SUCCEED);
+            }
+
+            @Override
+            public void onLoadMore(PullToRefreshLayout pullToRefreshLayout) {
+                beanshow_PullToRefreshLayout.loadmoreFinish(beanshow_PullToRefreshLayout.SUCCEED);
+
+            }
+        });
         return view;
     }
 
@@ -97,12 +109,12 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.btn_beanshow_link:
-                ToastUtil.show(getContext(), "click link", 1);
-                break;
-            case R.id.btn_beanshow_public:
-                ToastUtil.show(getContext(), "click 广场", 1);
-                break;
+//            case R.id.btn_beanshow_link:
+//                ToastUtil.show(getContext(), "click link", 1);
+//                break;
+//            case R.id.btn_beanshow_public:
+//                ToastUtil.show(getContext(), "click 广场", 1);
+//                break;
         }
     }
 
@@ -137,15 +149,15 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        switch (requestCode){
+        switch (requestCode) {
             case StickerImageContans.REQUESTADDMODEL:
                 if (resultCode == Activity.RESULT_OK) {
-                    int position = data.getIntExtra("position",0);
+                    int position = data.getIntExtra("position", 0);
                     StickerImageModel model = (StickerImageModel) data.getSerializableExtra("model");
                     this.data.get(position).getStickerlist().add(model);
                     this.beanShowAdapter.notifyDataSetChanged();
                 }
-            break;
+                break;
         }
     }
 
