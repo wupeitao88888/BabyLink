@@ -1,43 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-          package="com.shiliuke.BabyLink">
+    package="com.shiliuke.BabyLink" >
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
-    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.INTERNET"/>
-    <uses-permission android:name="android.permission.READ_LOGS"/>
-    <uses-permission android:name="android.permission.CALL_PHONE"/>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_LOGS" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <!-- renren sso Permission for Unit Test -->
     <!-- QQ、QQ空间所需权限 -->
-    <uses-permission android:name="android.permission.GET_TASKS"/>
-    <uses-permission android:name="android.permission.SET_DEBUG_APP"/>
-    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
-    <uses-permission android:name="android.permission.GET_ACCOUNTS"/>
-    <uses-permission android:name="android.permission.USE_CREDENTIALS"/>
-    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS"/>
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.SET_DEBUG_APP" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
 
     <application
+        android:name="com.shiliuke.global.MApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:supportsRtl="true"
-        android:name="com.shiliuke.global.MApplication"
-        >
+        android:supportsRtl="true" >
         <activity
             android:name=".MainTab"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <!-- tab标签 -->
@@ -45,98 +43,87 @@
             android:name=".WelcomeActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 登陆 -->
         <activity
             android:name=".LoginActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 注册 -->
         <activity
             android:name=".RegisterActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 忘记密码 -->
         <activity
             android:name=".ForgetPassActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 活动详情 -->
         <activity
             android:name=".ExerciseActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 报名 -->
         <activity
             android:name=".ApplyActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden"
-            >
-
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <!--  置换详情 -->
+        <!-- 置换详情 -->
         <activity
             android:name=".ChangeInfoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <!--  发布活动 -->
+        <!-- 发布活动 -->
         <activity
             android:name=".IssueActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <!--  发布活动——发布 -->
+        <!-- 发布活动——发布 -->
         <activity
             android:name=".SendIssueActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <!--  发布话题 -->
+        <!-- 发布话题 -->
         <activity
             android:name=".SendTopicActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
-        <!--  秀一下 -->
+        <!-- 秀一下 -->
         <activity
             android:name=".SendShowActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustUnspecified|stateHidden">
+            android:windowSoftInputMode="adjustUnspecified|stateHidden" >
         </activity>
         <!-- 发布置换 -->
         <activity
             android:name=".SendChangeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateVisible|adjustPan">
+            android:windowSoftInputMode="stateVisible|adjustPan" >
         </activity>
         <!-- 秀逗____逗一逗 -->
         <activity
             android:name=".StickerModifyActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
             <intent-filter>
-                <action android:name="com.shiliuke.StickerModifyActivity"></action>
-                <category android:name="android.intent.category.DEFAULT"/>
+                <action android:name="com.shiliuke.StickerModifyActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
 
@@ -144,97 +131,103 @@
         <activity
             android:name=".MeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的话题 -->
         <activity
             android:name=".MeTopicActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的话题详情 -->
         <activity
             android:name=".MeTopicInfoActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的主页 -->
         <activity
             android:name=".MeHomePage"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的兑换码 -->
         <activity
             android:name=".MeConvertCodeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 发现详情 -->
         <activity
             android:name=".FindDesActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 未消费(已消费)——兑换码 -->
         <activity
             android:name=".UnconsumeCodeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 支付尾款 -->
         <activity
             android:name=".PayEndActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的置换 -->
         <activity
             android:name=".MeChangeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的秀逗 -->
         <activity
             android:name=".MeShowBeanActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的好友 -->
         <activity
             android:name=".MeFriendsActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 我的订单 -->
         <activity
             android:name=".MeOrderActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 个人资料 -->
         <activity
             android:name=".PersonalData"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 修改电话 -->
         <activity
             android:name=".UpdatePnumberActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 修改密码 -->
         <activity
             android:name=".UpdatePWActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
         <!-- 帮助中心 -->
         <activity
             android:name=".HelpActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="adjustPan|stateHidden">
+            android:windowSoftInputMode="adjustPan|stateHidden" >
+        </activity>
+        <!-- 邀请好友 -->
+        <activity
+            android:name=".InvitefriendsActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden" >
         </activity>
     </application>
 

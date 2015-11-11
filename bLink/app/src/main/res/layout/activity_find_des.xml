@@ -185,6 +185,8 @@
             android:layout_marginRight="@dimen/dp5"
             android:background="@color/light_blue"
             android:text="邀请好友"
+            android:clickable="true"
+            android:onClick="click"
             android:drawableRight="@mipmap/ad_select"
             />
 
