@@ -56,4 +56,6 @@
     <string name="me_home">本小区可见</string>
 
     <string name="exit">再按一次退出程序</string>
+    <string name="aquire_auth_code">获取验证码</string>
+    <string name="reacquire">重新获取</string>
 </resources>

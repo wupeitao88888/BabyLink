@@ -7,12 +7,16 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.internet.TaskID;
 import com.shiliuke.internet.VolleyListerner;
 import com.shiliuke.model.BasicRequest;
 import com.shiliuke.utils.LCSharedPreferencesHelper;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by lc-php1 on 2015/10/26.
@@ -62,8 +66,19 @@ public class LoginActivity extends ActivitySupport implements OnClickListener,Vo
     public void onClick(View view) {
         switch (view.getId()){
             case R.id.login_Btn:
-                BasicRequest.getInstance().request(this,
-                        TaskID.ACTION_LOGIN, "article");
+                if(user_name.getText().toString() == null){
+                    Toast.makeText(this, "请输入验账号", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                if(password.getText().toString() == null){
+                    Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+                Map<String, String> params = new HashMap<String,String>();
+                params.put("mobile", user_name.getText().toString());
+                params.put("code", password.getText().toString());
+                BasicRequest.getInstance().Login(this,
+                        TaskID.ACTION_LOGIN, params);
                 mIntent(LoginActivity.this,MainTab.class);
             break;
             case R.id.forget_password:
@@ -85,6 +100,7 @@ public class LoginActivity extends ActivitySupport implements OnClickListener,Vo
     public void onResponse(String str, int taskid) {
         try {
             if(taskid == TaskID.ACTION_LOGIN){
+
                 mIntent(LoginActivity.this, MainTab.class);
             }
         } catch (Exception e) {
