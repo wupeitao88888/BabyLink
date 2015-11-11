@@ -15,6 +15,8 @@ import com.android.volley.Request;
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.Volley;
 
+import java.util.Map;
+
 /**
  * @author lvfl
  * 创建时间：2015年11月5日 上午10:31:13
@@ -45,12 +47,15 @@ public class VolleyTask {
 	}
 	
 	public void addRequest(Request request){
+
 		mQueue.add(request);
 		mQueue.start();
 	}
 	
-	private void initParam() {
+	private void initParam(Map<String,String> params) {
 		//参数初始化(预留方法)
+		
+
 	}
 
 	public void cancleAll(){

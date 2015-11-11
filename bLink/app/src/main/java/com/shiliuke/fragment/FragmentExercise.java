@@ -8,6 +8,11 @@ import com.shiliuke.bean.Exercise;
 import com.shiliuke.bean.UserInfo;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.AdvertisementList;
+import com.shiliuke.global.AppConfig;
+import com.shiliuke.internet.TaskID;
+import com.shiliuke.internet.VolleyListerner;
+import com.shiliuke.model.BasicRequest;
+import com.shiliuke.utils.L;
 import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.utils.ViewUtil;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
@@ -32,13 +37,15 @@ import android.widget.ListView;
 import android.widget.RelativeLayout;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 /**
  * 活动
  */
-public class FragmentExercise extends Fragment {
+public class FragmentExercise extends Fragment implements VolleyListerner {
     private View rootView;//缓存Fragment view
     private PullableListView exrcise_listview;
     private ExerciseAdapter eAdater;
@@ -111,7 +118,10 @@ public class FragmentExercise extends Fragment {
 
             }
         });
-
+        Map<String,String> params=new HashMap<>();
+        params.put("member_id","1");
+        params.put("page","1");
+        BasicRequest.getInstance().requestPost(this, TaskID.ACTION_ACTIVITY,params, AppConfig.ACTIVITY);
 
         list = new ArrayList<>();
         lista = new ArrayList<>();
@@ -183,4 +193,14 @@ public class FragmentExercise extends Fragment {
     }
 
 
+    @Override
+    public void onResponse(String str, int taskid) {
+        L.e("++++++++"+str);
+
+    }
+
+    @Override
+    public void onResponseError(String error, int taskid) {
+
+    }
 }

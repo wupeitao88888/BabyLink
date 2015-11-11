@@ -16,12 +16,11 @@
 package com.shiliuke.global;
 
 
-
-
 // TODO: Auto-generated Javadoc
+
 /**
  * © 2012 amsoft.cn
- * 名称：AbAppConfig.java 
+ * 名称：AbAppConfig.java
  * 描述：初始设置类.
  *
  * @author 还如一梦中
@@ -29,18 +28,32 @@ package com.shiliuke.global;
  * @date：2014-07-03 下午1:33:39
  */
 public class AppConfig {
-	
-	/**  UI设计的基准宽度. */
-	public static int UI_WIDTH = 720;
-	
-	/**  UI设计的基准高度. */
-	public static int UI_HEIGHT = 1080;
-	/** Textview为空. */
-	public static String TEXTVIEW_NULL = "TextView为空";
-	/** Text为空. */
-	public static String TEXT_NULL = "Text为空";
-	/** 默认 SharePreferences文件名. */
-	public static String SHARED_PATH = "app_share";
+
+    /**
+     * UI设计的基准宽度.
+     */
+    public static int UI_WIDTH = 720;
+
+    /**
+     * UI设计的基准高度.
+     */
+    public static int UI_HEIGHT = 1080;
+    /**
+     * Textview为空.
+     */
+    public static String TEXTVIEW_NULL = "TextView为空";
+    /**
+     * Text为空.
+     */
+    public static String TEXT_NULL = "Text为空";
+    /**
+     * 默认 SharePreferences文件名.
+     */
+    public static String SHARED_PATH = "app_share";
+    //基础URL
+    public static String BASE_URL = "http://101.200.174.65/";
+    //活动
+    public static String ACTIVITY = "babyLink/mobile.php/Mobile/Activity";
 
 
 }
