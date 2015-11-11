@@ -31,12 +31,14 @@ import com.shiliuke.utils.LCSharedPreferencesHelper;
 
 import org.json.JSONObject;
 
+import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
  * @author yuemx 创建时间：2015年4月17日 下午12:08:45
- *         <p>
+ *         <p/>
  *         类 描述
  */
 public class BasicRequest {
@@ -69,12 +71,14 @@ public class BasicRequest {
         sb.append(baseURL);
         sb.append(pubString(strs));
         String requesturl = sb.toString();
+        L.e("发起URL=" + requesturl);
         VolleyTask.getInstance(MApplication.getApp()).addRequest(
                 new StringRequest(requesturl, new Response.Listener<String>() {
 
                     @Override
                     public void onResponse(String response) {
                         if (null != response) {
+                            L.e("action=" + action + " 网络成功：" + response);
                             listerner.onResponse(response, action);
                         }
                     }
@@ -82,7 +86,9 @@ public class BasicRequest {
 
                     @Override
                     public void onErrorResponse(VolleyError error) {
+
                         if (!TextUtils.isEmpty(error.getMessage())) {
+                            L.e("action=" + action + " 网络错误：" + error.getMessage());
                             listerner.onResponseError(error.getMessage(),
                                     action);
                         }
@@ -107,11 +113,12 @@ public class BasicRequest {
         sb.append(strs);
         String requesturl = sb.toString();
 
-        L.e("URL=" + requesturl);
+        L.e("发起URL=" + requesturl+addParams(params));
         VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (null != response) {
+                    L.e("action=" + action + " 网络成功：" + response.toString());
                     listerner.onResponse(response.toString(), action);
                 }
             }
@@ -119,13 +126,33 @@ public class BasicRequest {
             @Override
             public void onErrorResponse(VolleyError error) {
                 if (!TextUtils.isEmpty(error.getMessage())) {
+                    L.e("action=" + action + " 网络错误：" + error.getMessage());
                     listerner.onResponseError(error.getMessage(),
                             action);
                 }
             }
         }, params));
     }
+    public String addParams(Map<String, String> params) {
+        StringBuilder result = new StringBuilder();
+        for (String key : params.keySet()) {
+            if (params.size() > 0)
+                result.append("&");
+            result.append(key);
+            result.append("=");
+            result.append(params.get(key));
+        }
+        try {
+            if(result.toString().substring(1, result.toString().length()).length()>0){
+                return "?"+result.toString().substring(1, result.toString().length());
+            }else{
+                return result.toString().substring(1, result.toString().length())+"";
+            }
 
+        } catch (Exception e) {
+            return "";
+        }
+    }
 
     /**
      * 通过 “ID” 请求列表的时候的拼装方法

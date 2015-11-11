@@ -11,7 +11,7 @@
         android:layout_marginLeft="7dp"
         android:layout_marginRight="7dp"
         android:layout_marginTop="7dp"
-        android:background="@drawable/button"
+        android:background="@drawable/relativelayout"
         android:padding="5dp">
 
         <ImageView
@@ -32,7 +32,6 @@
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:layout_marginLeft="20dp"
-                android:text="周末去传媒大学看妹子！"
                 android:textColor="@color/white"
                 android:textSize="18sp" />
 
@@ -46,8 +45,7 @@
             android:layout_below="@+id/exercise_pic"
             android:layout_marginLeft="18dp"
             android:layout_marginTop="24dp"
-            android:text="门头沟"
-            android:textColor="@color/black"
+            android:textColor="@color/black_e1"
             android:textSize="15sp" />
 
         <TextView
@@ -57,7 +55,6 @@
             android:layout_alignBottom="@+id/exercise_address"
             android:layout_marginLeft="15dp"
             android:layout_toRightOf="@+id/exercise_address"
-            android:text="已有12人报名"
             android:textColor="@color/red"
             android:textSize="13sp" />
 
@@ -68,8 +65,7 @@
             android:layout_alignLeft="@+id/exercise_address"
             android:layout_below="@+id/exercise_address"
             android:layout_marginTop="10dp"
-            android:text="时间：2015/12/31"
-            android:textColor="@color/black"
+            android:textColor="@color/black_e1"
             android:textSize="13sp" />
 
 
@@ -96,7 +92,7 @@
                 android:layout_below="@+id/exercise_authorPic"
                 android:layout_centerHorizontal="true"
                 android:layout_marginTop="10dp"
-                android:text="李刚"
+
                 android:textColor="@color/black"
                 android:textSize="13sp" />
 
@@ -150,7 +146,6 @@
                 android:layout_width="30dp"
                 android:layout_height="30dp"
                 android:layout_marginLeft="5dp"
-
                 android:background="@color/gray" />
 
             <ImageView
@@ -171,7 +166,9 @@
             android:layout_marginTop="15dp"
             android:background="@drawable/button_normal"
             android:textColor="@drawable/selector_button_normal"
-            android:text="我要报名" />
+            android:text="我要报名"
+            android:textSize="15sp"
+            />
 
     </RelativeLayout>
 

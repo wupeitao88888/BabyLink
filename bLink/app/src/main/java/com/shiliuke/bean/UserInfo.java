@@ -4,28 +4,19 @@ package com.shiliuke.bean;
  * Created by wupeitao on 15/10/26.
  */
 public class UserInfo {
-    private String userpic;
-    private String username;
+    private String member_avar;
 
-    public String getUserpic() {
-        return userpic;
+
+    public String getMember_avar() {
+        return member_avar;
     }
 
-    public void setUserpic(String userpic) {
-        this.userpic = userpic;
+    public void setMember_avar(String member_avar) {
+        this.member_avar = member_avar;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public UserInfo(String userpic, String username) {
-        this.userpic = userpic;
-        this.username = username;
+    public UserInfo(String member_avar) {
+        this.member_avar = member_avar;
     }
 
     public UserInfo() {

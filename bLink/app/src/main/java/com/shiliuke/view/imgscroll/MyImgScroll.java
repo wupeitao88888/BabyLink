@@ -18,15 +18,12 @@ import android.widget.LinearLayout;
 
 
 public class MyImgScroll extends ViewPager {
-    Activity mActivity;
-    List<View> mListViews;
-    int mScrollTime = 0;
-    Timer timer;
-    int oldIndex = 0;
-    int curIndex = 0;
-
-
-
+    private Activity mActivity;
+    private List<View> mListViews;
+    private int mScrollTime = 0;
+    private Timer timer;
+    private int oldIndex = 0;
+    private int curIndex = 0;
 
     public MyImgScroll(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -66,9 +63,13 @@ public class MyImgScroll extends ViewPager {
     }
 
 
+
+
+
     private void setOvalLayout(final LinearLayout ovalLayout, int ovalLayoutId,
                                final int ovalLayoutItemId, final int focusedId, final int normalId) {
         if (ovalLayout != null) {
+            ovalLayout.removeAllViews();
             LayoutInflater inflater = LayoutInflater.from(mActivity);
             for (int i = 0; i < mListViews.size(); i++) {
                 ovalLayout.addView(inflater.inflate(ovalLayoutId, null));
@@ -142,14 +143,14 @@ public class MyImgScroll extends ViewPager {
 
         public Object instantiateItem(View v, int i) {
             try {
-            if (((ViewPager) v).getChildCount() == mListViews.size()) {
+                if (((ViewPager) v).getChildCount() == mListViews.size()) {
 
                     ((ViewPager) v)
                             .removeView(mListViews.get(i % mListViews.size()));
 
-            }
-            ((ViewPager) v).addView(mListViews.get(i % mListViews.size()), 0);
-            }catch(Exception e){
+                }
+                ((ViewPager) v).addView(mListViews.get(i % mListViews.size()), 0);
+            } catch (Exception e) {
             }
             return mListViews.get(i % mListViews.size());
         }
@@ -172,8 +173,6 @@ public class MyImgScroll extends ViewPager {
         public void destroyItem(View arg0, int arg1, Object arg2) {
         }
     }
-
-
 
 
 }

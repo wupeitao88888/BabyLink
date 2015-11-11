@@ -17,15 +17,20 @@
             android:id="@+id/exrcise_listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+
             android:cacheColorHint="#fff"></com.shiliuke.view.PullToRefresh.PullableListView>
 
         <include layout="@layout/load_more" />
 
-        <ViewStub
-            android:id="@+id/exrcise_nodate"
-            layout="@layout/layout_nodate"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
 
     </com.shiliuke.view.PullToRefresh.PullToRefreshLayout>
+
+    <include
+        android:id="@+id/exrcise_nodate"
+        layout="@layout/layout_nodate"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone" />
+
+
 </RelativeLayout>

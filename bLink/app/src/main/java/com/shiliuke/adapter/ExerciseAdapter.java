@@ -76,23 +76,20 @@ public class ExerciseAdapter extends BaseAdapter {
         TextView exercise_usercount = ViewHolder.get(convertView, R.id.exercise_usercount);
         TextView exercise_authorName = ViewHolder.get(convertView, R.id.exercise_authorName);
         Button signup = ViewHolder.get(convertView, R.id.signup);
-        setImage(exercise_pic, classList.getExercise_pic(), context);
-        setImageUserPic(exercise_authorPic, classList.getExercise_authorPic(), context);
+        setImage(exercise_pic, classList.getImage_url(), context);
+        setImageUserPic(exercise_authorPic, classList.getMember_avar(), context);
         ImageView[] image = {layout_icon1, layout_icon2, layout_icon3, layout_icon4, layout_icon5};
         for (int i = 0; i < 5; i++) {
             try {
-                setImageUserPic(image[i], classList.getExercise_signlist().get(i).getUserpic(), context);
+                setImageUserPic(image[i], classList.getUserInfos().get(i).getMember_avar(), context);
             } catch (Exception e) {
                 image[i].setVisibility(View.GONE);
             }
         }
-        ViewUtil.setText(context, exercise_title, classList.getExercise_title());
-        ViewUtil.setText(context, exercise_address, classList.getExercise_address());
-        ViewUtil.setText(context, exercise_usercount, classList.getExercise_usercount());
-        ViewUtil.setText(context, exercise_authorName, classList.getExercise_authorName());
-
-//        Intent intent=new Intent(mActivity,ExerciseActivity.class);
-//        startActivity(intent);
+        ViewUtil.setText(context, exercise_title, classList.getTitle());
+        ViewUtil.setText(context, exercise_address, classList.getActivity_address());
+        ViewUtil.setText(context, exercise_usercount, classList.getCount());
+        ViewUtil.setText(context, exercise_authorName, classList.getMember_name());
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

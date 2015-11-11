@@ -6,98 +6,99 @@ import java.util.List;
  * Created by wpt on 2015/10/26.
  */
 public class Exercise {
-    private String exercise_pic;//活动图片
-    private String exercise_title;//活动标题
-    private String exercise_address;//活动地点
-    private String exercise_usercount;//活动人数
-    private String exercise_time;//活动时间
-    private String exercise_author;//发起人
-    private String exercise_authorPic;//发起人头像
-    private String exercise_authorName;//发起人名字
-    private List<UserInfo> exercise_signlist;//报名人
+    private String activity_id;//活动id
+    private String image_url;//活动图片
+    private String title;//活动标题
+    private String activity_address;//活动地点
+    private String count;//活动人数
+    private String jihe_time;//活动时间
+    private String member_name;//发起人
+    private String member_avar;//发起人头像
+    private List<UserInfo> userInfos;
 
-    public String getExercise_pic() {
-        return exercise_pic;
+
+    public Exercise(String activity_id, String image_url, String title, String activity_address, String count, String jihe_time, String member_name, String member_avar, List<UserInfo> userInfos) {
+        this.activity_id = activity_id;
+        this.image_url = image_url;
+        this.title = title;
+        this.activity_address = activity_address;
+        this.count = count;
+        this.jihe_time = jihe_time;
+        this.member_name = member_name;
+        this.member_avar = member_avar;
+        this.userInfos = userInfos;
     }
 
-    public void setExercise_pic(String exercise_pic) {
-        this.exercise_pic = exercise_pic;
+    public List<UserInfo> getUserInfos() {
+        return userInfos;
     }
 
-    public String getExercise_title() {
-        return exercise_title;
+    public void setUserInfos(List<UserInfo> userInfos) {
+        this.userInfos = userInfos;
     }
 
-    public void setExercise_title(String exercise_title) {
-        this.exercise_title = exercise_title;
+    public String getActivity_id() {
+        return activity_id;
     }
 
-    public String getExercise_address() {
-        return exercise_address;
+    public void setActivity_id(String activity_id) {
+        this.activity_id = activity_id;
     }
 
-    public void setExercise_address(String exercise_address) {
-        this.exercise_address = exercise_address;
+    public String getImage_url() {
+        return image_url;
     }
 
-    public String getExercise_usercount() {
-        return exercise_usercount;
+    public void setImage_url(String image_url) {
+        this.image_url = image_url;
     }
 
-    public void setExercise_usercount(String exercise_usercount) {
-        this.exercise_usercount = exercise_usercount;
+    public String getTitle() {
+        return title;
     }
 
-    public String getExercise_time() {
-        return exercise_time;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public void setExercise_time(String exercise_time) {
-        this.exercise_time = exercise_time;
+    public String getActivity_address() {
+        return activity_address;
     }
 
-    public String getExercise_author() {
-        return exercise_author;
+    public void setActivity_address(String activity_address) {
+        this.activity_address = activity_address;
     }
 
-    public void setExercise_author(String exercise_author) {
-        this.exercise_author = exercise_author;
+    public String getCount() {
+        return count;
     }
 
-    public String getExercise_authorPic() {
-        return exercise_authorPic;
+    public void setCount(String count) {
+        this.count = count;
     }
 
-    public void setExercise_authorPic(String exercise_authorPic) {
-        this.exercise_authorPic = exercise_authorPic;
+    public String getJihe_time() {
+        return jihe_time;
     }
 
-    public String getExercise_authorName() {
-        return exercise_authorName;
+    public void setJihe_time(String jihe_time) {
+        this.jihe_time = jihe_time;
     }
 
-    public void setExercise_authorName(String exercise_authorName) {
-        this.exercise_authorName = exercise_authorName;
+    public String getMember_name() {
+        return member_name;
     }
 
-    public List<UserInfo> getExercise_signlist() {
-        return exercise_signlist;
+    public void setMember_name(String member_name) {
+        this.member_name = member_name;
     }
 
-    public void setExercise_signlist(List<UserInfo> exercise_signlist) {
-        this.exercise_signlist = exercise_signlist;
+    public String getMember_avar() {
+        return member_avar;
     }
 
-    public Exercise(String exercise_pic, String exercise_title, String exercise_address, String exercise_usercount, String exercise_time, String exercise_author, String exercise_authorPic, String exercise_authorName, List<UserInfo> exercise_signlist) {
-        this.exercise_pic = exercise_pic;
-        this.exercise_title = exercise_title;
-        this.exercise_address = exercise_address;
-        this.exercise_usercount = exercise_usercount;
-        this.exercise_time = exercise_time;
-        this.exercise_author = exercise_author;
-        this.exercise_authorPic = exercise_authorPic;
-        this.exercise_authorName = exercise_authorName;
-        this.exercise_signlist = exercise_signlist;
+    public void setMember_avar(String member_avar) {
+        this.member_avar = member_avar;
     }
 
     public Exercise() {
