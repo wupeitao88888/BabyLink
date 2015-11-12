@@ -55,12 +55,9 @@ public class AppConfig {
     //基础URL
     public static String BASE_URL_V1 = "babyLink/mobile.php/Mobile";
     //活动列表
-    public static String ACTIVITY =BASE_URL_V1+"/Activity";
+    public static String ACTIVITY = BASE_URL_V1 + "/Activity";
     //活动详情
-    public static String ACTIVITY_INFO = ACTIVITY+"/activity_info";
-
-    //活动
-    public static String ACTIVITY = "babyLink/mobile.php/Mobile/Activity";
+    public static String ACTIVITY_INFO = ACTIVITY + "/activity_info";
     //微信appID
     public static String WX_APP_ID = "wx1e5e6a9c7ec380c1";
     public static String ACTION_WXSHARE_SUCCESS = "com.shiliuke.BabLink.ACTION_WXSHARESHARE";
