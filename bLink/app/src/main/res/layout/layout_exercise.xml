@@ -11,8 +11,7 @@
 
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            >
+            android:layout_height="match_parent">
 
             <!--&lt;!&ndash; 活动图片与标题 ->-->
             <RelativeLayout
@@ -60,49 +59,68 @@
                     android:layout_marginLeft="20dp"
                     android:layout_toRightOf="@+id/exercise_a">
 
+                    <!--活动地址-->
                     <TextView
+                        android:id="@+id/activity_address"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 活动时间 -->
+                    <TextView
+                        android:id="@+id/begin_time"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 上限人数 -->
+                    <TextView
+                        android:id="@+id/max_man"
+                        style="@style/mTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
+                    <!-- 报名人数 -->
                     <TextView
+                        android:id="@+id/count"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 报名费用 -->
+                    <TextView
+                        android:id="@+id/price"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 支付方式 -->
+                    <TextView
+                        android:id="@+id/pay_way"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 集合地点 -->
+                    <TextView
+                        android:id="@+id/jihe_address"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 交通工具 -->
+                    <TextView
+                        android:id="@+id/utils"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 联系人 -->
+                    <TextView
+                        android:id="@+id/link_name"
+                        style="@style/mTextView"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                    <!-- 联系电话 -->
+                    <TextView
+                        android:id="@+id/link_mobile"
+                        style="@style/mTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
                 </LinearLayout>
 
                 <!--发起人头像-->
@@ -124,11 +142,11 @@
 
                     <TextView
                         android:id="@+id/exercise_authorName"
+                        style="@style/mTextView"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_below="@+id/exercise_authorPic"
-                        android:layout_centerHorizontal="true"
-                        android:text="小明" />
+                        android:layout_centerHorizontal="true" />
                 </RelativeLayout>
             </RelativeLayout>
 
@@ -172,8 +190,8 @@
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
-                    android:text="    运行数码测色计后，鼠标指针所指到的位置的色号及放大的详细情况就直接的被显示在数码测色计上了，在这个窗口上我们还可以对色彩的的量化显示及光圈的大小进行设置，更多的设置还可以通过数码测色计的预置来进行设置。在预置中我们可以对放大的倍率进行设置，这样可以使鼠标指针所在的位置变的更大，能看到更多的细节，还可以设置刷新方式为连续设置或当鼠标移动时刷新，默认为鼠标移动时就进行刷新，这样将具有更高的效率。还可以对光圈的彩色进行设置，另外还可以设置为在选色时动态显示鼠标的指针坐标以及直接对当前显示的样本进行拷贝和颜色拖移。"
-                    android:textColor="@color/black"
+                    android:text=""
+                    android:textColor="@color/black_e1"
                     android:textSize="14dp" />
 
 
@@ -244,7 +262,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="报名人数（10人）"
+                    android:text=""
                     android:textColor="#AF255C"
                     android:textSize="18sp" />
 
@@ -329,12 +347,14 @@
 
 
                 <Button
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/comment_on"
+                    android:layout_width="70dp"
+                    android:layout_height="35dp"
                     android:layout_alignParentRight="true"
                     android:layout_below="@+id/c_line"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
+                    android:background="@drawable/button_normal"
                     android:text="评论" />
             </RelativeLayout>
             <!--分享报名-->

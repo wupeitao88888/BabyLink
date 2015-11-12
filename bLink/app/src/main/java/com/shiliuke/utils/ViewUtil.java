@@ -28,10 +28,14 @@ import android.view.ViewGroup.MarginLayoutParams;
 import android.view.ViewParent;
 import android.widget.AbsListView;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.Target;
+import com.shiliuke.BabyLink.R;
 import com.shiliuke.global.AppConfig;
 
 // TODO: Auto-generated Javadoc
@@ -561,5 +565,13 @@ public class ViewUtil {
 		}
 
 	}
-
+	public static void setImage(ImageView iview, String url, Context context) {
+		Glide.with(context)
+				.load(url)
+				.override(Target.SIZE_ORIGINAL, Target.SIZE_ORIGINAL).transform(new GlideCircleTransform(context))
+				.placeholder(R.drawable.gray)
+				.error(R.drawable.gray)
+				.crossFade()
+				.into(iview);
+	}
 }

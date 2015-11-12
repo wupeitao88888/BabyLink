@@ -37,7 +37,7 @@ public class TopicCommentListAdapter extends BaseAdapter {
 
     @Override
     public String getItem(int position) {
-        return mUI.get(position).getCommentName();
+        return mUI.get(position).getMember_name();
     }
 
     @Override
@@ -56,8 +56,8 @@ public class TopicCommentListAdapter extends BaseAdapter {
         TextView commentName = ViewHolder.get(convertView, R.id.commentName);
         TextView commentReply_text = ViewHolder.get(convertView, R.id.commentReply_text);
         TextView commentReplyName = ViewHolder.get(convertView, R.id.commentReplyName);
-        ViewUtil.setText(context, commentName, comment.getCommentName());
-        ViewUtil.setText(context, commentContent, comment.getCommentContent());
+        ViewUtil.setText(context, commentName, comment.getMember_name());
+        ViewUtil.setText(context, commentContent, comment.getInfo());
         ViewUtil.setText(context, commentReplyName, comment.getCommentReplyName());
         if (TextUtils.isEmpty(comment.getCommentReplyName())) {
             commentReply_text.setVisibility(View.GONE);

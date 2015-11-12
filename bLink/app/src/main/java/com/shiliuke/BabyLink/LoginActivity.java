@@ -82,7 +82,7 @@ public class LoginActivity extends ActivitySupport implements OnClickListener,Vo
     }
 
     @Override
-    public void onResponse(String str, int taskid) {
+    public void onResponse(String str, int taskid,Object obj) {
         try {
             if(taskid == TaskID.ACTION_LOGIN){
                 mIntent(LoginActivity.this, MainTab.class);

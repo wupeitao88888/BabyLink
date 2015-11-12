@@ -18,6 +18,7 @@ import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
 import com.shiliuke.view.PullToRefresh.PullableListView;
 import com.shiliuke.view.imgscroll.MyImgScroll;
+
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
@@ -28,8 +29,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+
 import org.json.JSONArray;
 import org.json.JSONException;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -43,7 +46,6 @@ public class FragmentExercise extends Fragment implements VolleyListerner {
     private View rootView;//缓存Fragment view
     private PullableListView exrcise_listview;
     private ExerciseAdapter eAdater;
-    private View exrcise_nodate;
     private List<Exercise> list;//活动列表
     private List<AdvertisementList> lista;//广告位图片
     private Activity mActivity = null;
@@ -73,7 +75,7 @@ public class FragmentExercise extends Fragment implements VolleyListerner {
 
         mActivity = this.getActivity();
         exrcise_listview = (PullableListView) rootView.findViewById(R.id.exrcise_listview);
-        exrcise_nodate = (View) rootView.findViewById(R.id.exrcise_nodate);
+
         View inflate = LayoutInflater.from(mActivity).inflate(R.layout.layout_activity, null);
         exrcise_listview.addHeaderView(inflate);
         lc_slideshowview_carousel = (MyImgScroll) inflate.findViewById(R.id.lc_slideshowview_carousel);
@@ -86,20 +88,15 @@ public class FragmentExercise extends Fragment implements VolleyListerner {
             public void onRefresh(final PullToRefreshLayout pullToRefreshLayout) {
                 // 下拉刷新操作
                 page = 1;
-                Map<String, String> params = new HashMap<>();
-                params.put("member_id", "1");
-                params.put("page", page + "");
-                BasicRequest.getInstance().requestPost(FragmentExercise.this, TaskID.ACTION_ACTIVITY, params, AppConfig.ACTIVITY);
+                netInit();
 
             }
+
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
                 // 上拉刷新操作
                 page++;
-                Map<String, String> params = new HashMap<>();
-                params.put("member_id", "1");
-                params.put("page", page + "");
-                BasicRequest.getInstance().requestPost(FragmentExercise.this, TaskID.ACTION_ACTIVITY, params, AppConfig.ACTIVITY);
+                netInit();
             }
         });
         //自动加载
@@ -108,6 +105,14 @@ public class FragmentExercise extends Fragment implements VolleyListerner {
         lista = new ArrayList<>();
 
 
+    }
+
+
+    private void netInit() {
+        Map<String, String> params = new HashMap<>();
+        params.put("member_id", "1");
+        params.put("page", page + "");
+        BasicRequest.getInstance().requestPost(FragmentExercise.this, TaskID.ACTION_ACTIVITY, params, AppConfig.ACTIVITY);
     }
 
     /**
@@ -143,7 +148,7 @@ public class FragmentExercise extends Fragment implements VolleyListerner {
 
 
     @Override
-    public void onResponse(String str, int taskid) {
+    public void onResponse(String str, int taskid,Object obj) {
         analysisJson(str, taskid);
     }
 

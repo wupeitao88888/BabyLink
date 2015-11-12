@@ -5,11 +5,11 @@
     android:background="@color/background"
     android:orientation="vertical">
 
+
     <com.shiliuke.view.PullToRefresh.PullToRefreshLayout
         android:id="@+id/showbean_PullToRefreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-
         <include layout="@layout/refresh_head" />
 
 
@@ -25,4 +25,5 @@
 
         <include layout="@layout/load_more" />
     </com.shiliuke.view.PullToRefresh.PullToRefreshLayout>
+
 </LinearLayout>

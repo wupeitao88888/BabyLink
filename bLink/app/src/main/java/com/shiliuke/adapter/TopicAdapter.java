@@ -93,7 +93,7 @@ public class TopicAdapter extends BaseAdapter {
             noscrolllistview.setVisibility(View.VISIBLE);
             noscrolllistview.setAdapter(new TopicCommentListAdapter(mUserInfo.getCt(),
                     mContext));
-            final String commentName = mUserInfo.getCt().get(position).getCommentName();
+            final String commentName = mUserInfo.getCt().get(position).getMember_name();
             noscrolllistview
                     .setOnItemClickListener(new AdapterView.OnItemClickListener() {
                         @Override

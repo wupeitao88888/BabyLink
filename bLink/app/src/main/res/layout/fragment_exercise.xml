@@ -25,12 +25,7 @@
 
     </com.shiliuke.view.PullToRefresh.PullToRefreshLayout>
 
-    <include
-        android:id="@+id/exrcise_nodate"
-        layout="@layout/layout_nodate"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:visibility="gone" />
+
 
 
 </RelativeLayout>
