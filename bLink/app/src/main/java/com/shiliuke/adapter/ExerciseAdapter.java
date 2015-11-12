@@ -71,10 +71,13 @@ public class ExerciseAdapter extends BaseAdapter {
         ImageView layout_icon3 = ViewHolder.get(convertView, R.id.layout_icon3);
         ImageView layout_icon4 = ViewHolder.get(convertView, R.id.layout_icon4);
         ImageView layout_icon5 = ViewHolder.get(convertView, R.id.layout_icon5);
+
         TextView exercise_title = ViewHolder.get(convertView, R.id.exercise_title);
         TextView exercise_address = ViewHolder.get(convertView, R.id.exercise_address);
         TextView exercise_usercount = ViewHolder.get(convertView, R.id.exercise_usercount);
         TextView exercise_authorName = ViewHolder.get(convertView, R.id.exercise_authorName);
+        TextView exercise_time = ViewHolder.get(convertView, R.id.exercise_time);
+
         Button signup = ViewHolder.get(convertView, R.id.signup);
         setImage(exercise_pic, classList.getImage_url(), context);
         setImageUserPic(exercise_authorPic, classList.getMember_avar(), context);
@@ -88,8 +91,9 @@ public class ExerciseAdapter extends BaseAdapter {
         }
         ViewUtil.setText(context, exercise_title, classList.getTitle());
         ViewUtil.setText(context, exercise_address, classList.getActivity_address());
-        ViewUtil.setText(context, exercise_usercount, classList.getCount());
+        ViewUtil.setText(context, exercise_usercount, "已有"+classList.getCount()+"人报名");
         ViewUtil.setText(context, exercise_authorName, classList.getMember_name());
+        ViewUtil.setText(context, exercise_time, "时间：" + classList.getJihe_time());
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

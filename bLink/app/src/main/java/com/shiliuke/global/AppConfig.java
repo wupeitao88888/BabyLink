@@ -52,6 +52,13 @@ public class AppConfig {
     public static String SHARED_PATH = "app_share";
     //基础URL
     public static String BASE_URL = "http://101.200.174.65/";
+    //基础URL
+    public static String BASE_URL_V1 = "babyLink/mobile.php/Mobile";
+    //活动列表
+    public static String ACTIVITY =BASE_URL_V1+"/Activity";
+    //活动详情
+    public static String ACTIVITY_INFO = ACTIVITY+"/activity_info";
+
     //活动
     public static String ACTIVITY = "babyLink/mobile.php/Mobile/Activity";
     //微信appID

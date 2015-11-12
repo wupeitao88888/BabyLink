@@ -16,8 +16,11 @@ public interface VolleyListerner {
 	 *            访问网络当前的任务id
 	 * @param str
 	 *            后台返回的json串
+	 *@param obj
+	 *            解析实体
+	 *
 	 */
-	public void onResponse(String str, int taskid);
+	public void onResponse(String str, int taskid,Object obj);
 
 	/**
 	 * 

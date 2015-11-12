@@ -12,6 +12,10 @@
         <item name="@android:windowEnterAnimation">@anim/dialog_enter</item>
         <item name="@android:windowExitAnimation">@anim/dialog_exit</item>
     </style>
+    <style name="mTextView">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/black_e1</item>
+    </style>
     <style name="popwin_anim_style">
         <item name="android:windowEnterAnimation">@anim/pop_enter</item>
         <item name="android:windowExitAnimation">@anim/pop_out</item>
