@@ -54,6 +54,13 @@ public class AppConfig {
     public static String BASE_URL = "http://101.200.174.65/";
     //活动
     public static String ACTIVITY = "babyLink/mobile.php/Mobile/Activity";
-
+    //微信appID
+    public static String WX_APP_ID = "wx1e5e6a9c7ec380c1";
+    public static String ACTION_WXSHARE_SUCCESS = "com.shiliuke.BabLink.ACTION_WXSHARESHARE";
+    public static String ACTION_WXSHARE_FAILD = "com.shiliuke.BabLink.ACTION_WXSHAREFAILD";
+    public static String ACTION_WXPAY_SUCCESS = "com.shiliuke.BabLink.ACTION_WXPAYSUCCESS";
+    public static String ACTION_WXPAY_CANCLE = "com.shiliuke.BabLink.ACTION_WXPAYCANCLE";
+    public static String ACTION_WXPAY_FAILD = "com.shiliuke.BabLink.ACTION_WXPAYFALID";
+    public static String ACTION_WXPAY_UNSUPPORT = "com.shiliuke.BabLink.ACTION_WXPAYUNSUPPORT";
 
 }

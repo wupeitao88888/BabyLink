@@ -1,5 +1,6 @@
 package com.shiliuke.bean;
 
+import com.shiliuke.view.stickerview.StickerImageContans;
 import com.shiliuke.view.stickerview.StickerImageModel;
 
 import java.io.Serializable;
@@ -29,6 +30,15 @@ public class BeanShowModel implements Serializable {
         this.totaldou = totaldou;
         this.msg = msg;
         this.stickerlist = stickerlist;
+    }
+
+    public void revertAlpha() {
+        if (stickerlist == null || stickerlist.isEmpty()) {
+            return;
+        }
+        for (int i = 0; i < stickerlist.size(); i++) {
+            stickerlist.get(i).setAlpha(StickerImageContans.MAXALPHA);
+        }
     }
 
     public String getHeadurl() {
