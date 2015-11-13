@@ -148,7 +148,7 @@ public class RegisterActivity extends ActivitySupport implements OnClickListener
     }
 
     @Override
-    public void onResponse(String str, int taskid) {
+    public void onResponse(String str, int taskid,Object obj) {
         try {
             time = -1;
             if(taskid == TaskID.ACTION_GET_CODE){
