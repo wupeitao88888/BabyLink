@@ -62,29 +62,46 @@ public class BasicRequest {
         return basic;
     }
 
-    public void Login(final VolleyListerner listerner, final int action, final Map<String, String> params) {
+    /**
+     * 通过 “ID” 请求列表的时候调用的方法
+     */
+    public void request(final VolleyListerner listerner, final int action,
+                        String... strs) {
         StringBuilder sb = new StringBuilder();
-        sb.append(AppConfig.BASE_URL);
-        sb.append(AppConfig.LOGIN);
+        sb.append(baseURL);
+        sb.append(pubString(strs));
         String requesturl = sb.toString();
+        L.e("发起URL=" + requesturl);
+        VolleyTask.getInstance(MApplication.getApp()).addRequest(
+                new StringRequest(requesturl, new Response.Listener<String>() {
 
-        L.e("URL=" + requesturl);
-        VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                if (null != response) {
-                    listerner.onResponse(response.toString(), action);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (!TextUtils.isEmpty(error.getMessage())) {
-                    listerner.onResponseError(error.getMessage(),
-                            action);
-                }
-            }
-        }, params));
+                    @Override
+                    public void onResponse(String response) {
+                        if (null != response) {
+                            L.e("action=" + action + " 网络成功：" + response);
+                            listerner.onResponse(response, action);
+                        }
+                    }
+                }, new Response.ErrorListener() {
+
+                    @Override
+                    public void onErrorResponse(VolleyError error) {
+
+                        if (!TextUtils.isEmpty(error.getMessage())) {
+                            L.e("action=" + action + " 网络错误：" + error.getMessage());
+                            listerner.onResponseError(error.getMessage(),
+                                    action);
+                        }
+                    }
+                }) {
+                    @Override
+                    public RetryPolicy getRetryPolicy() {
+                        // TODO Auto-generated constructor stub
+                        return new DefaultRetryPolicy(30 * 1000,
+                                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT);
+                    }
+                });
     }
 
     /**
@@ -131,71 +148,10 @@ public class BasicRequest {
             }else{
                 return result.toString().substring(1, result.toString().length())+"";
             }
+
         } catch (Exception e) {
             return "";
         }
-    }
-
-    /**
-     * @param listerner
-     * @param action
-     * @param params 参数
-     * 获取验证码 lvfl
-     */
-    public void getCodePost(final VolleyListerner listerner, final int action, final Map<String, String> params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(AppConfig.BASE_URL);
-        sb.append(AppConfig.GET_CODE);
-        String requesturl = sb.toString();
-
-        L.e("URL=" + requesturl);
-        VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                if (null != response) {
-                    listerner.onResponse(response.toString(), action);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (!TextUtils.isEmpty(error.getMessage())) {
-                    listerner.onResponseError(error.getMessage(),
-                            action);
-                }
-            }
-        }, params));
-    }
-
-    /**
-     * @param listerner
-     * @param action
-     * @param params
-     *  注册
-     */
-    public void sendRegisterPost(final VolleyListerner listerner, final int action, final Map<String, String> params) {
-        StringBuilder sb = new StringBuilder();
-        sb.append(AppConfig.BASE_URL);
-        sb.append(AppConfig.SEND_REGISTER);
-        String requesturl = sb.toString();
-
-        L.e("URL=" + requesturl);
-        VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
-            @Override
-            public void onResponse(JSONObject response) {
-                if (null != response) {
-                    listerner.onResponse(response.toString(), action);
-                }
-            }
-        }, new Response.ErrorListener() {
-            @Override
-            public void onErrorResponse(VolleyError error) {
-                if (!TextUtils.isEmpty(error.getMessage())) {
-                    listerner.onResponseError(error.getMessage(),
-                            action);
-                }
-            }
-        }, params));
     }
 
     /**

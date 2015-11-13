@@ -12,6 +12,7 @@ import android.widget.Button;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.BeanShowAdapter;
 import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.view.PullToRefresh.NOViewPagerPullableListView;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
 import com.shiliuke.view.PullToRefresh.PullableListView;
 import com.shiliuke.view.TitleBar;
@@ -28,7 +29,7 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
 
     private Button btn_beanshow_link;//link按钮
     private Button btn_beanshow_public;//广场按钮
-    private PullableListView listview_beanshow;//列表
+    private NOViewPagerPullableListView listview_beanshow;//列表
     private BeanShowAdapter beanShowAdapter;
     private PullToRefreshLayout beanshow_PullToRefreshLayout;
     private ArrayList<BeanShowModel> data;
@@ -45,12 +46,12 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_beanshow, null);
-        ((TitleBar) view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
+//        ((TitleBar) view.findViewById(R.id.meCommunity_title)).setCenterTitle("秀逗");
         btn_beanshow_link = (Button) view.findViewById(R.id.btn_beanshow_link);
         btn_beanshow_public = (Button) view.findViewById(R.id.btn_beanshow_public);
         btn_beanshow_public.setOnClickListener(this);
         btn_beanshow_public.setOnClickListener(this);
-        listview_beanshow = (PullableListView) view.findViewById(R.id.listview_beanshow);
+        listview_beanshow = (NOViewPagerPullableListView) view.findViewById(R.id.listview_beanshow);
         beanshow_PullToRefreshLayout = (PullToRefreshLayout) view.findViewById(R.id.beanshow_PullToRefreshLayout);
         initData();
         beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data);

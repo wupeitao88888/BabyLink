@@ -19,9 +19,5 @@ public class TaskID {
     public static final int ACTION_LOGIN = 1;
     //活动列表
     public static final int ACTION_ACTIVITY= 2;
-    // 获取验证码
-    public static final int ACTION_GET_CODE= 3;
-    // 注册
-    public static final int ACTION_REGISTER= 4;
 
 }

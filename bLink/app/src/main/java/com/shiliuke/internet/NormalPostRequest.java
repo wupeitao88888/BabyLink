@@ -1,6 +1,7 @@
 package com.shiliuke.internet;
 
 import com.android.volley.AuthFailureError;
+import com.android.volley.DefaultRetryPolicy;
 import com.android.volley.NetworkResponse;
 import com.android.volley.ParseError;
 import com.android.volley.Request;
@@ -50,5 +51,7 @@ public class NormalPostRequest extends Request<JSONObject> {
     protected void deliverResponse(JSONObject response) {
         mListener.onResponse(response);
     }
+
+
 }
 

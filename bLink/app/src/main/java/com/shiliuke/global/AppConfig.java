@@ -54,12 +54,6 @@ public class AppConfig {
     public static String BASE_URL = "http://101.200.174.65/";
     //活动
     public static String ACTIVITY = "babyLink/mobile.php/Mobile/Activity";
-    // 获取验证码
-    public static String GET_CODE = "babyLink/mobile.php/Mobile/Login/sendCode";
-    // 注册
-    public static String SEND_REGISTER = "babyLink/mobile.php/Mobile/Login/register";
-    // 登陆
-    public static String  LOGIN = "babyLink/mobile.php/Mobile/Login";
 
 
 }

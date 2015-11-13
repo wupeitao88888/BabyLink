@@ -1,11 +1,10 @@
 package com.shiliuke.adapter;
 
-import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,11 +13,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.shiliuke.BabyLink.R;
-import com.shiliuke.BabyLink.StickerModifyActivity;
 import com.shiliuke.bean.BeanShowModel;
-import com.shiliuke.fragment.FragmentBeanShow;
 import com.shiliuke.utils.ViewHolder;
-import com.shiliuke.view.stickerview.StickerExecutor;
 import com.shiliuke.view.stickerview.StickerImageContans;
 import com.shiliuke.view.stickerview.StickerImageView;
 
@@ -56,6 +52,7 @@ public class BeanShowAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.e("tag", "getview position=" + position);
         if (convertView == null) {
             convertView = LayoutInflater.from(context.getActivity()).inflate(R.layout.item_beanshow, null);
         }
@@ -77,6 +74,8 @@ public class BeanShowAdapter extends BaseAdapter {
         sticker_beanshow_item.setBgBitmap(bitmap, model);
         if (position == 0) {
             sticker_beanshow_item.startAnim();
+        } else {
+            model.revertAlpha();
         }
         ////////////
         Button btn_beanshow_item_dou = ViewHolder.get(convertView, R.id.btn_beanshow_item_dou);
@@ -117,7 +116,7 @@ public class BeanShowAdapter extends BaseAdapter {
         public void onClick(View v) {
             Intent intent = new Intent();
             intent.setAction("com.shiliuke.StickerModifyActivity");
-            intent.putExtra("model",data.get((Integer) v.getTag()));
+            intent.putExtra("model", data.get((Integer) v.getTag()));
             intent.putExtra("position", (int) v.getTag());
             context.startActivityForResult(intent, StickerImageContans.REQUESTADDMODEL);
         }

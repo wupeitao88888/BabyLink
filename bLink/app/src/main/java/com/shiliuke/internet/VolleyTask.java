@@ -32,7 +32,7 @@ public class VolleyTask {
 
 	private VolleyTask(Context context) {
 		this.context = context;
-		mQueue = Volley.newRequestQueue(context);
+		mQueue = Volley.newRequestQueue(context);  
 	}
 	
 	public static VolleyTask getInstance(Context context){

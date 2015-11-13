@@ -20,10 +20,9 @@ public class PayEnd {
         this.pay_status = pay_status;
     }
 
+
     public PayEnd() {
     }
-
-
 
     public PayEnd(String pay_title, String pay_deposit, String already, String not_yet, String pay_url) {
         this.pay_title = pay_title;
