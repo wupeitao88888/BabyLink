@@ -287,6 +287,7 @@
             </intent-filter>
         </receiver>
         <!-- 微信 -->
+
     </application>
 
 </manifest>

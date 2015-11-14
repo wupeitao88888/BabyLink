@@ -67,7 +67,6 @@ public class FragmentMeStartChange extends Fragment {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-                // 上拉加载
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {
@@ -82,6 +81,7 @@ public class FragmentMeStartChange extends Fragment {
             MeStarChange ma=new MeStarChange("","去国土局","2015/11/11 11:11","1");
             mList.add(ma);
         }
+
         meStarChangeAdapter = new MeStarChangeAdapter(mActivity, mList);
         mestarchange_listView.setAdapter(meStarChangeAdapter);
     }
