@@ -40,7 +40,11 @@
         </activity>
         <!-- tab标签 -->
         <activity
+<<<<<<< Updated upstream
             android:name=".WelcomeActivity"
+=======
+            android:name=".Welcome"
+>>>>>>> Stashed changes
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustUnspecified|stateHidden" >
@@ -241,6 +245,7 @@
             android:screenOrientation="portrait"
             android:windowSoftInputMode="adjustPan|stateHidden">
         </activity>
+<<<<<<< Updated upstream
 
         <!-- 我的置换 -->
         <activity
@@ -287,6 +292,33 @@
             </intent-filter>
         </receiver>
         <!-- 微信 -->
+
+=======
+        <!-- 未消费(已消费)——兑换码 -->
+        <activity
+            android:name=".UnconsumeCode"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 支付尾款 -->
+        <activity
+            android:name=".PayEndActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的置换 -->
+        <activity
+            android:name=".MeChange"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+        <!-- 我的秀逗 -->
+        <activity
+            android:name=".MeShowBeanActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="adjustPan|stateHidden">
+        </activity>
+>>>>>>> Stashed changes
     </application>
 
 </manifest>

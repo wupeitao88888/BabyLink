@@ -13,7 +13,12 @@ import android.widget.RelativeLayout;
 import com.shiliuke.BabyLink.HelpActivity;
 import com.shiliuke.BabyLink.MeConvertCodeActivity;
 import com.shiliuke.BabyLink.MeHomePage;
+<<<<<<< Updated upstream
 import com.shiliuke.BabyLink.MeOrderActivity;
+=======
+import com.shiliuke.BabyLink.MeTopic;
+import com.shiliuke.BabyLink.MyHomeActivity;
+>>>>>>> Stashed changes
 import com.shiliuke.BabyLink.PayEndActivity;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.BabyLink.PersonalData;
@@ -100,7 +105,11 @@ public class FragmentMy extends Fragment implements OnClickListener {
                 startActivity(new Intent(mActivity, MeConvertCodeActivity.class));
                 break;
             case R.id.pay_rl:
+<<<<<<< Updated upstream
                 startActivity(new Intent(mActivity, PayEndActivity.class));
+=======
+                startActivity(new Intent(mActivity,PayEndActivity.class));
+>>>>>>> Stashed changes
                 //支付尾款
                 break;
 
