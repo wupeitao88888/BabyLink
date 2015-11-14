@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="0.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/navBg" android:layout_width="fill_parent" android:layout_height="50.0dip">
+        <Button android:id="@id/btnConn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="应答握手" android:layout_alignParentLeft="true" android:layout_alignParentBottom="true" />
+        <Button android:id="@id/btnsend" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="应答数据接收" android:layout_toRightOf="@id/btnConn" android:layout_alignParentBottom="true" />
+    </RelativeLayout>
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="15.0dip">
+        <TextView android:textSize="18.0sp" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/label_state" />
+        <Space android:layout_width="5.0dip" android:layout_height="wrap_content" />
+        <TextView android:textSize="18.0sp" android:id="@id/connection_state" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/disconnected" />
+    </LinearLayout>
+    <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginTop="15.0dip">
+        <TextView android:id="@id/textView1" android:layout_width="fill_parent" android:layout_height="fill_parent" android:hint="收到的数据" android:width="250.0dip" />
+    </LinearLayout>
+</LinearLayout>
