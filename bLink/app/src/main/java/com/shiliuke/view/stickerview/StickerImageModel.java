@@ -1,7 +1,7 @@
 package com.shiliuke.view.stickerview;
 
 import android.os.Handler;
-import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.bean.BeanShowModelResult;
 
 import java.io.Serializable;
 
@@ -27,7 +27,7 @@ public class StickerImageModel implements Serializable {
      *
      * @param handler
      */
-    public void startLooper(final BeanShowModel.BeanShowModelResult model, final Handler handler) {
+    public void startLooper(final BeanShowModelResult model, final Handler handler) {
         StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
             public void run() {
@@ -80,14 +80,14 @@ public class StickerImageModel implements Serializable {
 
     public StickerImageModel(String text) {
         this.info = text;
-        this.position_y = StickerImageContans.DEFAULTX + "";
+        this.position_x = StickerImageContans.DEFAULTX + "";
         this.position_y = StickerImageContans.DEFAULTY + "";
         this.alpha = StickerImageContans.MAXALPHA;
     }
 
     public void setXy(float x, float y) {
         this.position_x = x + "";
-        this.position_x = y + "";
+        this.position_y = y + "";
     }
 
     public float getY() {

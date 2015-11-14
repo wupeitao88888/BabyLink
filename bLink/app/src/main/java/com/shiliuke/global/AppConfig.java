@@ -59,13 +59,17 @@ public class AppConfig {
     // 注册
     public static String SEND_REGISTER = "babyLink/mobile.php/Mobile/Login/register";
     // 登陆
-    public static String  LOGIN = "babyLink/mobile.php/Mobile/Login";
+    public static String LOGIN = "babyLink/mobile.php/Mobile/Login";
     // 秀逗Link
-    public static String  XIUDOU_LINK = "babyLink/mobile.php/Mobile/Xiu/link";
+    public static String XIUDOU_LINK = "babyLink/mobile.php/Mobile/Xiu/link";
     // 秀逗广场
-    public static String  XIUDOU_GUANGCHANG = "babyLink/mobile.php/Mobile/Xiu";
+    public static String XIUDOU_GUANGCHANG = "babyLink/mobile.php/Mobile/Xiu";
+    // 秀逗_添加评论
+    public static String XIUDOU_ADDCOMMEND = "babyLink/mobile.php/Mobile/Xiu/addCommend";
+    // 秀逗_加关注
+    public static String XIUDOU_ADDFRIEND = "babyLink/mobile.php/Mobile/Xiu/addFriend";
     // 微信appId
-    public static String  WX_APP_ID = "";
+    public static String WX_APP_ID = "";
     public static String ACTION_WXSHARE_SUCCESS = "com.shop.jyt.ACTION_WXSHARESHARE";
     public static String ACTION_WXSHARE_FAILD = "com.shop.jyt.ACTION_WXSHAREFAILD";
     public static String ACTION_WXPAY_SUCCESS = "com.shop.jyt.ACTION_WXPAYSUCCESS";

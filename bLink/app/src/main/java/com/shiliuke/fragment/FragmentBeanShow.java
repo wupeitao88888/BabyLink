@@ -9,17 +9,16 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.Button;
-import com.alibaba.fastjson.JSON;
 import com.google.gson.Gson;
 import com.shiliuke.BabyLink.MainTab;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.BeanShowAdapter;
 import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.bean.BeanShowModelResult;
 import com.shiliuke.global.AppConfig;
 import com.shiliuke.internet.TaskID;
 import com.shiliuke.internet.VolleyListerner;
 import com.shiliuke.model.BasicRequest;
-import com.shiliuke.utils.ToastUtil;
 import com.shiliuke.view.PullToRefresh.NOViewPagerPullableListView;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
 import com.shiliuke.view.stickerview.StickerExecutor;
@@ -40,8 +39,8 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
     private NOViewPagerPullableListView listview_beanshow;//列表
     private BeanShowAdapter beanShowAdapter;
     private PullToRefreshLayout beanshow_PullToRefreshLayout;
-    private ArrayList<BeanShowModel.BeanShowModelResult> data;
-    private Boolean isLink = true;
+    private ArrayList<BeanShowModelResult> data;
+    private Boolean isLink = false;
     private int page = 1;
 
     @Override
@@ -88,7 +87,7 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
         Map<String, String> params = new HashMap<>();
         params.put("member_id", "1");
         params.put("page", page + "");
-        BasicRequest.getInstance().requestPost(this, TaskID.ACTION_XIUDOU_LINK, params, isLink ? AppConfig.XIUDOU_LINK : AppConfig.XIUDOU_GUANGCHANG);
+        BasicRequest.getInstance().requestPost(this, isLink ? TaskID.ACTION_XIUDOU_LINK : TaskID.ACTION_XIUDOU_GUANGCHANG, params, isLink ? AppConfig.XIUDOU_LINK : AppConfig.XIUDOU_GUANGCHANG);
     }
 
     /**
@@ -108,32 +107,38 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
             case R.id.btn_beanshow_link:
                 isLink = true;
                 page = 1;
-                ToastUtil.show(getContext(), "click link", 1);
+                requestData();
                 break;
             case R.id.btn_beanshow_public:
                 page = 1;
                 isLink = false;
-                ToastUtil.show(getContext(), "click 广场", 1);
+                requestData();
                 break;
         }
     }
 
     @Override
     public void onResponse(String str, int taskid, Object obj) {
+        BeanShowModel model;
+        Gson g = new Gson();
         switch (taskid) {
             case TaskID.ACTION_XIUDOU_LINK:
-                Gson g = new Gson();
-//                BeanShowModel model = JSON.parseObject(str, BeanShowModel.class);
-                BeanShowModel model = g.fromJson(str,BeanShowModel.class);
-                if (!"0".equalsIgnoreCase(model.getCode())) {
-                    onResponseError("error", taskid);
-                    return;
-                }
+                model = g.fromJson(str, BeanShowModel.class);
                 data = model.getDatas();
-                if (beanShowAdapter == null) {
-                    beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data, isLink);
-                }
+                listview_beanshow.setAdapter(null);
+                beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data, isLink);
                 listview_beanshow.setAdapter(beanShowAdapter);
+                beanshow_PullToRefreshLayout.toogleLayout(data.isEmpty());
+                beanshow_PullToRefreshLayout.refreshFinish(beanshow_PullToRefreshLayout.SUCCEED);
+                beanshow_PullToRefreshLayout.loadmoreFinish(beanshow_PullToRefreshLayout.SUCCEED);
+                break;
+            case TaskID.ACTION_XIUDOU_GUANGCHANG:
+                model = g.fromJson(str, BeanShowModel.class);
+                data = model.getDatas();
+                listview_beanshow.setAdapter(null);
+                beanShowAdapter = new BeanShowAdapter(listview_beanshow, this, data, isLink);
+                listview_beanshow.setAdapter(beanShowAdapter);
+                beanshow_PullToRefreshLayout.toogleLayout(data.isEmpty());
                 beanshow_PullToRefreshLayout.refreshFinish(beanshow_PullToRefreshLayout.SUCCEED);
                 beanshow_PullToRefreshLayout.loadmoreFinish(beanshow_PullToRefreshLayout.SUCCEED);
                 break;
@@ -193,8 +198,8 @@ public class FragmentBeanShow extends Fragment implements View.OnClickListener, 
                 if (resultCode == Activity.RESULT_OK) {
                     int position = data.getIntExtra("position", 0);
                     StickerImageModel model = (StickerImageModel) data.getSerializableExtra("model");
-//                    this.data.get(position).getStickerlist().add(model);
-                    this.beanShowAdapter.notifyDataSetChanged();
+                    this.data.get(position).getCommend_list().add(model);
+                    this.beanShowAdapter.updateDate(isLink);
                 }
                 break;
         }

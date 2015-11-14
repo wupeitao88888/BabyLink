@@ -9,7 +9,7 @@ import android.os.Message;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-import com.shiliuke.bean.BeanShowModel;
+import com.shiliuke.bean.BeanShowModelResult;
 
 /**
  * 图片贴纸View
@@ -17,25 +17,15 @@ import com.shiliuke.bean.BeanShowModel;
  */
 public class StickerImageView extends View {
 
-    private enum TYPE {
-        COMPILE,//编辑模式
-        BROWSE;
-    }
-
     //    private ArrayList<StickerImageModel> mdata;
     private StickerImageModel compileModel;//正在编辑的贴纸
-    private BeanShowModel.BeanShowModelResult beanShowModel;
-    private TYPE style = TYPE.COMPILE;
+    private BeanShowModelResult beanShowModel;
     private Paint mTextPaint;
     private Paint mBgPaint;
 
-    private float x1, x2, y1, y2;
+    private float x1, x2, y1, y2, tmpx;
     private boolean isCurrentClick = false;
 
-
-    public void setStyle(TYPE style) {
-        this.style = style;
-    }
 
     public StickerImageView(Context context) {
         this(context, null);
@@ -73,15 +63,15 @@ public class StickerImageView extends View {
     /**
      * 设置背景图片以及弹幕列表
      */
-    public void setBeanShowModel(BeanShowModel.BeanShowModelResult model) {
+    public void setBeanShowModel(BeanShowModelResult model) {
         this.beanShowModel = model;
-        postInvalidate();
+        invalidate();
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (beanShowModel == null || beanShowModel.getCommend_list().isEmpty()) {
+        if (beanShowModel == null) {
             return;
         }
         for (int i = 0; i < beanShowModel.getCommend_list().size(); i++) {
@@ -103,15 +93,15 @@ public class StickerImageView extends View {
 
     @Override
     public boolean dispatchTouchEvent(MotionEvent event) {
-        if (style != TYPE.COMPILE || compileModel == null) {
+        if (compileModel == null) {
             return false;
         }
         switch (event.getAction()) {
             case MotionEvent.ACTION_DOWN:
                 if (event.getX() > x1 && event.getX() < x2 && event.getY() > y1 && event.getY() < y2) {
+                    tmpx = event.getX() - x1;
                     getParent().requestDisallowInterceptTouchEvent(true);
-                    compileModel.setXy(event.getX(), event.getY());
-                    postInvalidate();
+                    invalidate();
                     isCurrentClick = true;
                 }
                 break;
@@ -120,8 +110,8 @@ public class StickerImageView extends View {
                     break;
                 }
                 getParent().requestDisallowInterceptTouchEvent(true);
-                compileModel.setXy(event.getX(), event.getY());
-                postInvalidate();
+                compileModel.setXy(event.getX() - tmpx, event.getY());
+                invalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 setCurrentXy();
@@ -135,15 +125,13 @@ public class StickerImageView extends View {
      * 更新正在创建贴纸的文字
      */
     public void updateModelText(String text) {
-        if (style == TYPE.COMPILE) {
-            if (compileModel == null) {
-                compileModel = new StickerImageModel(text);
-            } else {
-                compileModel.setInfo(text);
-            }
-            setCurrentXy();
-            invalidate();
+        if (compileModel == null) {
+            compileModel = new StickerImageModel(text);
+        } else {
+            compileModel.setInfo(text);
         }
+        setCurrentXy();
+        invalidate();
     }
 
     /**
@@ -161,7 +149,7 @@ public class StickerImageView extends View {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case StickerImageContans.DEFAULTHANDLER:
-                    postInvalidate();
+                    invalidate();
                     break;
                 case StickerImageContans.DEFAULTHANDLERSTOP:
                     beanShowModel.setIsAniming(false);
@@ -172,6 +160,13 @@ public class StickerImageView extends View {
     };
 //    public static boolean canAnim;
 
+    /**
+     * 关闭在执行的“动画”
+     */
+    public void stopAnim() {
+        beanShowModel.setCanAnim(false);
+        beanShowModel.setIsAniming(false);
+    }
 
     /**
      * 开始”动画"
@@ -180,6 +175,7 @@ public class StickerImageView extends View {
         if (beanShowModel == null || beanShowModel.getCommend_list().isEmpty() || beanShowModel.isAniming()) {
             return;
         }
+        beanShowModel.setCanAnim(true);
         beanShowModel.setIsAniming(true);
         StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
@@ -190,12 +186,10 @@ public class StickerImageView extends View {
                     if (!beanShowModel.isCanAnim()) {
                         break;
                     }
-                    if (model.getAlpha() == StickerImageContans.MAXALPHA) {
-                        try {
-                            Thread.sleep(StickerImageContans.DEFAULTSECONDTIME);
-                        } catch (InterruptedException e) {
-                            e.printStackTrace();
-                        }
+                    try {
+                        Thread.sleep(StickerImageContans.DEFAULTSECONDTIME);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
                     }
                 }
             }

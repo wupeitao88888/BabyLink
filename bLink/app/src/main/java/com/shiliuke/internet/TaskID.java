@@ -25,5 +25,11 @@ public class TaskID {
     public static final int ACTION_REGISTER = 4;
     // 秀逗Link
     public static final int ACTION_XIUDOU_LINK = 5;
+    // 秀逗广场
+    public static final int ACTION_XIUDOU_GUANGCHANG = 6;
+    // 秀逗_添加评论
+    public static final int ACTION_XIUDOU_ADD_COMMEND = 7;
+    // 秀逗_加关注
+    public static final int ACTION_XIUDOU_ADD_FOCUS = 8;
 
 }

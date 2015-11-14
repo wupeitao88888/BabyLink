@@ -32,7 +32,7 @@ public class StickerImageContans {
     public static final int DEFAULTMAXALTIME = 2000;//贴纸最大透明度时停留的时间
     public static final int DEFAULTMINALTIME = 1500;//贴纸最小透明度时停留的时间
     public static final int DEFAULTCOMPILETIME = 40;//贴纸透明度变化时间
-    public static final int DEFAULTSECONDTIME = 1000;//与下一张贴纸透明度开始变化的时间间隔
+    public static final int DEFAULTSECONDTIME = 2000;//与下一张贴纸透明度开始变化的时间间隔
 
     public static final int DEFAULTBITMAP = R.mipmap.bg_login_guide;//默认图片
 
