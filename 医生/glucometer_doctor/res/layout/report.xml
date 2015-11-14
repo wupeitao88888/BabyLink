@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="@android:color/white"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/title_height"
+        android:background="@color/title_bg"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+   <LinearLayout
+            android:id="@id/back"
+            style="@style/title_left_button" >
+
+            <ImageView
+                android:layout_width="@dimen/back_width"
+                android:layout_height="@dimen/back_height"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/back_button"
+                android:padding="@dimen/commn_space" />
+        </LinearLayout>
+        <TextView
+            android:id="@id/dateSelect"
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:gravity="center"
+            android:textAppearance="?android:textAppearanceLarge"
+            android:textColor="#ffffffff" />
+
+       <LinearLayout
+            android:visibility="invisible"
+            style="@style/title_left_button" >
+
+            <ImageView
+                android:layout_width="@dimen/back_width"
+                android:layout_height="@dimen/back_height"
+                android:layout_gravity="center_vertical"
+                android:background="@drawable/back_button"
+                android:padding="@dimen/commn_space" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="@dimen/selected_bg_height"
+        android:background="@color/select_bg"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="60.0dip"
+        android:background="@color/report_bg_color" >
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_weight="1.0"
+            android:background="@color/report_table_color1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/report_table_color1"
+                android:gravity="center"
+                android:text="日期"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="1.0px"
+            android:layout_weight="2.0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:background="@color/report_table_color2"
+                android:gravity="center"
+                android:text="早餐"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                android:paddingTop="1.0px" >
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color2"
+                    android:gravity="center"
+                    android:text="前"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="1.0px"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color2"
+                    android:gravity="center"
+                    android:text="后"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="1.0px"
+            android:layout_weight="2.0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:background="@color/report_table_color1"
+                android:gravity="center"
+                android:text="午餐"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                android:paddingTop="1.0px" >
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color1"
+                    android:gravity="center"
+                    android:text="前"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="1.0px"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color1"
+                    android:gravity="center"
+                    android:text="后"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="1.0px"
+            android:layout_weight="2.0"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:background="@color/report_table_color2"
+                android:gravity="center"
+                android:text="晚餐"
+                android:textColor="@android:color/black" />
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="0.0dip"
+                android:layout_weight="1.0"
+                android:orientation="horizontal"
+                android:paddingTop="1.0px" >
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color2"
+                    android:gravity="center"
+                    android:text="前"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@id/textView1"
+                    android:layout_width="0.0dip"
+                    android:layout_height="fill_parent"
+                    android:layout_marginLeft="1.0px"
+                    android:layout_weight="1.0"
+                    android:background="@color/report_table_color2"
+                    android:gravity="center"
+                    android:text="后"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0.0dip"
+            android:layout_height="fill_parent"
+            android:layout_marginLeft="1.0px"
+            android:layout_weight="1.0"
+            android:background="@color/report_table_color1"
+            android:orientation="vertical" >
+
+            <TextView
+                android:id="@id/textView1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:background="@color/report_table_color1"
+                android:gravity="center"
+                android:text="凌晨"
+                android:textColor="@android:color/black" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="1.0px"
+        android:background="@color/select_bg" />
+
+    <ScrollView
+        android:id="@id/scrollView1"
+        android:layout_width="fill_parent"
+        android:layout_height="0.0dip"
+        android:layout_weight="1.0"
+        android:overScrollMode="always" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" >
+
+            <com.iloomo.glucometer.view.ReportTableView
+                android:id="@id/reportTable"
+                android:layout_width="fill_parent"
+                android:layout_height="1000.0dip"
+                android:background="@android:color/white" />
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

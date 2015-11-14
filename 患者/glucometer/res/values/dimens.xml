@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="activity_horizontal_margin">16.0dip</dimen>
+    <dimen name="activity_vertical_margin">16.0dip</dimen>
+    <dimen name="title_height">50.0dip</dimen>
+    <dimen name="title_font_size">20.0sp</dimen>
+    <dimen name="selected_bg_height">50.0dip</dimen>
+    <dimen name="me_bg_height">100.0dip</dimen>
+    <dimen name="commn_space">20.0dip</dimen>
+    <dimen name="commn_small_space">10.0dip</dimen>
+    <dimen name="item_small_height">50.0dip</dimen>
+    <dimen name="item_middle_height">60.0dip</dimen>
+    <dimen name="item_large_height">75.0dip</dimen>
+    <dimen name="back_height">30.0dip</dimen>
+    <dimen name="back_width">30.0dip</dimen>
+    <dimen name="item_text_size">16.0sp</dimen>
+    <dimen name="item_text_middle">18.0sp</dimen>
+    <dimen name="item_text_size_large">21.0sp</dimen>
+    <dimen name="device_icon_size">50.0dip</dimen>
+    <dimen name="report_middle_height">50.0dip</dimen>
+    <dimen name="button_height">50.0dip</dimen>
+</resources>
