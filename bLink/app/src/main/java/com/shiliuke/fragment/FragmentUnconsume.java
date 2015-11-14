@@ -12,12 +12,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 
 import com.shiliuke.BabyLink.R;
-<<<<<<< Updated upstream
 import com.shiliuke.BabyLink.UnconsumeCodeActivity;
-=======
-import com.shiliuke.BabyLink.UnconsumeCode;
-import com.shiliuke.adapter.MeInitateAdapter;
->>>>>>> Stashed changes
 import com.shiliuke.adapter.UnconsumeAdapter;
 import com.shiliuke.bean.Unconsume;
 import com.shiliuke.view.PullToRefresh.PullToRefreshLayout;
@@ -94,11 +89,7 @@ public class FragmentUnconsume extends Fragment {
         unconsume_listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-<<<<<<< Updated upstream
                 Intent intent = new Intent(mActivity, UnconsumeCodeActivity.class);
-=======
-                Intent intent = new Intent(mActivity, UnconsumeCode.class);
->>>>>>> Stashed changes
                 startActivity(intent);
             }
         });

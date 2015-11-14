@@ -65,11 +65,7 @@ public class FragmentMeTakeChange extends Fragment {
 
             @Override
             public void onLoadMore(final PullToRefreshLayout pullToRefreshLayout) {
-<<<<<<< Updated upstream
                 // 上拉刷新操作
-=======
-                // 下拉刷新操作
->>>>>>> Stashed changes
                 new Handler() {
                     @Override
                     public void handleMessage(Message msg) {

@@ -8,7 +8,6 @@ public class PayEnd {
     private String pay_title;//商品名称
     private String pay_deposit;//订金
     private String already;//已付
-<<<<<<< Updated upstream
     private String not_yet;//未付=实付
     private String pay_url;//商品图
     private String pay_status;//支付状态
@@ -16,15 +15,9 @@ public class PayEnd {
     public String getPay_status() {
         return pay_status;
     }
-
     public void setPay_status(String pay_status) {
         this.pay_status = pay_status;
     }
-
-=======
-    private String not_yet;//未付
-    private String pay_url;//商品图
->>>>>>> Stashed changes
 
     public PayEnd() {
     }

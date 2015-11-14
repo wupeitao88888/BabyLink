@@ -35,10 +35,6 @@ public class MeStarChangeAdapter extends BaseAdapter {
 
 
     public MeStarChangeAdapter(final Context _context, List<MeStarChange> mList) {
-<<<<<<< Updated upstream
-=======
-
->>>>>>> Stashed changes
         this.mContext = _context;
         this.mList = mList;
     }

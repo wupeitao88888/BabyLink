@@ -66,11 +66,7 @@ public class MeHomePage extends ActivitySupport implements View.OnClickListener 
                 break;
             case R.id.user_change_re:
                 // 我的置换
-<<<<<<< Updated upstream
                 mIntent(context,MeChangeActivity.class);
-=======
-                mIntent(context,MeChange.class);
->>>>>>> Stashed changes
                 break;
             case R.id.user_showbean_re:
                 // 我的秀逗
