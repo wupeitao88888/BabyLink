@@ -70,13 +70,12 @@ public class StickerModifyActivity extends ActivitySupport implements View.OnCli
         if (model == null) {
             return;
         }
-        oldModel = new BeanShowModel(model.getHeadurl(), model.getName(), model.getTime(), model.getContenturl(), model.getTotaldou(), model.getMsg(), model.getStickerlist());
-        for (int i = 0; i < oldModel.getStickerlist().size(); i++) {
-            oldModel.getStickerlist().get(i).setAlpha(StickerImageContans.MAXALPHA);
-        }
-        Bitmap bit = BitmapFactory.decodeResource(getResources(), StickerImageContans.DEFAULTBITMAP);
-        mSticker_View.setBgBitmap(bit, oldModel);
-        mSticker_View.startAnim();
+//        oldModel = new BeanShowModel(model.getHeadurl(), model.getName(), model.getTime(), model.getContenturl(), model.getTotaldou(), model.getMsg(), model.getStickerlist());
+//        for (int i = 0; i < oldModel.getStickerlist().size(); i++) {
+//            oldModel.getStickerlist().get(i).setAlpha(StickerImageContans.MAXALPHA);
+//        }
+//        mSticker_View.setBeanShowModel(oldModel);
+//        mSticker_View.startAnim();
     }
 
     TextWatcher mEditWatcher = new TextWatcher() {

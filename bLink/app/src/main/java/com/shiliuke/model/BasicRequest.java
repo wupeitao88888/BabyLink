@@ -10,16 +10,9 @@
 package com.shiliuke.model;
 
 import android.text.TextUtils;
-
-import com.android.volley.AuthFailureError;
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.Request;
+import com.alibaba.fastjson.JSON;
 import com.android.volley.Response;
-import com.android.volley.RetryPolicy;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.JsonRequest;
-import com.android.volley.toolbox.StringRequest;
 import com.shiliuke.BabyLink.LoginActivity;
 import com.shiliuke.global.AppConfig;
 import com.shiliuke.global.MApplication;
@@ -27,18 +20,13 @@ import com.shiliuke.internet.NormalPostRequest;
 import com.shiliuke.internet.VolleyListerner;
 import com.shiliuke.internet.VolleyTask;
 import com.shiliuke.utils.L;
-import com.shiliuke.utils.LCSharedPreferencesHelper;
-
 import org.json.JSONObject;
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 /**
  * @author yuemx 创建时间：2015年4月17日 下午12:08:45
- *         <p/>
+ *         <p>
  *         类 描述
  */
 public class BasicRequest {
@@ -73,7 +61,7 @@ public class BasicRequest {
             @Override
             public void onResponse(JSONObject response) {
                 if (null != response) {
-                    listerner.onResponse(response.toString(), action,null);
+                    listerner.onResponse(response.toString(), action, null);
                 }
             }
         }, new Response.ErrorListener() {
@@ -96,13 +84,25 @@ public class BasicRequest {
         sb.append(strs);
         String requesturl = sb.toString();
 
-        L.e("发起URL=" + requesturl+addParams(params));
+        L.e("发起URL=" + requesturl + addParams(params));
         VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
             @Override
             public void onResponse(JSONObject response) {
                 if (null != response) {
                     L.e("action=" + action + " 网络成功：" + response.toString());
-                    listerner.onResponse(response.toString(), action,null);
+                    try {
+                        Map map = JSON.parseObject(response.toString(), Map.class);
+                        if (!"0".equalsIgnoreCase(map.get("code").toString())) {
+                            listerner.onResponseError(map.get("datas").toString(),
+                                    action);
+                            return;
+                        }
+                    } catch (Exception e) {
+                        listerner.onResponseError("服务器异常",
+                                action);
+                        return;
+                    }
+                    listerner.onResponse(response.toString(), action, null);
                 }
             }
         }, new Response.ErrorListener() {
@@ -116,6 +116,7 @@ public class BasicRequest {
             }
         }, params));
     }
+
     public String addParams(Map<String, String> params) {
         StringBuilder result = new StringBuilder();
         for (String key : params.keySet()) {
@@ -126,10 +127,10 @@ public class BasicRequest {
             result.append(params.get(key));
         }
         try {
-            if(result.toString().substring(1, result.toString().length()).length()>0){
-                return "?"+result.toString().substring(1, result.toString().length());
-            }else{
-                return result.toString().substring(1, result.toString().length())+"";
+            if (result.toString().substring(1, result.toString().length()).length() > 0) {
+                return "?" + result.toString().substring(1, result.toString().length());
+            } else {
+                return result.toString().substring(1, result.toString().length()) + "";
             }
         } catch (Exception e) {
             return "";
@@ -139,8 +140,8 @@ public class BasicRequest {
     /**
      * @param listerner
      * @param action
-     * @param params 参数
-     * 获取验证码 lvfl
+     * @param params    参数
+     *                  获取验证码 lvfl
      */
     public void getCodePost(final VolleyListerner listerner, final int action, final Map<String, String> params) {
         StringBuilder sb = new StringBuilder();
@@ -153,7 +154,7 @@ public class BasicRequest {
             @Override
             public void onResponse(JSONObject response) {
                 if (null != response) {
-                    listerner.onResponse(response.toString(), action,null);
+                    listerner.onResponse(response.toString(), action, null);
                 }
             }
         }, new Response.ErrorListener() {
@@ -170,8 +171,7 @@ public class BasicRequest {
     /**
      * @param listerner
      * @param action
-     * @param params
-     *  注册
+     * @param params    注册
      */
     public void sendRegisterPost(final VolleyListerner listerner, final int action, final Map<String, String> params) {
         StringBuilder sb = new StringBuilder();
@@ -184,7 +184,7 @@ public class BasicRequest {
             @Override
             public void onResponse(JSONObject response) {
                 if (null != response) {
-                    listerner.onResponse(response.toString(), action,null);
+                    listerner.onResponse(response.toString(), action, null);
                 }
             }
         }, new Response.ErrorListener() {

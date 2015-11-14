@@ -1,7 +1,9 @@
 package com.shiliuke.view.stickerview;
 
 import android.content.Context;
-import android.graphics.*;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.RectF;
 import android.os.Handler;
 import android.os.Message;
 import android.util.AttributeSet;
@@ -20,10 +22,9 @@ public class StickerImageView extends View {
         BROWSE;
     }
 
-    private Bitmap bgBitmap;
     //    private ArrayList<StickerImageModel> mdata;
-    private StickerImageModel compileModel;
-    private BeanShowModel beanShowModel;
+    private StickerImageModel compileModel;//正在编辑的贴纸
+    private BeanShowModel.BeanShowModelResult beanShowModel;
     private TYPE style = TYPE.COMPILE;
     private Paint mTextPaint;
     private Paint mBgPaint;
@@ -72,8 +73,7 @@ public class StickerImageView extends View {
     /**
      * 设置背景图片以及弹幕列表
      */
-    public void setBgBitmap(Bitmap bitmap, BeanShowModel model) {
-        this.bgBitmap = bitmap;
+    public void setBeanShowModel(BeanShowModel.BeanShowModelResult model) {
         this.beanShowModel = model;
         postInvalidate();
     }
@@ -81,34 +81,23 @@ public class StickerImageView extends View {
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        if (bgBitmap == null || beanShowModel.getStickerlist().isEmpty()) {
-            Bitmap bit = BitmapFactory.decodeResource(getResources(), StickerImageContans.DEFAULTBITMAP);
-            canvas.drawBitmap(bit, 0, 0, null);
+        if (beanShowModel == null || beanShowModel.getCommend_list().isEmpty()) {
             return;
         }
-        canvas.drawBitmap(bgBitmap, 0, 0, null);
-        if (beanShowModel.getStickerlist().isEmpty()) {
-            return;
-        }
-        for (int i = 0; i < beanShowModel.getStickerlist().size(); i++) {
-            StickerImageModel model = beanShowModel.getStickerlist().get(i);
+        for (int i = 0; i < beanShowModel.getCommend_list().size(); i++) {
+            StickerImageModel model = beanShowModel.getCommend_list().get(i);
             mTextPaint.setAlpha(model.getAlpha());
             mBgPaint.setAlpha(model.getAlpha());
-
-//            float y = model.getY() - StickerImageContans.DEFAULTTEXTSIZE / 4;
-//            canvas.drawCircle(model.getX(), y, StickerImageContans.DEFAULTCIRCLERADIUS / 2, mBgPaint);
-//            canvas.drawCircle(model.getX() + getTextWidth(mTextPaint, model.getText()), y, StickerImageContans.DEFAULTCIRCLERADIUS / 2, mBgPaint);
-            RectF oval3 = new RectF(model.getX() - StickerImageContans.DEFAULTBGLEFT, model.getY() - StickerImageContans.DEFAULTBGHEIGHT, model.getX() + getTextWidth(mTextPaint, model.getText()) + StickerImageContans.DEFAULTBGLEFT, model.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
+            RectF oval3 = new RectF(model.getX() - StickerImageContans.DEFAULTBGLEFT, model.getY() - StickerImageContans.DEFAULTBGHEIGHT, model.getX() + getTextWidth(mTextPaint, model.getInfo()) + StickerImageContans.DEFAULTBGLEFT, model.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
             canvas.drawRoundRect(oval3, StickerImageContans.DEFAULTBGX, StickerImageContans.DEFAULTBGY, mBgPaint);
-
-            canvas.drawText(model.getText(), model.getX(), model.getY(), mTextPaint);
+            canvas.drawText(model.getInfo(), model.getX(), model.getY(), mTextPaint);
         }
         if (compileModel != null) {
             mTextPaint.setAlpha(compileModel.getAlpha());
             mBgPaint.setAlpha(compileModel.getAlpha());
-            RectF oval3 = new RectF(compileModel.getX() - StickerImageContans.DEFAULTBGLEFT, compileModel.getY() - StickerImageContans.DEFAULTBGHEIGHT, compileModel.getX() + getTextWidth(mTextPaint, compileModel.getText()) + StickerImageContans.DEFAULTBGLEFT, compileModel.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
+            RectF oval3 = new RectF(compileModel.getX() - StickerImageContans.DEFAULTBGLEFT, compileModel.getY() - StickerImageContans.DEFAULTBGHEIGHT, compileModel.getX() + getTextWidth(mTextPaint, compileModel.getInfo()) + StickerImageContans.DEFAULTBGLEFT, compileModel.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2);// 设置个新的长方形
             canvas.drawRoundRect(oval3, StickerImageContans.DEFAULTBGX, StickerImageContans.DEFAULTBGY, mBgPaint);
-            canvas.drawText(compileModel.getText(), compileModel.getX(), compileModel.getY(), mTextPaint);
+            canvas.drawText(compileModel.getInfo(), compileModel.getX(), compileModel.getY(), mTextPaint);
         }
     }
 
@@ -122,7 +111,7 @@ public class StickerImageView extends View {
                 if (event.getX() > x1 && event.getX() < x2 && event.getY() > y1 && event.getY() < y2) {
                     getParent().requestDisallowInterceptTouchEvent(true);
                     compileModel.setXy(event.getX(), event.getY());
-                    invalidate();
+                    postInvalidate();
                     isCurrentClick = true;
                 }
                 break;
@@ -132,7 +121,7 @@ public class StickerImageView extends View {
                 }
                 getParent().requestDisallowInterceptTouchEvent(true);
                 compileModel.setXy(event.getX(), event.getY());
-                invalidate();
+                postInvalidate();
                 break;
             case MotionEvent.ACTION_UP:
                 setCurrentXy();
@@ -150,7 +139,7 @@ public class StickerImageView extends View {
             if (compileModel == null) {
                 compileModel = new StickerImageModel(text);
             } else {
-                compileModel.setText(text);
+                compileModel.setInfo(text);
             }
             setCurrentXy();
             invalidate();
@@ -163,26 +152,8 @@ public class StickerImageView extends View {
     private void setCurrentXy() {
         x1 = compileModel.getX() - StickerImageContans.DEFAULTBGLEFT;
         y1 = compileModel.getY() - StickerImageContans.DEFAULTBGHEIGHT;
-        x2 = compileModel.getX() + getTextWidth(mTextPaint, compileModel.getText()) + StickerImageContans.DEFAULTBGLEFT;
+        x2 = compileModel.getX() + getTextWidth(mTextPaint, compileModel.getInfo()) + StickerImageContans.DEFAULTBGLEFT;
         y2 = compileModel.getY() + StickerImageContans.DEFAULTBGHEIGHT / 2;
-    }
-
-    /**
-     * 增加贴纸
-     */
-    public boolean addModel() {
-        if (style == TYPE.COMPILE) {
-            if (compileModel == null) {
-                return false;
-            }
-            beanShowModel.getStickerlist().add(compileModel);
-            if (beanShowModel.isCanAnim()) {
-                compileModel.startLooper(beanShowModel, handler);
-            }
-            compileModel = null;
-            return true;
-        }
-        return false;
     }
 
     Handler handler = new Handler() {
@@ -190,7 +161,7 @@ public class StickerImageView extends View {
         public void handleMessage(Message msg) {
             switch (msg.what) {
                 case StickerImageContans.DEFAULTHANDLER:
-                    invalidate();
+                    postInvalidate();
                     break;
                 case StickerImageContans.DEFAULTHANDLERSTOP:
                     beanShowModel.setIsAniming(false);
@@ -206,15 +177,15 @@ public class StickerImageView extends View {
      * 开始”动画"
      */
     public void startAnim() {
-        if (beanShowModel.isAniming()) {
+        if (beanShowModel == null || beanShowModel.getCommend_list().isEmpty() || beanShowModel.isAniming()) {
             return;
         }
         beanShowModel.setIsAniming(true);
         StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
             public void run() {
-                for (int i = 0; i < beanShowModel.getStickerlist().size(); i++) {
-                    StickerImageModel model = beanShowModel.getStickerlist().get(i);
+                for (int i = 0; i < beanShowModel.getCommend_list().size(); i++) {
+                    StickerImageModel model = beanShowModel.getCommend_list().get(i);
                     model.startLooper(beanShowModel, handler);
                     if (!beanShowModel.isCanAnim()) {
                         break;

@@ -1,8 +1,6 @@
 package com.shiliuke.adapter;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,6 +10,10 @@ import android.widget.BaseAdapter;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.drawable.GlideDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.shiliuke.BabyLink.R;
 import com.shiliuke.bean.BeanShowModel;
 import com.shiliuke.utils.ViewHolder;
@@ -26,13 +28,15 @@ import java.util.ArrayList;
  */
 public class BeanShowAdapter extends BaseAdapter {
     private View footView;
-    private ArrayList<BeanShowModel> data;
+    private ArrayList<BeanShowModel.BeanShowModelResult> data;
     private Fragment context;
+    private Boolean isLink = true;
 
-    public BeanShowAdapter(View footView, Fragment context, ArrayList<BeanShowModel> data) {
+    public BeanShowAdapter(View footView, Fragment context, ArrayList<BeanShowModel.BeanShowModelResult> data, Boolean isLink) {
         this.footView = footView;
         this.context = context;
         this.data = data;
+        this.isLink = isLink;
     }
 
     @Override
@@ -51,38 +55,52 @@ public class BeanShowAdapter extends BaseAdapter {
     }
 
     @Override
-    public View getView(int position, View convertView, ViewGroup parent) {
+    public View getView(final int position, View convertView, ViewGroup parent) {
         Log.e("tag", "getview position=" + position);
         if (convertView == null) {
             convertView = LayoutInflater.from(context.getActivity()).inflate(R.layout.item_beanshow, null);
         }
-        BeanShowModel model = data.get(position);
+        final BeanShowModel.BeanShowModelResult model = data.get(position);
         ImageView image_beanshow_item_head = ViewHolder.get(convertView, R.id.image_beanshow_item_head);
         TextView tv_beanshow_item_name = ViewHolder.get(convertView, R.id.tv_beanshow_item_name);
         TextView tv_beanshow_item_time = ViewHolder.get(convertView, R.id.tv_beanshow_item_time);
         TextView tv_beanshow_item_dou = ViewHolder.get(convertView, R.id.tv_beanshow_item_dou);
         TextView tv_beanshow_item_msg = ViewHolder.get(convertView, R.id.tv_beanshow_item_msg);
-        StickerImageView sticker_beanshow_item = ViewHolder.get(convertView, R.id.sticker_beanshow_item);
+        ImageView sticker_image_beanshow_item = ViewHolder.get(convertView, R.id.sticker_image_beanshow_item);
+        final StickerImageView sticker_beanshow_item = ViewHolder.get(convertView, R.id.sticker_beanshow_item);
         sticker_beanshow_item.setTag(position);
-        ////////////
-        tv_beanshow_item_name.setText(model.getName());
+        Glide.with(context).load(model.getMember_avar()).into(image_beanshow_item_head);
+        Glide.with(context).load(model.getImage_url()).listener(new RequestListener<String, GlideDrawable>() {
+            @Override
+            public boolean onException(Exception e, String s, Target<GlideDrawable> target, boolean b) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(GlideDrawable glideDrawable, String s, Target<GlideDrawable> target, boolean b, boolean b1) {
+                sticker_beanshow_item.setBeanShowModel(model);
+                if (position != 0) {
+                    model.revertAlpha();
+                }
+                sticker_beanshow_item.startAnim();
+                return false;
+            }
+        }).into(sticker_image_beanshow_item);
+        tv_beanshow_item_name.setText(model.getMember_name());
         tv_beanshow_item_time.setText(model.getTime());
-        tv_beanshow_item_dou.setText(model.getTotaldou());
-        tv_beanshow_item_msg.setText(model.getMsg());
-        ////////////
-        Bitmap bitmap = BitmapFactory.decodeResource(context.getResources(), R.mipmap.bg_login_guide);
-        sticker_beanshow_item.setBgBitmap(bitmap, model);
-        if (position == 0) {
-            sticker_beanshow_item.startAnim();
-        } else {
-            model.revertAlpha();
-        }
+        tv_beanshow_item_dou.setText("1");
+        tv_beanshow_item_msg.setText(model.getInfo());
         ////////////
         Button btn_beanshow_item_dou = ViewHolder.get(convertView, R.id.btn_beanshow_item_dou);
         btn_beanshow_item_dou.setTag(position);
         btn_beanshow_item_dou.setOnClickListener(douClick);
         Button btn_beanshow_item_share = ViewHolder.get(convertView, R.id.btn_beanshow_item_share);
         Button btn_beanshow_item_addfocus = ViewHolder.get(convertView, R.id.btn_beanshow_item_addfocus);
+        if (isLink) {
+            btn_beanshow_item_addfocus.setVisibility(View.VISIBLE);
+        } else {
+            btn_beanshow_item_addfocus.setVisibility(View.GONE);
+        }
         return convertView;
     }
 

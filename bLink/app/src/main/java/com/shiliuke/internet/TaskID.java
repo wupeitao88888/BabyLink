@@ -12,16 +12,18 @@ package com.shiliuke.internet;
 
 /**
  * @author lvfl 创建时间：2014-4-8 下午7:03:58
- * 
+ *         <p>
  *         任务ID类
  */
 public class TaskID {
     public static final int ACTION_LOGIN = 1;
     //活动列表
-    public static final int ACTION_ACTIVITY= 2;
+    public static final int ACTION_ACTIVITY = 2;
     // 获取验证码
-    public static final int ACTION_GET_CODE= 3;
+    public static final int ACTION_GET_CODE = 3;
     // 注册
-    public static final int ACTION_REGISTER= 4;
+    public static final int ACTION_REGISTER = 4;
+    // 秀逗Link
+    public static final int ACTION_XIUDOU_LINK = 5;
 
 }

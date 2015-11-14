@@ -47,17 +47,33 @@
         <Button
             android:id="@+id/btn_beanshow_item_addfocus"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:layout_alignParentRight="true"
             android:text="加关注"
+            android:textSize="@dimen/sp12"
+            android:textColor="@color/white"
             android:layout_centerVertical="true"
+            android:background="@mipmap/btn_redbg"
             />
     </RelativeLayout>
 
-    <com.shiliuke.view.stickerview.StickerImageView
-        android:id="@+id/sticker_beanshow_item"
-        android:layout_width="400dp"
-        android:layout_height="400dp"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="400dp">
+
+        <ImageView
+            android:src="@mipmap/bg_login_guide"
+            android:id="@+id/sticker_image_beanshow_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+        <com.shiliuke.view.stickerview.StickerImageView
+            android:id="@+id/sticker_beanshow_item"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+
+    </RelativeLayout>
+
 
     <TextView
         android:id="@+id/tv_beanshow_item_dou"
@@ -91,7 +107,10 @@
         <Button
             android:id="@+id/btn_beanshow_item_dou"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
+            android:textSize="@dimen/sp12"
+            android:textColor="@color/white"
+            android:background="@mipmap/btn_redbg"
             android:text="逗一逗"
             />
 

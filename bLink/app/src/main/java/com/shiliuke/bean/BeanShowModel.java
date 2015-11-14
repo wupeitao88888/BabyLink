@@ -11,106 +11,131 @@ import java.util.ArrayList;
  * Created by wangzhi on 15/10/30.
  */
 public class BeanShowModel implements Serializable {
-    private String headurl;//发布人头像地址
-    private String name;//发布人姓名
-    private String time;//发布时间
-    private String contenturl;//发布图片地址
-    private String totaldou;//总逗数
-    private String msg;//签名
-    private ArrayList<StickerImageModel> stickerlist;//贴纸数据
-    private boolean canAnim = true;//
-    private boolean isAniming = false;//
+    private String code;
 
+    private ArrayList<BeanShowModelResult> datas;
 
-    public BeanShowModel(String headurl, String name, String time, String contenturl, String totaldou, String msg, ArrayList<StickerImageModel> stickerlist) {
-        this.headurl = headurl;
-        this.name = name;
-        this.time = time;
-        this.contenturl = contenturl;
-        this.totaldou = totaldou;
-        this.msg = msg;
-        this.stickerlist = stickerlist;
+    public String getCode() {
+        return code;
     }
 
-    public void revertAlpha() {
-        if (stickerlist == null || stickerlist.isEmpty()) {
-            return;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public ArrayList<BeanShowModelResult> getDatas() {
+        return datas;
+    }
+
+    public void setDatas(ArrayList<BeanShowModelResult> datas) {
+        this.datas = datas;
+    }
+
+    public class BeanShowModelResult implements Serializable {
+
+        private String xiu_id;//
+        private String member_id;//发布人Id
+        private String member_avar;//发布人头像地址
+        private String member_name;//发布人姓名
+        private String home;//发布人小区
+        private String time;//发布时间
+        private String info;//msg
+        private String image_url;//秀逗图片地址
+        private ArrayList<StickerImageModel> commend_list;//评论list
+
+        private boolean canAnim = true;//
+        private boolean isAniming = false;//
+
+        public void revertAlpha() {
+            if (commend_list == null || commend_list.isEmpty()) {
+                return;
+            }
+            for (int i = 0; i < commend_list.size(); i++) {
+                commend_list.get(i).setAlpha(StickerImageContans.MAXALPHA);
+            }
         }
-        for (int i = 0; i < stickerlist.size(); i++) {
-            stickerlist.get(i).setAlpha(StickerImageContans.MAXALPHA);
+
+        public void setCanAnim(boolean canAnim) {
+            this.canAnim = canAnim;
+        }
+
+        public boolean isCanAnim() {
+
+            return canAnim;
+        }
+
+        public boolean isAniming() {
+            return isAniming;
+        }
+
+        public void setIsAniming(boolean isAniming) {
+            this.isAniming = isAniming;
+        }
+
+        public String getXiu_id() {
+            return xiu_id;
+        }
+
+        public void setXiu_id(String xiu_id) {
+            this.xiu_id = xiu_id;
+        }
+
+        public String getMember_id() {
+            return member_id;
+        }
+
+        public void setMember_id(String member_id) {
+            this.member_id = member_id;
+        }
+
+        public String getMember_avar() {
+            return member_avar;
+        }
+
+        public void setMember_avar(String member_avar) {
+            this.member_avar = member_avar;
+        }
+
+        public String getMember_name() {
+            return member_name;
+        }
+
+        public void setMember_name(String member_name) {
+            this.member_name = member_name;
+        }
+
+        public String getTime() {
+            return time;
+        }
+
+        public void setTime(String add_time) {
+            this.time = add_time;
+        }
+
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+
+        public String getImage_url() {
+            return image_url;
+        }
+
+        public void setImage_url(String image_url) {
+            this.image_url = image_url;
+        }
+
+        public ArrayList<StickerImageModel> getCommend_list() {
+            return commend_list;
+        }
+
+        public void setCommend_list(ArrayList<StickerImageModel> commend_list) {
+            this.commend_list = commend_list;
         }
     }
 
-    public String getHeadurl() {
-        return headurl;
-    }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getTime() {
-        return time;
-    }
-
-    public String getContenturl() {
-        return contenturl;
-    }
-
-    public String getTotaldou() {
-        return totaldou;
-    }
-
-    public String getMsg() {
-        return msg;
-    }
-
-    public ArrayList<StickerImageModel> getStickerlist() {
-        return stickerlist;
-    }
-
-    public void setHeadurl(String headurl) {
-        this.headurl = headurl;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setTime(String time) {
-        this.time = time;
-    }
-
-    public void setContenturl(String contenturl) {
-        this.contenturl = contenturl;
-    }
-
-    public void setTotaldou(String totaldou) {
-        this.totaldou = totaldou;
-    }
-
-    public void setMsg(String msg) {
-        this.msg = msg;
-    }
-
-    public void setStickerlist(ArrayList<StickerImageModel> stickerlist) {
-        this.stickerlist = stickerlist;
-    }
-
-    public void setCanAnim(boolean canAnim) {
-        this.canAnim = canAnim;
-    }
-
-    public boolean isCanAnim() {
-
-        return canAnim;
-    }
-
-    public boolean isAniming() {
-        return isAniming;
-    }
-
-    public void setIsAniming(boolean isAniming) {
-        this.isAniming = isAniming;
-    }
 }

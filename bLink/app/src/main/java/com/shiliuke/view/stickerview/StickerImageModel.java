@@ -9,19 +9,25 @@ import java.io.Serializable;
  * 图片贴纸Model
  * Created by wangzhi on 15/10/30.
  */
-public class StickerImageModel implements Serializable{
-    private String text;//贴纸文字
+public class StickerImageModel implements Serializable {
+    private String commend_id;//
+    private String xiu_id;//
+    private String member_id;//
+    private String member_name;//
+    private String member_avar;//
+    private String info;//贴纸文字
     private int alpha;//透明度
-    private int f;//透明度
-    private float x;
-    private float y;
+    private int f;
+    private String position_x;
+    private String position_y;
+    private String add_time;
 
     /**
      * 开始改变透明度
      *
      * @param handler
      */
-    public void startLooper(final BeanShowModel model, final Handler handler) {
+    public void startLooper(final BeanShowModel.BeanShowModelResult model, final Handler handler) {
         StickerExecutor.getSingleExecutor().execute(new Runnable() {
             @Override
             public void run() {
@@ -73,20 +79,19 @@ public class StickerImageModel implements Serializable{
     }
 
     public StickerImageModel(String text) {
-        this.text = text;
-        this.x = StickerImageContans.DEFAULTX;
-        this.y = StickerImageContans.DEFAULTY;
+        this.info = text;
+        this.position_y = StickerImageContans.DEFAULTX + "";
+        this.position_y = StickerImageContans.DEFAULTY + "";
         this.alpha = StickerImageContans.MAXALPHA;
     }
 
     public void setXy(float x, float y) {
-        this.x = x;
-        this.y = y;
+        this.position_x = x + "";
+        this.position_x = y + "";
     }
 
     public float getY() {
-
-        return y;
+        return Float.parseFloat(position_y);
     }
 
     public int getAlpha() {
@@ -98,15 +103,16 @@ public class StickerImageModel implements Serializable{
     }
 
     public float getX() {
-        return x;
+        return Float.parseFloat(position_x);
     }
 
-    public String getText() {
-        return text;
+    public String getInfo() {
+        return info;
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public void setInfo(String info) {
+        this.info = info;
     }
+
 
 }
