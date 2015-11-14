@@ -1,5 +1,6 @@
 package com.shiliuke.BabyLink;
 
+<<<<<<< Updated upstream
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -17,6 +18,8 @@ import com.shiliuke.view.PullToRefresh.PullableListView;
 
 import java.util.ArrayList;
 import java.util.List;
+=======
+>>>>>>> Stashed changes
 import android.os.Bundle;
 
 import com.shiliuke.base.ActivitySupport;
@@ -27,6 +30,7 @@ import com.shiliuke.base.ActivitySupport;
  */
 public class MeShowBeanActivity extends ActivitySupport {
 
+<<<<<<< Updated upstream
     private NOViewPagerPullableListView showbean_listView;
     private MyShowBeanAdapter meStarChangeAdapter;
     private PullToRefreshLayout showbean_PullToRefreshLayout;
@@ -76,4 +80,12 @@ public class MeShowBeanActivity extends ActivitySupport {
 
     }
 
+=======
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+//setContentView();
+
+    }
+>>>>>>> Stashed changes
 }
