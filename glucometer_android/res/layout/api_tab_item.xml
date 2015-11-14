@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" android:layout_marginTop="4.0dip" android:layout_marginRight="4.0dip" android:layout_marginBottom="2.0dip">
-        <TextView android:textSize="12.0dip" android:textColor="@drawable/tab_text_color" android:gravity="center" android:id="@id/tab_item_tv" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_centerInParent="true" />
-        <TextView android:textColor="@color/tab_text" android:gravity="center" android:layout_gravity="center" android:id="@id/tabCount" android:background="@drawable/tab_unread_bg" android:paddingBottom="8.0dip" android:visibility="gone" android:layout_width="35.0dip" android:layout_height="35.0dip" android:layout_marginTop="2.0dip" android:layout_marginRight="10.0dip" android:singleLine="true" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    </RelativeLayout>
-</RelativeLayout>
