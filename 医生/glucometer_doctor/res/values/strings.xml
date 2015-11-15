@@ -2,7 +2,7 @@
 <resources>
 
     <string name="alertMessage">血糖测试提醒</string>
-    <string name="app_name">糖贝安</string>
+    <string name="app_name">糖贝安_医生端</string>
     <string name="action_settings">Settings</string>
     <string name="hello_world">Hello world!</string>
     <string name="dialog_title">温馨提示</string>

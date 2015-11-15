@@ -68,6 +68,7 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	// private conversationListFragment conversationListFragment;
 //	private ChatAllHistoryFragment conversationListFragment;
 	private SettingsFragment settingFragment;
+	private MeFragment meFragment;
 	private Fragment[] fragments;
 	private int index;
 	// 当前fragment的index
@@ -120,7 +121,8 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 		conversationListFragment = new ConversationListFragment();
 		contactListFragment = new ContactListFragment();
 		settingFragment = new SettingsFragment();
-		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment };
+		meFragment=new MeFragment();
+		fragments = new Fragment[] { conversationListFragment, contactListFragment, settingFragment,meFragment };
 		// 添加显示第一个fragment
 		getSupportFragmentManager().beginTransaction().add(R.id.fragment_container, conversationListFragment)
 				.add(R.id.fragment_container, contactListFragment).hide(contactListFragment).show(conversationListFragment)
@@ -142,10 +144,11 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 	private void initView() {
 		unreadLabel = (TextView) findViewById(R.id.unread_msg_number);
 		unreadAddressLable = (TextView) findViewById(R.id.unread_address_number);
-		mTabs = new Button[3];
+		mTabs = new Button[4];
 		mTabs[0] = (Button) findViewById(R.id.btn_conversation);
 		mTabs[1] = (Button) findViewById(R.id.btn_address_list);
 		mTabs[2] = (Button) findViewById(R.id.btn_setting);
+		mTabs[3] = (Button) findViewById(R.id.btn_me);
 		// 把第一个tab设为选中状态
 		mTabs[0].setSelected(true);
 	}
@@ -165,6 +168,9 @@ public class MainActivity extends BaseActivity implements EMEventListener {
 			break;
 		case R.id.btn_setting:
 			index = 2;
+			break;
+		case R.id.btn_me:
+			index = 3;
 			break;
 		}
 		if (currentTabIndex != index) {

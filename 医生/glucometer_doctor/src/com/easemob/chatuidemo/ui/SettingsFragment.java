@@ -38,7 +38,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 /**
- * 设置界面
+ * 我
  * 
  * 
  */
