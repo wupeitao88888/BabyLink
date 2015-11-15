@@ -12,7 +12,7 @@
         android:gravity="center"
         android:orientation="horizontal" >
 
-   <LinearLayout
+        <LinearLayout
             android:id="@id/back"
             style="@style/title_left_button" >
 
@@ -23,6 +23,7 @@
                 android:background="@drawable/back_button"
                 android:padding="@dimen/commn_space" />
         </LinearLayout>
+
         <TextView
             android:id="@id/dateSelect"
             android:layout_width="0.0dip"
@@ -32,9 +33,9 @@
             android:textAppearance="?android:textAppearanceLarge"
             android:textColor="#ffffffff" />
 
-       <LinearLayout
-            android:visibility="invisible"
-            style="@style/title_left_button" >
+        <LinearLayout
+            style="@style/title_left_button"
+            android:visibility="invisible" >
 
             <ImageView
                 android:layout_width="@dimen/back_width"

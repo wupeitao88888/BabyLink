@@ -52,8 +52,17 @@
         android:layout_alignParentRight="true"
         android:layout_marginRight="7dp"
         android:layout_marginTop="6dp"
+        android:visibility="gone"
         android:textColor="@color/list_itease_secondary_color"
         android:textSize="13sp" />
+    
+    <ImageView 
+        android:layout_width="20dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="7dp"
+        android:background="@color/gray_normal"
+        />
 
     <ImageView
         android:id="@+id/msg_state"

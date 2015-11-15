@@ -3,7 +3,7 @@
     android:id="@+id/root"
     android:layout_width="match_parent"
     android:layout_height="@dimen/height_top_bar"
-    android:background="@color/top_bar_normal_bg"
+    android:background="#2BC8DB"
     android:gravity="center_vertical" >
 
     <RelativeLayout
@@ -21,6 +21,25 @@
             android:scaleType="centerInside" />
     </RelativeLayout>
 
+     <RelativeLayout
+        android:id="@+id/left_layout_textre"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="10dp"
+        android:background="@drawable/ease_common_tab_bg"
+        android:visibility="gone"
+        android:clickable="true" >
+
+        <TextView
+            android:id="@+id/left_image_textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
+    </RelativeLayout>
+    
     <TextView
         android:id="@+id/title"
         android:layout_width="wrap_content"
@@ -42,6 +61,25 @@
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
             android:scaleType="centerInside" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/right_layout_textre"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"
+          android:visibility="gone"
+        android:background="@drawable/ease_common_tab_bg" >
+
+        <TextView
+            android:id="@+id/right_layout_textTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:scaleType="centerInside"
+            android:textColor="#ffffff"
+            android:textSize="15sp" />
     </RelativeLayout>
 
 </RelativeLayout>

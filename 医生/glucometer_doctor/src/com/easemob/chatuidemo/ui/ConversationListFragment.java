@@ -5,6 +5,7 @@ import com.easemob.chat.EMConversation;
 import com.easemob.chat.EMConversation.EMConversationType;
 import com.easemob.chatuidemo.db.InviteMessgeDao;
 import com.easemob.easeui.ui.EaseConversationListFragment;
+import com.easemob.easeui.widget.EaseTitleBar;
 import com.easemob.util.NetUtils;
 import com.iloomo.doctor.R;
 import com.iloomo.doctor.hx.Constant;
@@ -14,6 +15,7 @@ import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.AdapterContextMenuInfo;
 import android.widget.AdapterView.OnItemClickListener;
@@ -24,13 +26,23 @@ import android.widget.Toast;
 public class ConversationListFragment extends EaseConversationListFragment{
 
     private TextView errorText;
-
+	public EaseTitleBar msg_title;
     @Override
     protected void initView() {
         super.initView();
         View errorView = (LinearLayout) View.inflate(getActivity(),R.layout.em_chat_neterror_item, null);
         errorItemContainer.addView(errorView);
         errorText = (TextView) errorView.findViewById(R.id.tv_connect_errormsg);
+        msg_title= (EaseTitleBar) getView().findViewById(R.id.msg_title);
+		msg_title.setRightTitle("扫一扫");
+		msg_title.setOnRightTextViewClickListener(new OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				Toast.makeText(getActivity(), "马上集成，敬请期待！", 0).show();
+			}
+		});
     }
     
     @Override
