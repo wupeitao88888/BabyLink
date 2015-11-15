@@ -8,6 +8,11 @@ import java.util.Date;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.iloomo.glucometer.modle.TestData;
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.glucometer.view.MyChartView;
+import com.iloomo.glucometer.view.MyChartView.Mstyle;
+
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
@@ -19,10 +24,6 @@ import android.widget.HorizontalScrollView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.iloomo.glucometer.modle.TestData;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.glucometer.view.MyChartView;
-import com.iloomo.glucometer.view.MyChartView.Mstyle;
 
 public class TabAlert extends GameBaseActivity implements OnClickListener {
 	LinearLayout mLogin;

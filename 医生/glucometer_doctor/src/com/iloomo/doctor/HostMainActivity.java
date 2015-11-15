@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
+import com.iloomo.glucometer.service.DataSync;
+import com.umeng.update.UmengUpdateAgent;
+
 import android.app.Activity;
 import android.app.AlarmManager;
 import android.app.PendingIntent;
@@ -18,8 +21,6 @@ import android.widget.TabHost;
 import android.widget.TabHost.OnTabChangeListener;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import com.iloomo.glucometer.service.DataSync;
-import com.umeng.update.UmengUpdateAgent;
 
 public class HostMainActivity extends TabHostActivity implements
 		OnClickListener {

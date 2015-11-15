@@ -10,6 +10,13 @@ import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import com.example.bluetooth.le.BluetoothLeService;
+import com.example.bluetooth.le.DeviceScanActivity;
+import com.example.bluetooth.le.SampleGattAttributes;
+import com.iloomo.glucometer.modle.TestData;
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.util.DateUtil;
+
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
@@ -45,13 +52,6 @@ import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
-
-import com.example.bluetooth.le.BluetoothLeService;
-import com.example.bluetooth.le.DeviceScanActivity;
-import com.example.bluetooth.le.SampleGattAttributes;
-import com.iloomo.glucometer.modle.TestData;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.util.DateUtil;
 
 /**
  * For a given BLE device, this Activity provides the user interface to connect,

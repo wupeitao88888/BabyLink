@@ -6,6 +6,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.iloomo.glucometer.modle.Doctor;
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.net.AsyncHttpClient;
+import com.iloomo.net.JsonHttpResponseHandler;
+import com.iloomo.net.RequestParams;
+
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,11 +22,6 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.iloomo.glucometer.modle.Doctor;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.net.AsyncHttpClient;
-import com.iloomo.net.JsonHttpResponseHandler;
-import com.iloomo.net.RequestParams;
 
 public class SearchDoctorActivity extends GameBaseActivity implements
 		OnClickListener {

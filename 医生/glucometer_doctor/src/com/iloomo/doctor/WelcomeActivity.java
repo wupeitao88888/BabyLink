@@ -1,15 +1,16 @@
 package com.iloomo.doctor;
 
+import com.easemob.chatuidemo.ui.MainActivity;
+import com.iloomo.base.BaseApplication;
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.utils.LogMessage;
+
 /**
  * 欢迎页面
  */
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-
-import com.iloomo.base.BaseApplication;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.utils.LogMessage;
 
 public class WelcomeActivity extends GameBaseActivity {
 	@Override
@@ -31,7 +32,7 @@ public class WelcomeActivity extends GameBaseActivity {
 					intent.setClass(WelcomeActivity.this, GuidActivity.class);
 				} else {
 					intent.setClass(WelcomeActivity.this,
-							HostMainActivity.class);
+							MainActivity.class);
 				}
 
 				startActivity(intent);

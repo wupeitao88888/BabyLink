@@ -9,12 +9,12 @@ import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Locale;
 
-import android.content.Context;
-import android.database.Cursor;
-
 import com.iloomo.db.SQLHandle;
 import com.iloomo.glucometer.modle.TestData;
 import com.iloomo.util.ILog;
+
+import android.content.Context;
+import android.database.Cursor;
 
 /**
  * @author yanghailong 管理所有的数据库操作的工具类

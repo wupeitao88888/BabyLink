@@ -1,5 +1,8 @@
 package com.iloomo.doctor;
 
+import com.iloomo.glucometer.view.DefaultDialogBuilder;
+import com.umeng.analytics.MobclickAgent;
+import android.annotation.SuppressLint;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,8 +14,6 @@ import android.widget.TabHost;
 import android.widget.TabHost.TabSpec;
 import android.widget.TabWidget;
 import android.widget.TextView;
-import com.iloomo.glucometer.view.DefaultDialogBuilder;
-import com.umeng.analytics.MobclickAgent;
 public abstract class TabHostActivity extends TabActivity {
 
 	private TabHost mTabHost; // 主控件
@@ -20,6 +21,7 @@ public abstract class TabHostActivity extends TabActivity {
 	private LayoutInflater mLayoutflater; // 布局管理器
 	private TextView tabCount ;//下载中的任务数
 
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public abstract class TabHostActivity extends TabActivity {
 		// 去掉阴影
 		setTheme(R.style.Theme_Tabhost);
 		setContentView(R.layout.api_tab_host);
-		mLayoutflater = getLayoutInflater();
+		mLayoutflater =getLayoutInflater();
 		mTabHost = getTabHost();
 		mTabWidget = getTabWidget();
 		prepare();
@@ -49,6 +51,7 @@ public abstract class TabHostActivity extends TabActivity {
 	/**
 	 * 初始化导航栏
 	 */
+	@SuppressLint("InflateParams")
 	private void initTabSpec() {
 		int count = getTabItemCount(); // 获得总数
 		for (int i = 0; i < count; i++) {

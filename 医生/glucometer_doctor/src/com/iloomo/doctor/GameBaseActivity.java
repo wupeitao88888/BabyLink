@@ -1,9 +1,5 @@
 package com.iloomo.doctor;
 
-import android.content.DialogInterface.OnClickListener;
-import android.view.KeyEvent;
-import android.widget.Toast;
-
 import com.iloomo.base.BaseActivity;
 import com.iloomo.base.BaseApplication;
 import com.iloomo.glucometer.view.DefaultDialogBuilder;
@@ -11,6 +7,10 @@ import com.iloomo.utils.DavikActivityManager;
 import com.iloomo.utils.Exit;
 import com.iloomo.utils.LogMessage;
 import com.umeng.analytics.MobclickAgent;
+
+import android.content.DialogInterface.OnClickListener;
+import android.view.KeyEvent;
+import android.widget.Toast;
 
 /**
  * 创 建 人: iloomo 日 期： 2013-1-10 下午1:04:08 修 改 人： 日 期： 描 述： 版 本 号：

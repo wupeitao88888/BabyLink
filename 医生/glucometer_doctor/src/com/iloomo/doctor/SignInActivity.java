@@ -3,16 +3,17 @@ package com.iloomo.doctor;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.net.AsyncHttpClient;
+import com.iloomo.net.JsonHttpResponseHandler;
+import com.iloomo.net.RequestParams;
+
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.net.AsyncHttpClient;
-import com.iloomo.net.JsonHttpResponseHandler;
-import com.iloomo.net.RequestParams;
 
 public class SignInActivity extends GameBaseActivity implements OnClickListener {
 	TextView tvPhone;

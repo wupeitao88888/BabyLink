@@ -4,6 +4,8 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.iloomo.glucometer.view.ReportTableView;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -12,7 +14,6 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.DatePicker;
 import android.widget.TextView;
-import com.iloomo.glucometer.view.ReportTableView;
 
 public class ReportActivity extends GameBaseActivity implements OnClickListener {
 	TextView dateSelect;

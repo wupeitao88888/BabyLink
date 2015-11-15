@@ -19,17 +19,17 @@ package com.iloomo.doctor;
 import java.util.Calendar;
 import java.util.Date;
 
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.glucometer.view.AlertScheme;
+// Need the following import to get access to the app resources, since this
+// class is in a sub-package.
+
 import android.app.AlarmManager;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.widget.Toast;
-
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.glucometer.view.AlertScheme;
-// Need the following import to get access to the app resources, since this
-// class is in a sub-package.
 
 /**
  * This is an example of implement an {@link BroadcastReceiver} for an alarm

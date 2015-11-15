@@ -7,6 +7,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.iloomo.glucometer.modle.TestData;
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.net.AsyncHttpClient;
+import com.iloomo.net.JsonHttpResponseHandler;
+import com.iloomo.net.RequestParams;
+
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -15,11 +21,6 @@ import android.widget.Toast;
 import cn.smssdk.EventHandler;
 import cn.smssdk.SMSSDK;
 import cn.smssdk.gui.RegisterPage;
-import com.iloomo.glucometer.modle.TestData;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.net.AsyncHttpClient;
-import com.iloomo.net.JsonHttpResponseHandler;
-import com.iloomo.net.RequestParams;
 
 public class LoginActivity extends GameBaseActivity implements OnClickListener {
 

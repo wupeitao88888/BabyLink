@@ -3,6 +3,9 @@ package com.iloomo.doctor;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.easemob.chatuidemo.ui.MainActivity;
+import com.iloomo.glucometer.modle.User;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -14,7 +17,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
-import com.iloomo.glucometer.modle.User;
   
 public class GuidActivity extends Activity implements OnClickListener, OnPageChangeListener{  
       
@@ -69,7 +71,7 @@ public class GuidActivity extends Activity implements OnClickListener, OnPageCha
 				// TODO Auto-generated method stub
 				User.saveGuid(GuidActivity.this);
 				Intent intent = new Intent();
-				intent.setClass(GuidActivity.this, HostMainActivity.class);
+				intent.setClass(GuidActivity.this, MainActivity.class);
 				startActivity(intent);
 				finish();
 			}

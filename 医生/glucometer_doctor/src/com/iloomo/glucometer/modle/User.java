@@ -1,11 +1,11 @@
 package com.iloomo.glucometer.modle;
 
+import com.iloomo.base.BaseApplication;
+import com.iloomo.glucometer.service.DataSync;
+
 import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
-
-import com.iloomo.base.BaseApplication;
-import com.iloomo.glucometer.service.DataSync;
 
 public class User {
 	public static float[] afterValue = { 3.3f, 6.7f };

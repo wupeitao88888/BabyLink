@@ -6,6 +6,9 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
+import com.iloomo.glucometer.modle.TestData;
+import com.iloomo.glucometer.modle.User;
+
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;
@@ -19,9 +22,6 @@ import android.graphics.Typeface;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
-
-import com.iloomo.glucometer.modle.TestData;
-import com.iloomo.glucometer.modle.User;
 
 /**
  * 

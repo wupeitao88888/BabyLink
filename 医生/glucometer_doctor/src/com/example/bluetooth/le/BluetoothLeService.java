@@ -3,6 +3,9 @@ package com.example.bluetooth.le;
 import java.util.List;
 import java.util.UUID;
 
+import com.iloomo.doctor.TabDetection;
+import com.iloomo.util.ILog;
+
 import android.annotation.SuppressLint;
 import android.app.Service;
 import android.bluetooth.BluetoothAdapter;
@@ -19,9 +22,6 @@ import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.util.Log;
-
-import com.iloomo.doctor.TabDetection;
-import com.iloomo.util.ILog;
 
 /**
  * Service for managing connection and data communication with a GATT server

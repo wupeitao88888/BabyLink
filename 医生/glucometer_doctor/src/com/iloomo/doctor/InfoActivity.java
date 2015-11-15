@@ -5,6 +5,11 @@ import java.util.Calendar;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.iloomo.glucometer.modle.User;
+import com.iloomo.net.AsyncHttpClient;
+import com.iloomo.net.JsonHttpResponseHandler;
+import com.iloomo.net.RequestParams;
+
 import android.app.AlertDialog;
 import android.app.DatePickerDialog;
 import android.app.DatePickerDialog.OnDateSetListener;
@@ -14,10 +19,6 @@ import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
-import com.iloomo.glucometer.modle.User;
-import com.iloomo.net.AsyncHttpClient;
-import com.iloomo.net.JsonHttpResponseHandler;
-import com.iloomo.net.RequestParams;
 
 public class InfoActivity extends GameBaseActivity implements OnClickListener {
 	TextView dateSelect;
