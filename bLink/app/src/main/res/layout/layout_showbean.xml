@@ -27,4 +27,5 @@
         <include layout="@layout/load_more" />
     </com.shiliuke.view.PullToRefresh.PullToRefreshLayout>
 
+
 </LinearLayout>

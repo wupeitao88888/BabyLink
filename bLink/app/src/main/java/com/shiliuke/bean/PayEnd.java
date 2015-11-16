@@ -19,6 +19,7 @@ public class PayEnd {
         this.pay_status = pay_status;
     }
 
+
     public PayEnd() {
     }
 

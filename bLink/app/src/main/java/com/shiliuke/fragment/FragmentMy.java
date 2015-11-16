@@ -101,7 +101,7 @@ public class FragmentMy extends Fragment implements OnClickListener {
                 break;
             case R.id.pay_rl:
                 startActivity(new Intent(mActivity, PayEndActivity.class));
-                //支付尾款
+
                 break;
 
         }
