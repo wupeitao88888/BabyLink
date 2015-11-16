@@ -13,6 +13,10 @@ import android.text.TextUtils;
 import com.alibaba.fastjson.JSON;
 import com.android.volley.Response;
 import com.android.volley.VolleyError;
+import com.android.volley.toolbox.JsonObjectRequest;
+import com.android.volley.toolbox.JsonRequest;
+import com.android.volley.toolbox.StringRequest;
+import com.google.gson.Gson;
 import com.shiliuke.BabyLink.LoginActivity;
 import com.shiliuke.global.AppConfig;
 import com.shiliuke.global.MApplication;
@@ -33,6 +37,7 @@ public class BasicRequest {
 
     private static BasicRequest basic;
     private static String baseURL;
+    private static Gson gson = new Gson();
 
     /**
      * 获取唯一实例对象
@@ -55,7 +60,6 @@ public class BasicRequest {
         sb.append(AppConfig.BASE_URL);
         sb.append(AppConfig.LOGIN);
         String requesturl = sb.toString();
-
         L.e("URL=" + requesturl);
         VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
             @Override
@@ -136,6 +140,40 @@ public class BasicRequest {
             return "";
         }
     }
+
+
+    /**
+     * 通过 “ID” 请求列表的时候调用的方法
+     * Class<?>  tClass传入实体  返回object
+     */
+    public void requestPOST(final VolleyListerner listerner, final int action, final Map<String, String> params, String strs, final Class<?> tClass) {
+        StringBuilder sb = new StringBuilder();
+        sb.append(AppConfig.BASE_URL);
+        sb.append(strs);
+        String requesturl = sb.toString();
+
+        L.e("发起URL=" + requesturl + addParams(params));
+        VolleyTask.getInstance(MApplication.getApp()).addRequest(new NormalPostRequest(requesturl, new Response.Listener<JSONObject>() {
+            @Override
+            public void onResponse(JSONObject response) {
+                if (null != response) {
+                    L.e("action=" + action + " 网络成功：" + response.toString());
+                    Object obj = gson.fromJson(response.toString(), tClass);
+                    listerner.onResponse(response.toString(), action, obj);
+                }
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                if (!TextUtils.isEmpty(error.getMessage())) {
+                    L.e("action=" + action + " 网络错误：" + error.getMessage());
+                    listerner.onResponseError(error.getMessage(),
+                            action);
+                }
+            }
+        }, params));
+    }
+
 
     /**
      * @param listerner

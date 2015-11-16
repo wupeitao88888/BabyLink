@@ -2,31 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#EFF0F5"
     android:orientation="vertical">
 
     <RelativeLayout
         android:id="@+id/edit_rl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@mipmap/ic_launcher">
+        android:layout_marginTop="50dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_height="wrap_content">
 
         <EditText
             android:id="@+id/user_name"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:background="@color/white"
             android:hint="请输入手机号"/>
 
         <RelativeLayout
             android:id="@+id/cade_password_rl"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
             android:layout_below="@id/user_name">
 
             <EditText
-
                 android:id="@+id/cade_password"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="45dp"
+                android:background="@color/white"
                 android:hint="请输入验证码"/>
             
             <Button
@@ -42,7 +47,9 @@
         <EditText
             android:id="@+id/password"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="45dp"
+            android:layout_marginTop="10dp"
+            android:background="@color/white"
             android:layout_below="@id/cade_password_rl"
             android:hint="请输入密码"/>
 

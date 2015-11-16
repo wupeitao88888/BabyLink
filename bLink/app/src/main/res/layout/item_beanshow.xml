@@ -55,8 +55,8 @@
             android:textSize="@dimen/sp14"
             android:textColor="@color/white"
             android:layout_centerVertical="true"
-            android:background="@mipmap/btn_redbg"
             />
+        <!--android:background="@mipmap/btn_redbg"-->
     </RelativeLayout>
 
     <RelativeLayout
@@ -131,9 +131,9 @@
             android:layout_height="30dp"
             android:textSize="@dimen/sp14"
             android:textColor="@color/white"
-            android:background="@mipmap/btn_redbg"
             android:text="逗一逗"
             />
+        <!--android:background="@mipmap/btn_redbg"-->
 
         <Button
             android:id="@+id/btn_beanshow_item_share"

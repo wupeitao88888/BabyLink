@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Message;
 
 import com.shiliuke.adapter.MeStarChangeAdapter;
+import com.shiliuke.BabyLink.R;
 import com.shiliuke.adapter.MyShowBeanAdapter;
 import com.shiliuke.base.ActivitySupport;
 import com.shiliuke.bean.MeStarChange;

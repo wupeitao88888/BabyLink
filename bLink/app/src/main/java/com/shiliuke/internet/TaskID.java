@@ -16,6 +16,7 @@ package com.shiliuke.internet;
  *         任务ID类
  */
 public class TaskID {
+    //登陆
     public static final int ACTION_LOGIN = 1;
     //活动列表
     public static final int ACTION_ACTIVITY = 2;
@@ -31,5 +32,7 @@ public class TaskID {
     public static final int ACTION_XIUDOU_ADD_COMMEND = 7;
     // 秀逗_加关注
     public static final int ACTION_XIUDOU_ADD_FOCUS = 8;
+    //活动详情
+    public static final int ACTION_ACTIVITY_INFO= 9;
 
 }
